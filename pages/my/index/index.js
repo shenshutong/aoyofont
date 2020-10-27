@@ -50,7 +50,7 @@ Page({
     //个人信息
     goInfor: function () {
         wx.navigateTo({
-            //url: '/pages/my/information/information'
+            url: '/pages/my/information/information'
         })
     },
     //我的车库
