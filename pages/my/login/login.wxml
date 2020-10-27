@@ -22,21 +22,14 @@
 		</view>
 		<view class="detail">
 			<view class="tel">
-				<input type="number" placeholder="请输入手机号" value="{{phoneNumber}}" bindinput="phone_code" maxlength="11"></input>
+				<input type="number" placeholder="请输入手机号" value="{{phoneNumber}}" bindinput="phoneInput" maxlength="11"></input>
 				<image src="../../../img/tel.png"></image>
 			</view>
-			<view class="yzm" id="imgCode" wx:if="{{imgCodeShow}}">
-				<input value="{{phone_ver_code1}}" placeholder="请输入图片验证码" bindinput="phone_ver_code1"></input>
-				<image src="../../../img/yzm.png"></image>
-				<view class="getYimg" catchtap="getImgCodeT">
-					<image src="{{imgCode}}" style="width:100%;height:90rpx;margin-top:-30rpx;margin-left:-30rpx;border-radius:28rpx"></image>
-				</view>
+			<view class="tel">
+				<input type="number" placeholder="请输入密码" value="{{password}}" bindinput="passwordInput" maxlength="11"></input>
+				<image src="../../../img/tel.png"></image>
 			</view>
-			<view class="yzm" id="smscode">
-				<input type="number" value="{{phone_ver_code}}" placeholder="请输入验证码" bindinput="phone_ver_code"></input>
-				<image src="../../../img/yzm.png"></image>
-				<button class="btn_min btn_primary_plain msg" catchtap="ver_code" disabled="{{disable}}">{{verCodeTxt}}</button>
-			</view>
+		
 			<button class="loginBu" bindtap="login">登录</button>
 		</view>
 		<view class="wechat">
