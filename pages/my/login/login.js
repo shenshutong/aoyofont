@@ -109,9 +109,6 @@ Page({
               success(res){
                 if(res.data!=null){
                     console.log("登录成功")
-                    //wx.navigateTo({
-                     // url: '/pages/index/index/index',
-                    //})
                     wx.switchTab({
                       url: '/pages/index/index/index',
                     })
