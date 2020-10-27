@@ -1,1 +1,359 @@
-/* pages/shopping/index/index.wxss */
+page {
+    width: 100%;
+    background-color: #fff;
+    padding-bottom: 150rpx;
+}
+
+.nav-bar {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 999;
+    background-color: #FFFFFF;
+}
+
+.back-content {
+    width: 120rpx;
+    border: 1px solid rgb(226, 220, 220);
+    padding: 10rpx 0;
+    border-radius: 30rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.nav-bar .back {
+    width: 100%;
+    position: absolute;
+}
+
+.nav-bar .back .backBu {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding: 0 10rpx 0 20rpx;
+    justify-content: space-between;
+    box-sizing: border-box;
+}
+
+.nav-bar .back view {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.nav-bar .back image {
+    width: 30rpx;
+    height: 30rpx;
+}
+
+.content {
+    width: 100%;
+    height: 1000rpx;
+}
+
+.site {
+    width: 100%;
+    height: 100rpx;
+    padding: 10rpx 20rpx;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #fff;
+}
+
+.site image {
+    width: 25rpx;
+    height: 25rpx;
+    margin-right: 20rpx;
+}
+
+.site view:nth-child(1) {
+    display: flex;
+    align-items: center;
+    color: #333333;
+    font-size: 28rpx;
+}
+
+.site view:nth-child(2) {
+    display: flex;
+    align-items: center;
+    font-size: 28rpx;
+}
+
+.site view:nth-child(2) text {
+    color: #333333;
+    margin-left: 20rpx;
+}
+
+.purchaseList {
+    width: 100%;
+}
+
+.purchaseList .items {
+    width: 100%;
+    background-color: #fff;
+    margin-bottom: 30rpx;
+    padding: 20rpx;
+    box-sizing: border-box
+}
+
+.shopName {
+    width: 100%;
+    height: 70rpx;
+    display: flex;
+    align-items: center;
+}
+
+.shopName image {
+    width: 30rpx;
+    height: 30rpx;
+    margin-top: 5rpx;
+    margin-left: 15rpx;
+    margin-right: 15rpx;
+}
+
+.checkbox .wx-checkbox-input {
+    border-radius: 25rpx;
+    width: 25rpx;
+    height: 25rpx;
+    border-color: #BEBEBE;
+    margin-top: -3rpx;
+}
+
+.shopName text {
+    font-size: 28rpx;
+}
+
+.shoppItem {
+    width: 100%;
+    display: flex;
+    padding: 10rpx 0;
+    box-sizing: border-box;
+}
+
+.shoppItem .items {
+    width: 100%;
+    /* display: flex; */
+    padding: 10rpx 0;
+    box-sizing: border-box;
+}
+.shoppItem .items .items_top{
+    width: 100%;
+    height: 95%;
+    display: flex;
+}
+.inventory{
+    width: 100%;
+    height: 5%;
+    font-size: 22rpx;
+    color: red;
+}
+.xuan {
+    width: 10%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.shoppItem .items .items_top .photo {
+    width: 30%;
+    position: relative;
+}
+
+.shoppItem .items .items_top .soldOut {
+    width: 80%;
+    height: 80%;
+    background-color: #ccc;
+    opacity: .5;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.shoppItem .items .items_top .soldOut text {
+    display: block;
+    width: 50%;
+    height: 79rpx;
+    background-color: #000;
+    font-size: 22rpx;
+    color: #fff;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 77rpx;
+}
+
+.shoppItem .items .items_top .photo image {
+    width: 80%;
+    height: 80%;
+    border-radius: 10rpx;
+}
+
+.shoContent {
+    width: 60%;
+    padding: 10rpx;
+    box-sizing: border-box;
+    height: 100%;
+}
+
+.shoContent view {
+    margin-bottom: 10rpx;
+}
+
+.introduce {
+    font-size: 24rpx;
+    display: -webkit-box;
+    overflow: hidden;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+}
+
+.introduce text:nth-child(1) {
+    font-size: 20rpx;
+    color: #fff;
+    display: inline-block;
+    padding: 5rpx 8rpx;
+    background: linear-gradient(90deg, rgba(255, 135, 99, 1) 0%, rgba(255, 89, 67, 1) 100%);
+    border-radius: 6px;
+    margin-right: 15rpx;
+}
+
+.postage text {
+    font-size: 20rpx;
+    display: inline-block;
+    padding: 5rpx 15rpx;
+}
+
+.postage text:nth-child(1) {
+    font-size: 20rpx;
+    display: inline-block;
+    background: rgba(237, 237, 237, 1);
+    border-radius: 10rpx;
+}
+
+.postage text:nth-child(2) {
+    color: #FF5B46;
+}
+
+.numberMoney {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.numberMoney text:nth-child(1) {
+    font-size: 28rpx;
+    color: #DA0101;
+    margin-top: -20rpx;
+}
+
+/* 结算 */
+.closeAccount {
+    width: 100%;
+    height: 120rpx;
+    background-color: #fff;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    z-index: 100;
+    box-shadow: 0px -30rpx 40rpx 0px rgba(33, 27, 27, 0.2);
+    display: flex;
+    align-items: center;
+    padding: 20rpx;
+    box-sizing: border-box;
+}
+
+.closeDetail {
+    width: 60%;
+    height: 100%;
+    padding: 0 20rpx;
+    box-sizing: border-box;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    justify-content: end;
+}
+
+.closeDetail view:nth-child(1) text:nth-child(1) {
+    color: #999999;
+    font-size: 20rpx;
+    margin-right: 15rpx;
+}
+
+.closeDetail view:nth-child(1) text:nth-child(2) {
+    font-size: 26rpx;
+    margin-right: 10rpx;
+}
+
+.closeDetail view:nth-child(1) text:nth-child(3) {
+    font-size: 26rpx;
+}
+
+.closeDetail view:nth-child(2) {
+    font-size: 22rpx;
+    color: #FF5B45;
+    margin-top: 10rpx;
+}
+
+.closeButton {
+    width: 170rpx;
+    height: 80rpx;
+    background: linear-gradient(90deg, rgba(255, 140, 101, 1) 0%, rgba(255, 89, 68, 1) 100%);
+    border-radius: 80rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28rpx;
+    color: #Ffff;
+}
+
+.closeButtonDetele {
+    width: 170rpx;
+    height: 80rpx;
+    background: red;
+    border-radius: 80rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28rpx;
+    color: #Ffff;
+}
+
+.edit {
+    margin-right: 0rpx !important;
+}
+
+.van-swipe-cell__left,
+.van-swipe-cell__right {
+    display: inline-block;
+    width: 65px;
+    height: 44px;
+    font-size: 15px;
+    line-height: 44px;
+    color: #fff;
+    text-align: center;
+    background-color: #f44;
+}
+
+.shoppItemImg {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-items: center;
+    font-size: 24rpx;
+    color: #ccc;
+}
+
+.line {
+    width: 100%;
+    height: 20rpx;
+    background-color: #f6f6f6;
+}

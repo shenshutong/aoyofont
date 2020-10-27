@@ -1,0 +1,79 @@
+<view>
+	<!-- 自定义导航栏 start -->
+	<view class="nav-bar" style="height:{{navBarHeight}}px;">
+		<view class="back" style="height:{{menuHeight}}px; min-height:{{menuHeight}}px; line-height:{{menuHeight}}px; bottom:{{menuBotton}}px;">
+			<view class="backBu">
+				<view class="back-content">
+					<view style="width:100%;height:100%" bindtap="backHome">
+						<van-icon size="20" name="arrow-left" />
+					</view>
+				</view>
+				<text>店铺详情</text>
+				<view style="width:120rpx"></view>
+			</view>
+		</view>
+	</view>
+	<!-- 自定义导航栏 end -->
+	<view class="content"></view>
+	<view class="content_header">
+		<view class="header_N">
+			<view class="dianPhoto">
+				<image src="{{imagePrefix+groupDeatil.groupIndexImg}}"></image>
+			</view>
+			<view class="dianName">
+				<view class="D_name">
+					<view class="D_G">
+						<text>{{groupDeatil.groupType}}</text>
+					</view>
+					{{groupDeatil.groupNickName}}
+				</view>
+				<view class="D_Number">
+					<view class="star">
+						<text>总评分</text>
+						<text>{{groupDeatil.groupScore}}</text>
+						<image wx:for="{{groupDeatil.groupScore}}" wx:key="key" src="../../../img/star.png"></image>
+					</view>
+					<view class="dingNumber">
+						总订单 <text style="color:#DB0202">{{groupDeatil.groupOrderCount}}</text>
+					</view>
+				</view>
+				<view class="shareshopp">
+					<share style="width:75%"></share>
+					<view class="goMap" bindtap="call_map">前往</view>
+				</view>
+			</view>
+		</view>
+		<!-- 门店简介 -->
+		<view class="shopSynopsis">
+			<view class="characteristic">
+				<view>特色服务</view>
+				<view class="characteristic-content">
+					<view wx:for="{{groupDeatil.groupFeatured}}" wx:key="key">{{item}}<text wx:if="{{groupDeatil.groupFeatured.length-1 != index}}" style="margin:0 10rpx">/</text></view>
+				</view>
+			</view>
+			<view class="shopSynopsisC">
+				<view>门店简介</view>
+				<view>{{groupDeatil.groupDesc}}</view>
+			</view>
+			<view class="shopSite">
+				<view>所在地址</view>
+				<view>{{groupDeatil.groupAddress}}</view>
+			</view>
+		</view>
+		<!-- 技师风采 -->
+		<view class="technician">
+			<view class="characteristic">
+				<view>技师风采</view>
+			</view>
+			<view class="items" wx:for="{{groupDeatil.groupTechnician}}" wx:key="key">
+				<view class="characteristicPhoto">
+					<image src="{{imagePrefix+item.group_technician_img}}"></image>
+				</view>
+				<view class="characteristicName">
+					<view>{{item.group_technician_name}}</view>
+					<view>{{item.group_technician_desc}}</view>
+				</view>
+			</view>
+		</view>
+	</view>
+</view>

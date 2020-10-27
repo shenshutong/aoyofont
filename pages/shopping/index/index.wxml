@@ -1,2 +1,104 @@
-<!--pages/shopping/index/index.wxml-->
-<text>pages/shopping/index/index.wxml</text>
+<view class="content">
+	<!-- 自定义导航栏 start -->
+	<view class="nav-bar" style="height:{{navBarHeight}}px;">
+		<view class="back" style="height:{{menuHeight}}px; min-height:{{menuHeight}}px; line-height:{{menuHeight}}px; bottom:{{menuBotton}}px;">
+			<view class="backBu">
+				<view style="width:120rpx"></view>
+				<text>购物车</text>
+				<view style="width:120rpx"></view>
+			</view>
+		</view>
+	</view>
+	<!-- 自定义导航栏 end -->
+	<view class="site" style="margin-top:{{navBarHeight}}px" wx:if="{{jsButtonShow==true}}">
+		<view>
+			<image src="../../../img/site.png" style="width:24rpx;height:30rpx"></image>
+			<text>{{address}}</text>
+		</view>
+		<view>
+			<image src="../../../img/tanhao.png"></image> 向左滑动删除<text>|</text><text class="edit" bindtap="editDetele">编辑</text>
+		</view>
+	</view>
+	<view class="site" style="margin-top:{{navBarHeight}}px" wx:if="{{deleteShow==true}}">
+		<view>
+			<image src="../../../img/site.png" style="width:24rpx;height:30rpx"></image>
+			<text>{{address}}</text>
+		</view>
+		<view>
+			<image src="../../../img/tanhao.png"></image> 向左滑动删除<text>|</text><text class="edit" bindtap="successDetele">完成</text>
+		</view>
+	</view>
+	<!-- 购物车商品列表 -->
+	<view class="purchaseList">
+		<checkbox-group>
+			<view class="items" wx:for="{{shoppList}}" wx:key="key" wx:for-index="findex">
+				<view class="shopName">
+					<checkbox class="checkbox" checked="{{item.groupStatusView}}" bindtap="dianAll" data-index="{{findex}}"></checkbox>
+					<image src="../../../img/dianpu.png"></image>
+					<text>{{item.groupName}}</text>
+				</view>
+				<!-- 门店 商品列表 -->
+				<view class="shoppItem" wx:for="{{item.commoditys}}" wx:key="key">
+					<van-swipe-cell right-width="{{ 90 }}" bind:close="onClose" async-close style="width:100%" data-index="{{item.shopping_cart_id}}">
+						<view class="items" data-id="{{item.commodity_id}}" bindtap="goShoppDetail">
+							<view class="items_top">
+								<view class="xuan">
+									<checkbox class="checkbox" disabled="{{item.enabled_static==1}}" checked="{{item.commodityStatusView}}" catchtap="selectList" data-index="{{index}}" data-findex='{{findex}}'></checkbox>
+								</view>
+								<view class="photo">
+									<image src="{{imagePrefix+item.imgs[0].commodity_img_url}}"></image>
+									<view class="soldOut" wx:if="{{item.enabled_static==1}}">
+										<text>已下架</text>
+									</view>
+								</view>
+								<view class="shoContent">
+									<view class="introduce">
+										<text>特价</text>
+										<text>{{item.commodity_name}}</text>
+									</view>
+									<view class="postage">
+										<text wx:if="{{item.priceIncrease==0}}">无优惠</text>
+										<text wx:if="{{item.priceIncrease<0}}">已优惠{{item.priceIncrease}}元</text>
+									</view>
+									<view class="numberMoney">
+										<text>￥{{item.commodity_selling_price}}</text>
+										<van-stepper value="{{ item.join_shopping_cart_count }}" max="{{item.commodity_stock_number}}" disabled="{{item.enabled_static==1}}" disable-input="true" data-id="{{item.shopping_cart_id}}" bind:plus="addCount" bind:minus="minusCount" data-index="{{index}}" data-findex='{{findex}}' />
+									</view>
+								</view>
+							</view>
+							<view wx:if="{{item.shoppStock==true}}" class="inventory">该商品库存已不足，系统已为您自动调整商品数量</view>
+						</view>
+						<view class="line"></view>
+						<view slot="right" class="delete">删除</view>
+					</van-swipe-cell>
+				</view>
+			</view>
+			<!-- 门店 商品列表 -->
+			<view class="shoppItemImg" wx:if="{{!shoppList}}" wx:key="key">
+				<image src="../../../img/wudd.png"></image>
+				<view>购物车暂无商品，快去逛逛吧！</view>
+			</view>
+			<view class="closeAccount" wx:if="{{shoppList}}">
+				<view class="allChecked" bindtap="checkAll">
+					<checkbox class="checkbox" checked="{{isshow}}"></checkbox><text style="font-size:26rpx">全选</text>
+				</view>
+				<view class="closeDetail">
+					<view>
+						<text>不含税</text>
+						<text>总计：</text>
+						<text>￥{{totalAmount}}</text>
+					</view>
+					<view>
+						活动优惠 -<text>￥0.00</text>
+					</view>
+				</view>
+				<view class="closeButton" bindtap="goShoppOrder" wx:if="{{jsButtonShow==true}}">
+					结算 ({{ shoppSum }})
+				</view>
+				<view class="closeButtonDetele" wx:if="{{deleteShow==true}}" bindtap="closeButtonDetele">
+					删除 ({{ shoppSum }})
+				</view>
+			</view>
+		</checkbox-group>
+	</view>
+</view>

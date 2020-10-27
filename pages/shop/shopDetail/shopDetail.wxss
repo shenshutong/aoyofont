@@ -1,0 +1,296 @@
+page {
+    background-color: #F6F6F6;
+    width: 100%;
+    height: 100%;
+}
+
+.nav-bar {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 999;
+    background: #000000;
+    color: #ffffff;
+}
+
+.back-content {
+    width: 120rpx;
+    padding: 10rpx 0;
+    border-radius: 30rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.shareshopp {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 30rpx;
+}
+
+.goMap {
+    width: 25%;
+    height: 50rpx;
+    font-size: 26rpx;
+    border: 1px solid #ccc;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 30rpx;
+    background-color: rgba(80, 92, 116, 1);
+    color: #fff;
+}
+
+.nav-bar .back {
+    width: 100%;
+    position: absolute;
+}
+
+.nav-bar .back .backBu {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding: 0 10rpx 0 20rpx;
+    justify-content: space-between;
+    box-sizing: border-box;
+}
+
+.nav-bar .back view {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.nav-bar .back image {
+    width: 30rpx;
+    height: 30rpx;
+}
+
+.content {
+    width: 100%;
+    height: 450rpx;
+    background: linear-gradient(180deg, #000000 24%, #ffffff 100%);
+}
+
+.content_header {
+    width: 100%;
+    height: 220rpx;
+    padding: 0 30rpx;
+    box-sizing: border-box;
+    margin-top: -280rpx;
+}
+
+.header_N {
+    width: 100%;
+    height: 100%;
+    background-color: #ffffff;
+    border-radius: 20rpx;
+    padding: 20rpx;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.dianPhoto {
+    width: 30%;
+    height: 100%;
+}
+
+.dianPhoto image {
+    width: 100%;
+    height: 100%;
+    border-radius: 20rpx;
+}
+
+.dianName {
+    width: 67%;
+    height: 100%;
+    position: relative;
+}
+
+.dingNumber {
+    margin-left: 100rpx;
+}
+
+.dianName .D_G {
+    margin-bottom: 10rpx;
+    display: inline-block;
+}
+
+.D_Number .star image {
+    width: 30rpx;
+    height: 30rpx;
+}
+
+.D_name {
+    font-size: 28rpx;
+    font-weight: 700;
+    margin-bottom: 20rpx;
+}
+
+.D_G text {
+    display: inline-block;
+    padding: 5rpx 10rpx;
+    font-size: 20rpx;
+    color: #ffff;
+    background: linear-gradient(90deg, rgba(255, 136, 99, 1) 0%, rgba(255, 89, 68, 1) 100%);
+    border-radius: 10rpx;
+}
+
+.D_Number {
+    display: flex;
+    font-size: 20rpx;
+    justify-content: space-between;
+    margin-top: 30rpx;
+}
+
+.D_Number .star image {
+    width: 22rpx;
+    height: 22rpx;
+}
+
+.D_Number .star text:nth-child(2) {
+    margin-right: 15rpx;
+    color: #DB0202;
+}
+
+.dingNumber {
+    text-align: end;
+}
+
+/* 门店简介 */
+.shopSynopsis {
+    width: 100%;
+    background-color: #ffffff;
+    margin-top: 30rpx;
+    border-radius: 20rpx;
+}
+
+.characteristic,
+.shopSite {
+    width: 100%;
+    border-bottom: 1px solid rgba(238, 238, 238, 1);
+    padding: 20rpx;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+}
+
+.shopSynopsisC {
+    width: 100%;
+    border-bottom: 1px solid rgba(238, 238, 238, 1);
+    padding: 20rpx;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+}
+
+.characteristic view:nth-child(1),
+.shopSite view:nth-child(1) {
+    width: 25%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    font-size: 30rpx;
+    font-weight: 700;
+}
+
+.shopSynopsisC view:nth-child(1) {
+    width: 25%;
+    height: 100%;
+    font-size: 30rpx;
+    font-weight: 700;
+}
+
+.shopSite view:nth-child(2) {
+    width: 70%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    font-size: 26rpx;
+    color: #666666;
+}
+
+.characteristic .characteristic-content {
+    width: 70%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    font-size: 26rpx;
+    color: #666666;
+    flex-wrap: wrap;
+}
+
+.characteristic .characteristic-content view {
+    width: auto;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    font-size: 20rpx;
+    color: #666666 !important;
+    font-weight: 300 !important;
+}
+
+.shopSynopsisC view:nth-child(2) {
+    width: 70%;
+    height: 100%;
+    display: flex;
+    font-size: 26rpx;
+    color: #666666;
+    display: -webkit-box;
+    overflow: hidden;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+}
+
+/* 技师风采 */
+.technician {
+    width: 100%;
+    background-color: #ffff;
+    border-radius: 20rpx;
+    margin-top: 30rpx;
+    margin-bottom: 30rpx;
+}
+
+.items {
+    width: 100%;
+    height: 130rpx;
+    display: flex;
+    padding: 20rpx 0;
+    border-bottom: 1px solid rgba(238, 238, 238, 1);
+}
+
+.items .characteristicPhoto {
+    width: 24%;
+    height: 100%;
+    display: flex;
+    padding-left: 20rpx;
+    box-sizing: border-box;
+}
+
+.items .characteristicPhoto image {
+    width: 80%;
+    height: 90%;
+    border-radius: 50%;
+}
+
+.items .characteristicName {
+    width: 70%;
+    height: 100%;
+}
+
+.items .characteristicName view:nth-child(1) {
+    margin-top: 15rpx;
+    font-size: 28rpx;
+
+}
+
+.items .characteristicName view:nth-child(2) {
+    font-size: 26rpx;
+    color: #666666;
+    margin-top: 15rpx;
+}

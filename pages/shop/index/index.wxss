@@ -1,1 +1,272 @@
-/* pages/shop/index/index.wxss */
+.nav-bar {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 999;
+    background-color: #FFFFFF;
+}
+
+.back-content {
+    width: 120rpx;
+    border: 1px solid rgb(226, 220, 220);
+    padding: 10rpx 0;
+    border-radius: 30rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.nav-bar .back {
+    width: 100%;
+    position: absolute;
+}
+
+.nav-bar .back .backBu {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding: 0 10rpx 0 20rpx;
+    justify-content: space-between;
+    box-sizing: border-box;
+}
+
+.nav-bar .back view {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.nav-bar .back image {
+    width: 30rpx;
+    height: 30rpx;
+}
+
+.content {
+    width: 100%;
+    background-color: #F6F6F6;
+}
+
+/* 门店 */
+.content-header {
+    padding: 0 20rpx;
+    box-sizing: border-box;
+    width: 100%;
+    height: 80rpx;
+    background-color: #ffff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20rpx;
+    position: relative;
+}
+
+.content-header .car {
+    font-size: 26rpx;
+    display: flex;
+    align-items: center;
+}
+
+.content-header .car image {
+    width: 47rpx;
+    height: 40rpx;
+    margin-right: 10rpx;
+}
+
+/* 列表 */
+.content_list {
+    width: 100%;
+    background-color: #F6F6F6;
+    padding: 0 20rpx;
+    box-sizing: border-box;
+}
+
+.content_list .items {
+    width: 100%;
+    height: 250rpx;
+    background-color: #ffff;
+    margin-bottom: 20rpx;
+    padding: 20rpx 20rpx 20rpx 0;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.content_list .items .items-img {
+    width: 30%;
+    height: 100%;
+}
+
+.content_list .items .items-img image {
+    width: 100%;
+    height: 100%;
+    border-radius: 20rpx;
+}
+
+.content_list .items .items-content {
+    width: 68%;
+    height: 100%;
+}
+
+.content_list .items .items-content view {
+    width: 100%;
+    margin-bottom: 20rpx;
+}
+
+.name text:nth-child(1) {
+    display: inline-block;
+    padding: 5rpx 15rpx;
+    background: linear-gradient(90deg, rgba(255, 136, 99, 1) 0%, rgba(255, 89, 68, 1) 100%);
+    border-radius: 10rpx;
+    font-size: 20rpx;
+    color: #fff;
+    margin-right: 15rpx;
+}
+
+.name {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.name text:nth-child(2) {
+    font-weight: 700;
+    font-size: 24rpx;
+}
+
+.site {
+    font-size: 20rpx;
+    color: #666666;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.site text:nth-child(1){
+    display: block;
+    width: 70%;
+    height: 100%;
+    overflow: hidden;
+    text-overflow:ellipsis;
+    white-space: nowrap;
+}
+.site text:nth-child(2){
+    display: block;
+    width: 30%;
+    height: 100%;
+    overflow: hidden;
+    text-overflow:ellipsis;
+    white-space: nowrap;
+    text-align: center;
+}
+.label text {
+    display: inline-block;
+    padding: 5rpx 15rpx;
+    background: rgba(238, 238, 238, 1);
+    border-radius: 15rpx;
+    font-size: 20rpx;
+    color: #666666;
+    margin-right: 10rpx;
+}
+
+.grade {
+    display: flex;
+    font-size: 20rpx;
+}
+
+.grade .star image {
+    width: 22rpx;
+    height: 22rpx;
+}
+
+.grade .star text:nth-child(2) {
+    margin-right: 15rpx;
+    color: #DB0202;
+}
+
+.dingNumber {
+    text-align: end;
+}
+
+.scroll {
+    display: block;
+    position: absolute;
+    top: 210rpx;
+    left: 0px;
+    bottom: 0px;
+    right: 0px;
+}
+
+.Nodata {
+    width: 100%;
+    height: 90rpx;
+    text-align: center;
+    line-height: 90rpx;
+    font-size: 24rpx;
+    border-top: 1px solid #F6F6F6;
+}
+
+.q-pp {
+    width: 100%;
+    height: 320rpx;
+    background-color: #fff;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    top: 210rpx;
+    z-index: 999;
+    border-bottom: 1px solid #ccc;
+    animation: myfirst 1s;
+    visibility: hidden;
+}
+
+@keyframes myfirst {
+    from {
+        height: 0rpx;
+    }
+
+    to {
+        height: 210rpx;
+    }
+}
+
+.q-pp-show {
+    visibility: visible;
+}
+
+.q-pp .items {
+    width: 100%;
+    height: 80rpx;
+    line-height: 62.5rpx;
+    padding: 0 30rpx;
+    box-sizing: border-box;
+    border-bottom: 1px solid #F6F6F6;
+}
+
+.sanjiao image {
+    width: 20rpx;
+    height: 12rpx;
+    margin-left: 10rpx;
+}
+
+.wushop {
+    width: 100%;
+    background-color: #fff;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+.wushop img{
+   width: 90%;
+   height: 100%;
+   
+}
+
+.wushoptext {
+    width: 100%;
+    background-color: #fff;
+    font-size: 24rpx;
+    color: #ccc;
+    text-align: center;
+}

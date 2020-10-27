@@ -1,0 +1,365 @@
+page {
+    background-color: #fff;
+}
+
+.nav-bar {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 999;
+    background: #000000;
+    color: #ffffff;
+}
+
+.nav-bar .back {
+    width: 100%;
+    position: absolute;
+}
+
+.backBu view {
+    margin-left: 15rpx;
+}
+
+.backBu input {
+    width: 350rpx;
+    border-radius: 20rpx;
+    padding-left: 60rpx;
+    box-sizing: border-box;
+    background-color: #ffffff;
+    font-size: 20rpx;
+}
+
+.back-content {
+    width: 8%;
+    height: 60rpx;
+}
+
+.backBu .site {
+    width: 100rpx;
+}
+
+.backBu .search {
+    width: 20rpx;
+    height: 20rpx;
+    position: absolute;
+    left: 13%;
+}
+
+.backBu .site image {
+    width: 15rpx;
+    height: 10rpx;
+    margin-left: 10rpx;
+}
+
+.nav-bar .back view {
+    display: flex;
+    align-items: center;
+}
+
+/* 内容 */
+.content {
+    width: 100%;
+}
+
+.shop {
+    width: 100%;
+    padding: 20rpx 20rpx 20rpx 30rpx;
+    height: 130rpx;
+    background-color: black;
+    display: flex;
+    justify-content: space-between;
+    box-sizing: border-box;
+}
+
+.shop .shopImg {
+    width: 15%;
+    height: 100%;
+    border: 2px solid #ffffff;
+    border-radius: 10rpx;
+}
+
+.shop .shopImg image {
+    width: 100%;
+    height: 100%;
+}
+
+.shop .shopName {
+    width: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: #fff;
+    font-size: 26rpx;
+}
+
+.shop .shopName image {
+    width: 110rpx;
+    height: 45rpx;
+    margin-top: 10rpx;
+}
+
+/* list */
+.shoppList {
+    width: 100%;
+    height: 500rpx;
+    background-color: #fff;
+}
+
+.filtrate {
+    width: 100%;
+    height: 100rpx;
+    padding: 20rpx;
+    box-sizing: border-box;
+    background-color: #fff;
+    display: flex;
+    margin-bottom: 30rpx;
+}
+
+.filtrate .filtrate-L {
+    width: 70%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.filtrate .filtrate-L view {
+    width: 33%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 26rpx;
+}
+
+.filtrate .filtrate-R {
+    width: 30%;
+    height: 100%;
+    border-left: 1px solid rgba(220, 220, 220, 1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 26rpx;
+}
+
+.filtrate .filtrate-R image {
+    width: 20rpx;
+    height: 20rpx;
+    margin-left: 20rpx;
+}
+
+.filtrate-L .nav_left_items.active {
+    position: relative;
+}
+
+.filtrate-L .nav_left_items.active::before {
+    display: inline-block;
+    width: 60rpx;
+    height: 6rpx;
+    background: linear-gradient(90deg, rgba(165, 9, 32, 1) 0%, rgba(240, 77, 91, 1) 100%);
+    content: '';
+    position: absolute;
+    top: 60rpx;
+}
+
+.list {
+    width: 100%;
+    padding: 0 20rpx;
+    box-sizing: border-box;
+}
+
+.list-content {
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-bottom: 30rpx;
+}
+
+.list-contentN {
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.list-contentN image {
+    width: 100%;
+}
+
+.list-contentN text {
+    font-size: 24rpx;
+    color: #ccc;
+}
+
+.list-content .items {
+    width: 49%;
+    background-color: #fff;
+    margin-top: 15rpx;
+    border: 1px solid rgb(238, 225, 225);
+}
+
+.list-content .items view {
+    margin-bottom: 5rpx;
+}
+
+.list-content .items .items_img {
+    width: 100%;
+    height: 260rpx;
+}
+
+.list-content .items .items_img image {
+    width: 100%;
+    height: 100%;
+}
+
+.list-content .items .items_con {
+    width: 100%;
+    height: 150rpx;
+    padding: 15rpx;
+    box-sizing: border-box;
+}
+
+.con_name {
+    width: 100%;
+    display: -webkit-box;
+    overflow: hidden;
+    font-size: 26rpx;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    font-weight: 700;
+}
+
+.con_money {
+    color: #B50808;
+    font-size: 26rpx;
+}
+
+.con_star {
+    font-size: 24rpx;
+    color: #ccc;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10rpx;
+}
+
+.con_star image {
+    width: 25rpx;
+    height: 25rpx;
+}
+
+.con_star view:nth-child(2) {
+    width: 40rpx;
+    height: 40rpx;
+    background-color: rgba(255, 245, 243, 1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.con_star view:nth-child(2) image {
+    width: 70%;
+    height: 70%;
+}
+
+.modal-mask {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: #000;
+    opacity: 0.5;
+    overflow: hidden;
+    z-index: 9000;
+    color: #fff;
+}
+
+.modal-dialog {
+    width: 540rpx;
+    overflow: hidden;
+    position: fixed;
+    top: 50%;
+    left: 0;
+    z-index: 9999;
+    background: #f9f9f9;
+    margin: -180rpx 105rpx;
+    border-radius: 36rpx;
+}
+
+.modal-title {
+    padding-top: 50rpx;
+    font-size: 36rpx;
+    color: #030303;
+    text-align: center;
+    padding: 80rpx;
+}
+
+.modal-title image {
+    width: 30rpx !important;
+    height: 30rpx !important;
+    margin-right: 20rpx;
+}
+
+.modal-footer {
+    display: flex;
+    flex-direction: row;
+    height: 100rpx;
+    border-top: 1px solid #EEEEEE;
+    font-size: 34rpx;
+    line-height: 100rpx;
+}
+
+.btn-cancel {
+    width: 50%;
+    color: #666;
+    text-align: center;
+    border-right: 1px solid #EEEEEE;
+    font-size: 30rpx;
+}
+
+.btn-confirm {
+    width: 50%;
+    color: #000;
+    font-size: 30rpx;
+    text-align: center;
+}
+
+.city-scroll {
+    left: 0;
+    position: fixed;
+    height: 100%;
+    width: 690rpx;
+}
+
+.itemsType {
+    width: 100%;
+}
+
+.itemsList {
+    width: 40%;
+    height: 80rpx;
+    background-color: #f6f6f6;
+    color: #000;
+    margin-bottom: 20rpx;
+    text-align: center;
+    padding-left: 20rpx;
+    line-height: 80rpx;
+    font-size: 26rpx;
+}
+
+.searchButotn {
+    font-size: 24rpx;
+    font-weight: 700;
+    display: inline-block;
+    width: 100rpx;
+    text-align: center;
+    padding-left: 20rpx;
+    box-sizing: border-box;
+}

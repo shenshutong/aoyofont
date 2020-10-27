@@ -1,2 +1,67 @@
-<!--pages/shop/index/index.wxml-->
-<text>pages/shop/index/index.wxml</text>
+<view>
+	<!-- 自定义导航栏 start -->
+	<view class="nav-bar" style="height:{{navBarHeight}}px;">
+		<view class="back" style="height:{{menuHeight}}px; min-height:{{menuHeight}}px; line-height:{{menuHeight}}px; bottom:{{menuBotton}}px;">
+			<view class="backBu">
+				<view style="width:120rpx"></view>
+				<text>门店</text>
+				<view style="width:120rpx"></view>
+			</view>
+		</view>
+	</view>
+	<view class="content" style="margin-top:{{navBarHeight}}px">
+		<view class="content-header">
+			<view class="car">
+				<image src="{{carImg}}"></image>
+				<text wx:if="{{carType}}">{{carType}}</text>
+			</view>
+			<view class="sanjiao" bindtap="filterList">
+				<text style="font-size:22rpx">{{filterName?filterName:'选择'}}</text>
+				<image src="../../../img/daojiao.png"></image>
+			</view>
+		</view>
+		<scroll-view scroll-y="true" class="scroll" bindscrolltolower="updatePage">
+			<view class="content_list">
+				<view class="items" wx:for="{{groupAllList}}" wx:key="key" bindtap="goShopDetail" data-id="{{item.GROUP_ID}}">
+					<view class="items-img">
+						<image src="{{imagePrefix+item.groupIndex.img_url}}"></image>
+					</view>
+					<view class="items-content">
+						<view class="name">
+							<text>{{item.GROUP_TYPE_NAME}}</text>
+							<text>{{item.GROUP_NICK_NAME}}</text>
+						</view>
+						<view class="site">
+							<text>{{item.group_address_details}}</text>
+							<text wx:if="{{item.distance_now!=null}}">{{item.distance_now}} Km</text>
+						</view>
+						<view class="label">
+							<text wx:for="{{item.groupService}}" wx:key="key">{{item.featured_services_desc}}</text>
+							<text wx:if="{{!item.groupFeatured}}" style="padding:0"></text>
+						</view>
+						<view class="grade">
+							<view class="star">
+								<text>总评分</text>
+								<text>{{item.group_score}}</text>
+								<image wx:for="{{item.group_score}}" wx:key="key" src="../../../img/star.png"></image>
+							</view>
+							<view class="dingNumber">
+								总订单 <text style="color:#DB0202">{{item.orderCount}}</text>
+							</view>
+						</view>
+					</view>
+				</view>
+			</view>
+			<load isLoad="{{isload}}"></load>
+		</scroll-view>
+		<view wx:if="{{groupAllList==null}}" class="wushop">
+			<image src="../../../img/wudd.png"></image>
+		</view>
+		<view wx:if="{{groupAllList==null}}" class="wushoptext">
+			无相关数据
+		</view>
+		<view class=" q-pp {{ visible ? 'q-pp-show' : '' }}">
+			<view class="items" wx:for="{{option1}}" wx:key="key" data-id="{{item.value}}" data-name="{{item.text}}" bindtap="mySelect">{{item.text}}</view>
+		</view>
+	</view>
+</view>
