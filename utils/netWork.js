@@ -34,7 +34,7 @@ function request(requestHandler) {
           success(res) {
             if (res.confirm) {
               wx.reLaunch({
-                url: '/pages/my/agreement/agreement',
+                url: '/pages/my/login/login',
               })
             } else if (res.cancel) {
               wx.reLaunch({
