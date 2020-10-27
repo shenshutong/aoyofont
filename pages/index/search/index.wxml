@@ -1,0 +1,70 @@
+<view>
+	<!-- 自定义导航栏 start -->
+	<view class="nav-bar" style="height:{{navBarHeight}}px;">
+		<view class="back" style="height:{{menuHeight}}px; min-height:{{menuHeight}}px; line-height:{{menuHeight}}px; bottom:{{menuBotton}}px;">
+			<view class="backBu">
+				<view class="back-content">
+					<view style="width:100%;height:100%" bindtap="backHome">
+						<van-icon size="20" name="arrow-left" />
+					</view>
+				</view>
+				<text>搜索</text>
+				<view style="width:120rpx"></view>
+			</view>
+		</view>
+	</view>
+	<!-- 自定义导航栏 end -->
+	<!-- 内容 start -->
+	<view class="searchContent" style="margin-top:{{navBarHeight}}px;">
+		<!-- <view class="searchContent"> -->
+		<view class="searchInput">
+			<view class="inputCon">
+				<image src="../../../img/search.png"></image>
+				<input placeholder="请输入商品名称" value="{{inputValue}}" bindinput='getInputValue' focus="true"></input>
+			</view>
+			<view class="searchSou" bindtap="searchShopp">
+				<text style="font-size:26rpx">搜索</text>
+			</view>
+		</view>
+		<!-- 历史搜索 -->
+		<view class="searchHistory" wx:if="{{isshow}}">
+			<view class="searchHistory-header">
+				<view class="historyText">搜索历史</view>
+				<view bindtap="delsteHisSearch">
+					<image src="../../../img/delete.png"></image>
+				</view>
+			</view>
+			<view class="searchHistory-content">
+				<view class="items" wx:for="{{searchHistoryList}}" wx:key="key">
+					<text class="history" data-item="{{item.query_history_detail}}" bindtap="goShoppList">{{item.query_history_detail}}</text>
+				</view>
+			</view>
+		</view>
+		<!-- 热门搜索 -->
+		<view class="searchHistory">
+			<view class="searchHistory-header">
+				<view class="hotText">
+					<image src="../../../img/hotsou.png"></image>
+				</view>
+			</view>	
+			<view class="searchHistory-content">
+				<view class="items" wx:for="{{searchHotList}}" wx:key="key">
+					<view wx:if='{{index === 0}}' style="display:inline-bolck;" class="one">
+						<text class="first"  data-item="{{item.class_name}}" bindtap="goShoppList">{{item.class_name}}</text>
+						<image src="../../../img/hg1.png" class="hg1"></image>
+					</view>
+					<view wx:elif='{{index === 1}}' style="display:inline-bolck;" class="rtwo"> 
+						<text class="two"  data-item="{{item.class_name}}" bindtap="goShoppList">{{item.class_name}}</text>
+						<image src="../../../img/hg2.png" class="hg2"></image>
+					</view>
+					<view wx:elif='{{index === 2}}' style="display:inline-bolck;" class="rThree"> 
+						<text class="three"  data-item="{{item.class_name}}" bindtap="goShoppList">{{item.class_name}}</text>
+						<image src="../../../img/hg3.png" class="hg3"></image>
+					</view>
+					<text class="history" data-item="{{item.class_name}}" bindtap="goShoppList" wx:else>{{item.class_name}}</text>
+				</view>
+			</view>
+		</view>
+	</view>
+	<!-- 内容 end -->
+</view>

@@ -1,0 +1,106 @@
+<view>
+	<!-- 自定义导航栏 start -->
+	<view class="nav-bar" style="height:{{navBarHeight}}px;">
+		<view class="back" style="height:{{menuHeight}}px; min-height:{{menuHeight}}px; line-height:{{menuHeight}}px; bottom:{{menuBotton}}px;">
+			<view class="backBu">
+				<view class="back-content" bindtap="backHome">
+					<van-icon size="20" name="arrow-left" />
+				</view>
+				<image src="../../../img/suo.png" class="search"></image>
+				<input placeholder="搜索您想要的商品" style="color:#000" value="{{inputValue}}" bindinput="getSearchVal"></input>
+				<view class="searchButotn" bindtap="SearchComShopList">搜索</view>
+				<view style="width:120rpx"></view>
+			</view>
+		</view>
+	</view>
+	<!-- content start -->
+	<view class="content" style="margin-top:{{navBarHeight}}px">
+		<!-- 商品列表 -->
+		<view class="shoppList">
+			<view class="filtrate">
+				<view class="JGjt">
+					<view class="sjt" class="{{activeT?'showJt':'showJtT'}}">
+						<image src="../../../img/sj.png"></image>
+					</view>
+					<view class="xjt" class="{{activeT?'showJtT':'showJt'}}">
+						<image src="../../../img/xj.png"></image>
+					</view>
+				</view>
+				<view class="filtrate-L">
+					<view bindtap="switchRightTab" wx:for="{{cateItems}}" data-index='{{index}}' data-id="{{item.cate_id}}" wx:key="key" class="nav_left_items {{curNav==item.cate_id?'active':''}}">
+						{{item.cate_name}}
+					</view>
+				</view>
+				<view class="filtrate-R">
+					<image src="../../../img/kefu.png" bindtap="callPhone"></image>
+					<view class="modal-mask" bindtap="hideModal" catchtouchmove="preventTouchMove" wx:if="{{showModal}}"></view>
+					<view class="modal-dialog" wx:if="{{showModal}}">
+						<view class="modal-title">
+							<image src="../../../img/phone.png"></image>{{KFtell}}
+						</view>
+						<view class="modal-footer">
+							<view class="btn-cancel" bindtap="onCancel" data-status="cancel">取消</view>
+							<view class="btn-confirm" bindtap="onConfirm" data-status="confirm">呼叫</view>
+						</view>
+					</view>
+				</view>
+			</view>
+			<view class="list" wx:if="{{storeShow==false}}">
+				<view class="list-content">
+					<view class="items" wx:for="{{GroupShoppTab}}" wx:key="key" data-index="{{item.commodity_id}}" bindtap="goShoppDetail">
+						<view class="items_img">
+							<image src="{{imagePrefix+item.imgs[0].commodity_img_url}}"></image>
+						</view>
+						<view class="items_con">
+							<view class="con_name">{{item.commodity_name}}</view>
+							<view class="con_money">￥{{item.commodity_selling_price}}</view>
+							<view class="con_star">
+								<view>评价 <image wx:for="{{3}}" wx:key="key" src="../../../img/star.png"></image>
+								</view>
+								<view data-id="{{item.commodity_id}}" catchtap="addShoppCard">
+									<image src="../../../img/dianShopp.png"></image>
+								</view>
+							</view>
+						</view>
+					</view>
+				</view>
+				<view class="list-contentN" wx:if="{{!GroupShoppTab}}">
+					<image src="../../../img/wu.png"></image>
+					<text>没有找到相关数据！</text>
+				</view>
+			</view>
+		</view>
+		<!-- 门店列表 -->
+		<view class="content_list" wx:if="{{storeShow}}">
+			<view class="items" wx:for="{{storeList}}" wx:key="key" data-id="{{item.GROUP_ID}}" bindtap="goStoreList">
+				<view class="items-img">
+					<image src="{{imagePrefix+item.img_url}}"></image>
+				</view>
+				<view class="items-content">
+					<view class="name">
+						<text>{{item.GROUP_TYPE_NAME}}</text>
+						<text>{{item.GROUP_NAME}}</text>
+					</view>
+					<view class="site">
+						<text>{{item.group_address_details}}</text>
+						<!-- <text>{{item.distance_now}} Km</text> -->
+					</view>
+					<view class="label">
+						<text wx:for="{{item.groupFeatured}}" wx:key="key">{{item}}</text>
+						<text wx:if="{{!item.groupFeatured}}" style="padding:0"></text>
+					</view>
+					<view class="grade">
+						<view class="star">
+							<text>总评分</text>
+							<text style="margin-left:15rpx">{{item.group_score}}</text>
+							<image src="../../../img/star.png"></image>
+						</view>
+						<view class="dingNumber">
+							总订单 <text style="color:#DB0202">{{item.groupOrderCount}}</text>
+						</view>
+					</view>
+				</view>
+			</view>
+		</view>
+	</view>
+</view>

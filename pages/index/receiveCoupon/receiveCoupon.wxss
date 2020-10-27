@@ -1,0 +1,130 @@
+@import "../../../commpents/navbar.wxss";
+
+.wei {
+    width: 100%;
+    height: 700rpx;
+    padding: 0 20rpx;
+    box-sizing: border-box;
+}
+
+.wei .item {
+    width: 100%;
+    height: 300rpx;
+    margin-top: 30rpx;
+}
+
+.wei .item .item-top,
+.wei .item .item-bottom {
+    width: 100%;
+    height: 50%;
+}
+.wei .item .item-top .content,
+.wei .item .item-bottom .content {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.wei .item .item-top .content image,
+.wei .item .item-bottom .content image {
+    width: 100%;
+    height: 100%;
+}
+
+.wei .item .item-top .content .detail,
+.wei .item .item-bottom .content .detail {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 10rpx;
+    box-sizing: border-box;
+    display: flex;
+}
+
+.wei .item .item-top .content .detail .left,
+.wei .item .item-top .content .detail .right {
+    width: 50%;
+    height: 100%;
+}
+
+.wei .item .item-top .content .detail .left view:nth-child(1) {
+    font-size: 38rpx;
+    color: #fff;
+    margin: 20rpx 0 0 30rpx;
+}
+
+.wei .item .item-top .content .detail .left view:nth-child(2) {
+    font-size: 22rpx;
+    color: #fff;
+    margin: 5rpx 0 0 30rpx;
+}
+
+.wei .item .item-top .content .detail .right text:nth-child(1) {
+    font-size: 22rpx;
+    color: #fff;
+}
+.wei .item .item-top .content .detail .right text:nth-child(3) {
+    font-size: 22rpx;
+    color: #fff;
+    margin-right: 10rpx;
+}
+
+.wei .item .item-top .content .detail .right,
+.wei .item .item-bottom .content .detail .right {
+    text-align: end;
+    padding-top: 15rpx;
+    box-sizing: border-box;
+}
+
+.wei .item .item-top .content .detail .right text:nth-child(2) {
+    font-size: 60rpx;
+    color: #fff;
+    display: inline-block;
+}
+
+.wei .item .item-bottom .content .detail .left {
+    width: 73%;
+    height: 100%;
+}
+
+.wei .item .item-bottom .content .detail .right {
+    width: 25%;
+    height: 100%;
+}
+
+.wei .item .item-bottom .content .detail .left view:nth-child(1) {
+    font-size: 26rpx;
+    margin: 20rpx 0 0 30rpx;
+    color: #000;
+}
+
+.wei .item .item-bottom .content .detail .left view:nth-child(2) {
+    font-size: 22rpx;
+    margin: 10rpx 0 0 30rpx;
+    color: #000;
+}
+
+.wei .item .item-bottom .content .detail .right text {
+    font-size: 28rpx;
+    color: #C09D53;
+    box-sizing: border-box;
+    display: inline-block;
+    padding: 10rpx 25rpx;
+    border: 1px solid #C09D53;
+    border-radius: 15rpx;
+    margin-top: 35rpx;
+    text-align: center;
+}
+
+.nodis {
+    width: 100%;
+    height: 435rpx;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 24rpx;
+    color: #ccc;
+}

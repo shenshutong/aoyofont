@@ -1,0 +1,154 @@
+@import "../../../commpents/navbar.wxss";
+
+/* 搜索框 */
+.searchContent {
+    width: 100%;
+    height: 300rpx;
+}
+
+.searchInput {
+    padding: 20rpx;
+    box-sizing: border-box;
+    width: 100%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    margin-bottom: 10rpx;
+    border-bottom: 1px solid #ccc;
+}
+
+.searchInput image {
+    width: 50rpx;
+    height: 50rpx;
+    position: absolute;
+    top: 25rpx;
+}
+
+.searchInput .inputCon {
+    width: 90%;
+}
+
+.searchInput .inputCon input {
+    width: 90%;
+    border: 1px solid #ccc;
+    padding: 10rpx 0 10rpx 50rpx;
+    border-radius: 30rpx;
+    display: inline-block;
+    background-color: rgba(246, 246, 246, 1);
+}
+
+.searchSou {
+    width: 10%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* 历史搜索 */
+.searchHistory {
+    width: 100%;
+    padding: 20rpx;
+    box-sizing: border-box;
+}
+
+.historyText {
+    font-size: 30rpx;
+}
+
+.searchHistory-header {
+    width: 99%;
+    height: 60rpx;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.searchHistory-header image {
+    width: 35rpx;
+    height: 35rpx;
+    margin-top: 15rpx;
+}
+
+.searchHistory-content {
+    width: 99%;
+    padding: 10rpx;
+    box-sizing: border-box;
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 20rpx;
+}
+
+.searchHistory-content .items text {
+    border: 1px solid #eee;
+    padding: 10rpx 20rpx;
+    text-align: center;
+    border-radius: 30rpx;
+    font-size: 22rpx;
+    margin-bottom: 10rpx;
+    margin-right: 20rpx;
+    background-color: #eee;
+}
+
+.hotText {
+    width: 80rpx;
+    height: 25rpx;
+}
+
+.hotText image {
+    width: 100%;
+    height: 100%;
+}
+
+.history {
+    display: inline-block;
+    background-color: #fff;
+}
+
+.first {
+    display: inline-block;
+    background: rgba(255, 239, 240, 1) !important;
+    border: none !important;
+    color: #B5182D;
+}
+
+.two {
+    display: inline-block;
+    background: rgb(248, 243, 204) !important;
+    border: none !important;
+    color: #D0B025;
+}
+
+.three {
+    display: inline-block;
+    background: rgb(236, 221, 191) !important;
+    border: none !important;
+    color: #D08525;
+}
+
+.one ,.rtwo,.rThree{
+    position: relative;
+}
+
+.hg1 {
+    position: absolute;
+    width: 25rpx;
+    height: 25rpx;
+    right: 0rpx;
+    top: -10rpx;
+}
+
+.hg2 {
+    position: absolute;
+    width: 25rpx;
+    height: 25rpx;
+    right: 0rpx;
+    top: -10rpx;
+}
+
+.hg3 {
+    position: absolute;
+    width: 25rpx;
+    height: 25rpx;
+    right: 0rpx;
+    top: -10rpx;
+}

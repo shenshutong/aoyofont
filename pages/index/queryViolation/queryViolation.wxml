@@ -1,0 +1,73 @@
+<view>
+	<!-- 自定义导航栏 start -->
+	<view class="nav-bar" style="height:{{navBarHeight}}px;">
+		<view class="back" style="height:{{menuHeight}}px; min-height:{{menuHeight}}px; line-height:{{menuHeight}}px;  bottom:{{menuBotton}}px;">
+			<view class="backBu">
+				<view class="back-content">
+					<view style="width:100%;height:100%" bindtap="backfirst">
+						<van-icon size="20" name="arrow-left" />
+					</view>
+				</view>
+				<text>违章查询</text>
+				<view style="width:120rpx"></view>
+			</view>
+		</view>
+	</view>
+	<!-- 自定义导航栏 end -->
+	<view class="content" style="margin-top:{{navBarHeight}}px">
+		<view class="titile">
+			<view class="content">
+				拍摄或上传行驶证
+				<view class="line"></view>
+			</view>
+		</view>
+		<view class="photo">
+			<view class="content">
+				<view class="img">
+					<image src="{{photo?photo:'../../../img/photo.png'}}" bindtap='changeAvatar'></image>
+				</view>
+			</view>
+		</view>
+		<view class="titile">
+			<view class="content">
+				行驶证信息
+				<view class="line"></view>
+			</view>
+		</view>
+		<view class="detail">
+			<view class="content">
+				<view class="people">
+					<view class="left">车辆类型</view>
+					<picker data-id="{{array[index].id}}" range="{{array}}" range-key="name" value="{{yngh}}" class="pickerBox" bindchange="bindPickerChange">
+						<view class="right" style="width:100%;height:100%;justify-content: flex-end;margin-right:30rpx;color:#000;align-items: center;">
+							<text >{{array[index].name?array[index].name:yngh}}</text>
+						</view>
+					</picker>
+				</view>
+				<view class="chepai">
+					<view class="left">车牌号码</view>
+					<view class="right">
+						<input placeholder="车牌号码" placeholder-style="color:#000;" type="text" value="{{carTell}}" bindinput="getCarTell"></input>
+					</view>
+				</view>
+				<view class="bianma">
+					<view class="left">车辆识别编码</view>
+					<view class="right">
+						<input placeholder="车辆识别编码" placeholder-style="color:#000;" type="text" value="{{carCode}}" bindinput="getCarCode"></input>
+					</view>
+				</view>
+				<view class="fadongji">
+					<view class="left">发动机号</view>
+					<view class="right">
+						<input placeholder="发动机号码" placeholder-style="color:#000;" type="text" value="{{carFDJ}}" bindinput="getCarFDJ"></input>
+					</view>
+				</view>
+			</view>
+		</view>
+
+		<!-- 查询 -->
+		<view class="caozuo">
+			<view bindtap="binding" wx:if="{{!buttonShow}}">查询</view>
+		</view>
+	</view>
+</view>

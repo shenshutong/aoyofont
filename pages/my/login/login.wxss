@@ -1,0 +1,304 @@
+.nav-bar {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 9999;
+    background-color: #fff;
+}
+
+.nav-bar .back {
+    width: 100%;
+    position: absolute;
+}
+
+.back-content {
+    width: 50rpx;
+    border: 1px solid rgb(226, 220, 220);
+    padding: 10rpx 0;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.nav-bar .back .backBu {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding: 0 10rpx 0 20rpx;
+    justify-content: space-between;
+    box-sizing: border-box;
+}
+
+.nav-bar .back view {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.nav-bar .back image {
+    width: 30rpx;
+    height: 30rpx;
+}
+
+page {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+.login {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+
+.content {
+    width: 100%;
+    height: 100%;
+    z-index: 999;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.welcome {
+    width: 100%;
+    height: 150rpx;
+    margin-top: 120rpx;
+    padding: 0 80rpx;
+    box-sizing: border-box;
+}
+
+.welcome view:nth-child(1) {
+    color: #fff;
+    font-size: 40rpx;
+    margin-bottom: 30rpx;
+}
+
+.welcome view:nth-child(2) {
+    color: #D2D2D2;
+    font-size: 26rpx;
+}
+
+.detail {
+    width: 100%;
+    padding: 50rpx 80rpx;
+    box-sizing: border-box;
+}
+
+.detail view {
+    margin-bottom: 40rpx;
+}
+
+.detail input {
+    width: 100%;
+    background-color: #fff;
+    padding-left: 70rpx;
+    height: 90rpx;
+    border-radius: 30rpx;
+    box-sizing: border-box;
+}
+
+.loginBu {
+    width: 100% !important;
+    height: 90rpx;
+    text-align: center;
+    background-color: #fff;
+    border-radius: 50rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30rpx;
+}
+
+.getY {
+    width: 98%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    color: #fff;
+    font-size: 30rpx;
+}
+
+.tel,
+.yzm {
+    position: relative;
+    font-size: 26rpx;
+}
+
+.tel image {
+    width: 25rpx;
+    height: 30rpx;
+    position: absolute;
+    left: 29rpx;
+    top: 31rpx;
+}
+
+.yzm image {
+    width: 29rpx;
+    height: 30rpx;
+    position: absolute;
+    left: 25rpx;
+    top: 31rpx;
+}
+
+.wechat {
+    width: 100%;
+    height: 150rpx;
+    padding: 0 80rpx;
+    box-sizing: border-box;
+    font-size: 34rpx;
+}
+
+.qita {
+    width: 100%;
+    height: 60rpx;
+    display: flex;
+    color: #fff;
+    align-items: center;
+    justify-content: center;
+}
+
+.qita .lineL {
+    width: 100rpx;
+    height: 5rpx;
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 100%);
+    margin-right: 30rpx;
+}
+
+.qita .lineR {
+    width: 100rpx;
+    height: 5rpx;
+    background: linear-gradient(-90deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 100%);
+    margin-left: 30rpx;
+}
+
+.wechatBu {
+    width: 100%;
+    margin-top: 40rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.wechatBu image {
+    width: 120rpx;
+    height: 120rpx;
+}
+
+.wx-login {
+    width: 120rpx !important;
+    display: block;
+    margin: 0rem auto;
+    padding: 0px;
+    height: 120rpx !important;
+    background-color: rgba(0, 0, 0, 0);
+    border-radius: 50%;
+    position: absolute;
+}
+
+.modal-mask {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: #000;
+    opacity: 0.5;
+    overflow: hidden;
+    z-index: 9000;
+    color: #fff;
+}
+
+.modal-dialog {
+    width: 540rpx;
+    overflow: hidden;
+    position: fixed;
+    top: 50%;
+    left: 0;
+    z-index: 9999;
+    background: #f9f9f9;
+    margin: -180rpx 105rpx;
+    border-radius: 36rpx;
+}
+
+.modal-title {
+    padding-top: 50rpx;
+    font-size: 36rpx;
+    color: #030303;
+    text-align: center;
+    padding: 80rpx;
+}
+
+.modal-title image {
+    width: 30rpx !important;
+    height: 30rpx !important;
+    margin-right: 20rpx;
+}
+
+.modal-footer {
+    display: flex;
+    flex-direction: row;
+    height: 100rpx;
+    border-top: 1px solid #EEEEEE;
+    font-size: 34rpx;
+    line-height: 100rpx;
+}
+
+.btn-cancel {
+    width: 50%;
+    color: #666;
+    text-align: center;
+    border-right: 1px solid #EEEEEE;
+    font-size: 30rpx;
+}
+
+.btn-confirm {
+    width: 50%;
+    color: #000;
+    font-size: 30rpx;
+    text-align: center;
+    display: flex;
+    align-items: center;
+}
+#imgCode{
+    position: relative;
+}
+#imgCode .getYimg{
+    position: absolute;
+    width: 200rpx;
+    height: 90rpx;
+    text-align: center;
+    border-radius: 30rpx;
+    font-size: 26rpx;
+    line-height: 80rpx;
+    color: red;
+    top: 0rpx !important;
+    right: 0 !important;
+    z-index: 999;
+}
+#smscode{
+    position: relative;
+}
+.msg {
+	width: 210rpx !important;
+	height: 85rpx !important;
+	position: absolute;
+    top: 0rpx;
+    right: 10rpx;
+    display: flex;
+    align-items: center;
+    font-size: 24rpx !important;
+    border-radius: 20rpx;
+    z-index: 999;
+    justify-content: center;
+    padding: 0 !important;
+}

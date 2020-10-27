@@ -1,0 +1,135 @@
+@import "../../../commpents/navbar.wxss";
+.title{
+    width: 100%;
+    height: 100rpx;
+    background-color: rgba(252,247,247,1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 26rpx;
+    padding: 0 40rpx;
+    box-sizing: border-box;
+    color: #A26D6D;
+}
+.titile {
+    width: 100%;
+    height: 70rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 30rpx;
+}
+
+.titile .content {
+    width: 90%;
+    height: 100%;
+    line-height: 70rpx;
+    font-weight: 700;
+    font-size: 30rpx;
+    position: relative;
+}
+
+.titile .content .line {
+    width: 114rpx;
+    height: 20rpx;
+    background: linear-gradient(90deg, rgba(214, 80, 82, 1) 0%, rgba(255, 255, 255, 1) 100%);
+    border-radius: 9px;
+    position: absolute;
+    bottom: 12rpx;
+    left: 0;
+    z-index: -1;
+}
+.photo{
+    width: 100%;
+    height: 350rpx;
+    display: flex;
+    justify-content: center;
+   margin-top: 30rpx;
+
+}
+.photo .content{
+    width: 90%;
+    height: 100%;
+    border: 1px dashed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.photo .content .img{
+    width: 100%;
+    height: 100%;
+}
+.photo .content .img image{
+    width: 100%;
+    height: 100%;
+}
+.detail{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+   margin-top: 30rpx;
+}
+.detail .content{
+    width: 90%;
+    height: 100%;
+}
+.detail .content .chepai,
+.detail .content .bianma,
+.detail .content .fadongji,
+.detail .content .people{
+    width: 100%;
+    height: 90rpx;
+    border: 1px solid #BFBFBF;
+    margin-bottom: 20rpx;
+    border-radius: 20rpx;
+    display: flex;
+    padding: 0 15rpx;
+    box-sizing: border-box;
+}
+.detail .content .chepai .left,
+.detail .content .bianma .left,
+.detail .content .fadongji .left,
+.detail .content .people .left,
+.detail .content .chepai .right,
+.detail .content .bianma .right,
+.detail .content .fadongji .right,
+.detail .content .people .right{
+    width: 50%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    font-size: 26rpx;
+}
+.detail .content .chepai .right input,
+.detail .content .bianma .right input,
+.detail .content .fadongji .right input,
+.detail .content .people .right input{
+    text-align: right;
+}
+
+.caozuo{
+    width: 100%;
+    height: 110rpx;
+    margin: 60rpx 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.caozuo view{
+    width: 70%;
+    height: 100%;
+    background:linear-gradient(90deg,rgba(255,140,101,1) 0%,rgba(255,89,68,1) 100%);
+    border-radius: 50rpx;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+}
+.pickerBox{
+    width: 50%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin-right: 30rpx;
+}

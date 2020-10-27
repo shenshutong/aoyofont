@@ -1,0 +1,61 @@
+<view>
+	<!-- 自定义导航栏 start -->
+	<view class="nav-bar" style="height:{{navBarHeight}}px;">
+		<view class="back"
+			style="height:{{menuHeight}}px; min-height:{{menuHeight}}px; line-height:{{menuHeight}}px;  bottom:{{menuBotton}}px;"
+			bindtap="backHome">
+			<view class="backBu">
+				<view class="back-content">
+					<view style="width:100%;height:100%" bindtap="backMyIndex">
+						<van-icon size="20" name="arrow-left" />
+					</view>
+				</view>
+				<text>领取优惠券</text>
+				<view style="width:120rpx"></view>
+			</view>
+		</view>
+	</view>
+	<!-- 自定义导航栏 end -->
+	<view class="content" style="margin-top:{{navBarHeight}}px">
+		<view class="wei">
+			<view class="item" wx:for="{{discounts}}" wx:key="key">
+				<view class="item-top">
+					<view class="content">
+						<image src="../../../img/jin.png"></image>
+						<view class="detail">
+							<view class="left">
+								<view>{{item.coupon_name}}</view>
+								<view>满{{item.coupon_minimum_amount}}可用</view>
+							</view>
+							<view class="right">
+								<text wx:if="{{item.coupon_type_id==1}}">￥</text>
+								<text wx:if="{{item.coupon_type_id==2}}"></text>
+								<text>{{item.coupon_amt}}</text>
+								<text wx:if="{{item.coupon_type_id==2}}">折</text>
+							</view>
+						</view>
+					</view>
+				</view>
+				<view class="item-bottom">
+					<view class="content">
+						<image src="../../../img/tuo.png"></image>
+						<view class="detail">
+							<view class="left">
+								<view>有效期至{{item.coupon_end_time}}</view>
+								<view>{{item.coupon_desc}}</view>
+							</view>
+							<view class="right">
+								<text data-id="{{item.coupon_id}}" data-typeid="{{item.coupon_type_id}}"
+									bindtap="receive">领取</text>
+							</view>
+						</view>
+					</view>
+				</view>
+			</view>
+			<view class="nodis" wx:if="{{discounts.length<1}}">
+				<image src="../../../img/wudd.png"></image>
+				<view>暂无优惠券可以使用</view>
+			</view>
+		</view>
+	</view>
+</view>

@@ -1,0 +1,44 @@
+/* components/load/load.wxss */
+/* 加载中动画 */
+.bottomLoad{
+	height: 100rpx;
+	width: 100%;
+	background-color: #ffffff;
+	text-align: center;
+	font-size: 12px;
+	line-height: 100rpx;
+	position: fixed;
+	z-index: 999;
+	bottom: -100rpx;
+	color: #000;
+	border-top: 1px solid #eee;
+}
+.loadImg{
+	width: 60rpx;
+	height: 70rpx;
+	position: relative;
+	top: 20rpx;
+}
+.showLoad{
+	box-shadow: 0 0 10px 4px #f6f6f6;
+	animation:showLoad 0.35s forwards;
+}
+.hideLoad{
+	animation:hideLoad 0.35s forwards;
+}
+@keyframes showLoad
+{
+	from {bottom:-100rpx;}
+	to {bottom:0rpx;}
+}
+@keyframes hideLoad
+{
+	from {bottom:0rpx;}
+	to {bottom:-100rpx;}
+}
+
+
+
+
+
+

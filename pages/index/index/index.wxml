@@ -1,0 +1,113 @@
+<view class="contion">
+	<!-- 自定义导航栏 start -->
+	<view class="nav-bar" style="height:{{navBarHeight}}px;">
+		<view class="back"
+			style="height:{{menuHeight}}px; min-height:{{menuHeight}}px; line-height:{{menuHeight}}px; bottom:{{menuBotton}}px;">
+			<view class="backBu">
+				<view style="width:120rpx"></view>
+				<text>首页</text>
+				<view style="width:120rpx"></view>
+			</view>
+		</view>
+	</view>
+	<!-- 自定义导航栏 end -->
+	<!-- 内容 start -->
+	<view class="content" style="margin-top:{{navBarHeight}}px">
+		<!-- <view class="content"> -->
+		<view class="searchCity">
+			<view class="citySelect" bindtap="goCity">
+				<text wx:if="{{title}}" data-id="{{id}}">{{title}}</text>
+				<text wx:if="{{!title}}">{{city}}</text>
+				<text wx:if="{{!city && !title}}">请选择</text>
+				<image src="../../../img/sanjiao.png"></image>
+			</view>
+			<view class="search" bindtap="goSearchPage">
+				<van-search disabled shape="round" placeholder="搜索您要的商品" />
+			</view>
+		</view>
+		<view class="carType">
+			<view class="carT">
+				<image wx:if="{{carImg}}" src="{{carImg}}"></image>
+				<image wx:else src="../../../img/add.png"></image>
+				<text wx:if="{{car}}" data-id="{{custom_car_id}}" bindtap="goCarDetail">{{car}}</text>
+				<text wx:else bindtap="goCarType">请添加您的车型 <text style="color:red">></text></text>
+			</view>
+			<view class="car-shopp">
+				<image src="../../../img/kefu.png" bindtap="callPhone"></image>
+				<view class="modal-mask" bindtap="hideModal" catchtouchmove="preventTouchMove" wx:if="{{showModal}}">
+				</view>
+				<view class="modal-dialog" wx:if="{{showModal}}">
+					<view class="modal-title">
+						<image src="../../../img/phone.png"></image>{{KFtell}}
+					</view>
+					<view class="modal-footer">
+						<view class="btn-cancel" bindtap="onCancel" data-status="cancel">取消</view>
+						<view class="btn-confirm" bindtap="onConfirm" data-status="confirm">呼叫</view>
+					</view>
+				</view>
+			</view>
+		</view>
+		<!-- 轮播图 start-->
+		<view class="swiperItem">
+			<swiper autoplay="{{true}}" interval="{{2000}}" duration="{{500}}" indicator-dots="{{true}}" circular
+				indicator-active-color="#FFFFFF">
+				<swiper-item wx:for="{{swiperList}}" wx:key="key">
+					<image src="{{imagePrefix+item.imgUrl}}" bindtap="preview" data-id="{{item.imgID}}"></image>
+				</swiper-item>
+			</swiper>
+		</view>
+		<!-- 轮播图 end-->
+		<!-- 活动 start -->
+		<view class="ServicesAvailable">
+			<view class="item" wx:for="{{Services}}" wx:key="key" data-id="{{item.function_button_id}}"
+				data-path="{{item.jump_path}}" bindtap="getTypePage">
+				<image src="{{imagePrefix+item.function_button_url}}"></image>
+				<text>{{item.function_button_name}}</text>
+			</view>
+		</view>
+		<view class="goGood" bindtap="closeHd">
+			<image src="../../../img/haoli.png"></image>
+		</view>
+		<!-- 活动 end -->
+		<!-- 商品分类模块 start -->
+		<view class="shoppClassIfy">
+			<view class="items" wx:for="{{shoppList}}" wx:key="key" data-path="{{item.jump_path}}"
+				data-id="{{item.panel_id}}" bindtap="goShoppList">
+				<image src="{{item.panel_url}}"></image>
+			</view>
+		</view>
+		<!-- 商品分类模块 end -->
+		<!-- 附近门店 start -->
+		<view class="nearbyShop">
+			<view class="recommend">
+				<view class="mendian">
+					<view class="fujin"></view>附近门店
+				</view>
+				<view class="more" bindtap="lookGroupList">
+					<text>查看更多 ></text>
+				</view>
+			</view>
+			<scroll-view class="scroll-view_H" scroll-x="true">
+				<view class="item" wx:for="{{shopList}}" wx:key="key" data-id="{{item.GROUP_ID}}"
+					bindtap="goGroupDetail">
+					<image src="{{imagePrefix+item.groupIndex.img_url}}" class="headerImg"></image>
+					<view class="shopName">
+						<text>{{item.GROUP_NICK_NAME}}</text>
+					</view>
+					<view class="distance">
+						<view class="rate">
+							<text>评分：</text>
+							<image src="../../../img/star.png" wx:for="{{item.group_score}}" wx:key="key"></image>{{item.group_score}}.0分
+						</view>
+						<view>
+							距离：<text>{{item.distance_now}}KM</text>
+						</view>
+					</view>
+				</view>
+				<view class="nullFJshopp" wx:if="{{!shopList}}" style="padding: 20rpx;">暂无附近门店</view>
+			</scroll-view>
+		</view>
+		<!-- 附近门店 end -->
+	</view>
+	<!-- 内容 end -->
+</view>

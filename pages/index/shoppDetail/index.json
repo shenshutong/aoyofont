@@ -1,0 +1,9 @@
+{
+  "usingComponents": {
+    "van-icon": "../../../dist/icon/index",
+    "pop-up": "/commpents/pop-up/index",
+    "van-tab": "../../../dist/tab/index",
+    "van-tabs": "../../../dist/tabs/index",
+    "share": "/commpents/share/share"
+  }
+}

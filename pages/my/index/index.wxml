@@ -1,0 +1,153 @@
+<view class="content">
+	<!-- 自定义导航栏 start -->
+	<view class="nav-bar" style="height:{{navBarHeight}}px;">
+		<view class="back" style="height:{{menuHeight}}px; min-height:{{menuHeight}}px; line-height:{{menuHeight}}px; bottom:{{menuBotton}}px;">
+			<view class="backBu">
+				<view style="width:120rpx"></view>
+				<text>我的</text>
+				<view style="width:120rpx"></view>
+			</view>
+		</view>
+	</view>
+	<!-- 自定义导航栏 end -->
+	<!-- 头像 名字 -->
+	<view class="photoName" style="margin-top:{{navBarHeight}}px">
+		<view class="photo">
+			<image src="{{photo}}"></image>
+		</view>
+		<view class="name" bindtap="goInfor">
+			<view>{{nikeName}}</view>
+			<view>{{tell}}</view>
+		</view>
+		<view class="setting">
+			<button wx:if="{{buttonShow==true}}" class="loginBu" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">{{bangdingwx}}</button>
+		</view>
+	</view>
+	<!-- 关注  优惠券 车库 爱车 -->
+	<view class="discounts">
+		<view class="attention" bindtap="goguanzhu">
+			<view>{{attentionCount}}</view>
+			<view>关注商品</view>
+		</view>
+		<view class="ticket" bindtap="goyouhui">
+			<view>0</view>
+			<view>优惠券</view>
+		</view>
+		<view class="carList" bindtap="gomeCarKu">
+			<view>{{carTotl}}</view>
+			<view>我的车库</view>
+		</view>
+		<view class="loveCar" data-id="{{custom_car_id}}" bindtap="goMyLikeCar">
+			<view>{{carTotl>0?1:0}}</view>
+			<view>我的爱车</view>
+		</view>
+	</view>
+	<!-- 实名认证 -->
+	<view class="authentication" wx:if="{{nameAuthention==false}}" bindtap="goNameAuth">
+		<image src="../../../img/renzheng.png"></image>
+	</view>
+	<view class="authenticationY" wx:if="{{nameAuthention==true}}" bindtap="goNameAuth">
+		<view class="authenticationYContent">
+			<image src="../../../img/wrz.png"></image><text>当前账号已认证，点击查看实名认证信息</text>
+		</view>
+	</view>
+	<!-- 我得订单 -->
+	<view class="orderForm">
+		<view class="orderFormContent">
+			<view class="lookAll" bindtap="goorderList">
+				<view>我的订单</view>
+				<view>查看全部（<text>{{all}}</text>）></view>
+			</view>
+			<view class="status">
+				<view class="status-proceed" bindtap="goMoney">
+					<view>
+						<image src="../../../img/jinxing.png"></image>
+					</view>
+					<view>进行中</view>
+					<view class="number">{{pending}}</view>
+				</view>
+				<view class="status-proceed" bindtap="goPending">
+					<view>
+						<image src="../../../img/fukuan.png"></image>
+					</view>
+					<view>待付款</view>
+					<view class="number">{{now}}</view>
+				</view>
+				<view class="status-evaluate" bindtap="goComment">
+					<view>
+						<image src="../../../img/dai.png"></image>
+					</view>
+					<view>待评价</view>
+					<view class="number">{{evaluate}}</view>
+				</view>
+				<view class="status-accomplish" bindtap="goSuccess">
+					<view>
+						<image src="../../../img/wancheng.png"></image>
+					</view>
+					<view>已完成</view>
+					<view class="number">{{accomplish}}</view>
+				</view>
+			</view>
+		</view>
+	</view>
+	<!-- 其他服务 -->
+	<view class="orderForm">
+		<view class="orderFormContent">
+			<view class="lookAll">
+				<view>其他服务</view>
+			</view>
+			<view class="serve">
+				<view class="serve-proceed" bindtap="customerService">
+					<view>
+						<image src="../../../img/lianxi.png"></image>
+					</view>
+					<view>联系客服</view>
+					<view class="modal-mask" catchtap="hideModal" catchtouchmove="preventTouchMove" wx:if="{{showModal}}"></view>
+					<view class="modal-dialog" wx:if="{{showModal}}">
+						<view class="modal-title">
+							<image src="../../../img/phone.png"></image>{{KFtell}}
+						</view>
+						<view class="modal-footer">
+							<view class="btn-cancel" catchtap="hideModal" data-status="cancel">取消</view>
+							<view class="btn-confirm" catchtap="onConfirm" data-status="confirm">呼叫</view>
+						</view>
+					</view>
+				</view>
+				<view class="serve-accomplish" bindtap="goNameAuth">
+					<view>
+						<image src="../../../img/shiming.png"></image>
+					</view>
+					<view>实名认证</view>
+				</view>
+				<view class="serve-evaluate" bindtap="goAddressList">
+					<view>
+						<image src="../../../img/shouhuo.png"></image>
+					</view>
+					<view>收货地址</view>
+				</view>
+				<view class="serve-evaluate" bindtap="goofflineOrders" wx:if="{{xsKdshow==true}}">
+					<view>
+						<image src="../../../img/shouhuo.png"></image>
+					</view>
+					<view>线下开单</view>
+				</view>
+				<view class="serve-evaluate" bindtap="gocodeSheet" wx:if="{{xsKdshow==true}}">
+					<view>
+						<image src="../../../img/shouhuo.png"></image>
+					</view>
+					<view>扫码接单</view>
+				</view>
+				<view class="serve-evaluate" bindtap="goServeList" wx:if="{{xsKdshow==true}}">
+					<view>
+						<image src="../../../img/shouhuo.png"></image>
+					</view>
+					<view>工单列表</view>
+				</view>
+			</view>
+		</view>
+	</view>
+	<!-- 推出登录 -->
+	<view class="editLogin">
+		<view bindtap="editLogin">退出登录</view>
+	</view>
+</view>

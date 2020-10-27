@@ -1,0 +1,22 @@
+<view>
+	<!-- 自定义导航栏 start -->
+	<view class="nav-bar" style="height:{{navBarHeight}}px;">
+		<view class="back" style="height:{{menuHeight}}px; min-height:{{menuHeight}}px; line-height:{{menuHeight}}px;  bottom:{{menuBotton}}px;" bindtap="backHome">
+			<view class="backBu">
+				<view class="back-content">
+					<view style="width:40%" bindtap="backHome">
+						<van-icon name="home-o" />
+					</view>
+				</view>
+				<text>登录</text>
+				<view style="width:50rpx"></view>
+			</view>
+		</view>
+	</view>
+	<image class="login" src="../../../img/QDY.png"></image>
+	<image class="login1" src="../../../img/qdy1.png"></image>
+	<view class="nowGoIndex" bindtap="goIndex"></view>
+	<view class="skp">
+		{{countDownNum}}秒进入首页
+	</view>
+</view>

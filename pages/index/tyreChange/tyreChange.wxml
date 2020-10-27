@@ -1,0 +1,66 @@
+<view>
+	<!-- 自定义导航栏 start -->
+	<view class="nav-bar" style="height:{{navBarHeight}}px;">
+		<view class="back" style="height:{{menuHeight}}px; min-height:{{menuHeight}}px; line-height:{{menuHeight}}px;  bottom:{{menuBotton}}px;">
+			<view class="backBu">
+				<view class="back-content">
+					<view style="width:100%;height:100%" bindtap="backIndex2">
+						<van-icon size="20" name="arrow-left" />
+					</view>
+				</view>
+				<text>选择轮胎套餐</text>
+				<view style="width:120rpx"></view>
+			</view>
+		</view>
+	</view>
+	<!-- 自定义导航栏 end -->
+	<!-- 内容 start -->
+	<view class="contentBox" style="margin-top:{{navBarHeight}}px;">
+		<radio-group class="radio-group" bindchange="radioChange">
+			<view class="items" wx:for="{{upkeepList}}" wx:key="key" wx:for-item="cellF" wx:for-index="cellFindex">
+				<!-- 套餐名称 -->
+				<view class="shopName">
+					<view class="checkBox">
+						<radio class="radio" checked="{{cellF.selectedStatus}}" data-index="{{cellFindex}}" value="{{cellFindex}}" ></radio>
+					</view>
+					<view class="setMeal">
+						<view>{{cellF.suit_name}}</view>
+						<view>{{cellF.suit_desc}}</view>
+					</view>
+				</view>
+				<!-- 套餐下的商品 -->
+				<view class="shoppItem" wx:for="{{cellF.commoditys}}" wx:key="key">
+					<view class="items" data-id="{{item.commodity_id}}" bindtap="goShoppDetail">
+						<view class="photo">
+							<image src="{{imagePrefix+item.imgs[0].commodity_img_url}}"></image>
+						</view>
+						<view class="shoContent">
+							<view class="introduce">
+								<text>{{item.commodityName}}</text>
+							</view>
+							<view class="numberMoney">
+								<text>￥{{item.commodityPrice}}</text>
+								<van-stepper value="{{item.commodityCount}}" disabled="{{item.whether_id==2}}" min="{{item.min_number}}" max="{{item.max_number}}" disable-input="true" bind:plus="addCount" bind:minus="minusCount" data-index="{{index}}" data-findex='{{cellFindex}}' />
+							</view>
+						</view>
+					</view>
+				</view>
+				<view class="line"></view>
+			</view>
+		</radio-group>
+		<view class="closeAccount">
+			<view class="allChecked">
+			</view>
+			<view class="closeDetail">
+				<view>
+					<text>不含税</text>
+					<text>总计：</text>
+					<text>￥{{total}}</text>
+				</view>
+				<view>优惠：￥0.00元</view>
+			</view>
+			<view class="closeButton" bindtap="goShoppOrder">去结算</view>
+		</view>
+	</view>
+	<!-- 内容 end -->
+</view>

@@ -1,0 +1,50 @@
+@import "../../../commpents/navbar.wxss";
+
+.content {
+    width: 100%;
+    overflow-x: hidden;
+}
+
+.carType {
+    width: 100%;
+    height: 130rpx;
+    padding: 20rpx;
+    box-sizing: border-box;
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    font-size: 28rpx;
+}
+
+.carType image {
+    width: 40rpx;
+    height: 40rpx;
+    margin-right: 30rpx;
+}
+
+.select {
+    width: 100%;
+    height: 80rpx;
+    background-color: #f6f6f6;
+    padding-left: 20rpx;
+    display: flex;
+    align-items: center;
+    color: #333;
+    font-size: 24rpx;
+}
+
+.options {
+    width: 100%;
+    padding: 0 20rpx;
+    box-sizing: border-box;
+}
+
+.items {
+    width: 100%;
+    height: 100rpx;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid rgba(238, 238, 238, 1);
+    font-size: 28rpx;
+    color: #333;
+}

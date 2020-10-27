@@ -1,0 +1,6 @@
+<view class="com_tab">
+	<view wx:for="{{list}}" wx:key="key" bindtap="tabClick" id="{{index}}" wx:for-index="index" wx:for-item="item" class="{{thisIndex==index ? 'tab_item tab_action':'tab_item'}}">
+		<text>{{item.name}}</text>
+		<text wx:if="{{isShowNum}}" class="num_text">{{item.num}}</text>
+	</view>
+</view>

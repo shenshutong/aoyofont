@@ -1,0 +1,84 @@
+{
+    "pages": [
+        
+        "pages/index/bootPage/bootPage",
+
+        "pages/index/regulations/regulations",
+        "pages/index/index/index",
+        "pages/shop/index/index",
+        "pages/shopping/index/index",
+        "pages/my/index/index",
+        
+      
+       
+        "pages/index/shoppDetail/index",
+       
+       
+      
+        "pages/index/addCarType/addCarType",
+        "pages/index/city/city",
+        
+        "pages/index/moreComment/index",
+        
+        "pages/index/displacement/displacement",
+     
+        "pages/index/proYear/proYear",
+        "pages/index/carType/carType",
+        
+        "pages/index/search/index",
+       
+       
+       
+        
+        "pages/index/queryViolation/queryViolation",
+        "pages/index/platingCrystal/platingCrystal",
+        "pages/index/upkeep/upkeep",
+        "pages/index/tyreChange/tyreChange",
+        "pages/index/padpasting/padpasting",
+     
+      
+        "commpents/share/share",
+        "pages/index/shoppList/shoppList",
+        "pages/index/receiveCoupon/receiveCoupon"
+    ],
+    "window": {
+        "backgroundTextStyle": "light",
+        "navigationBarBackgroundColor": "#fff",
+        "navigationBarTextStyle": "black",
+        "navigationStyle": "custom"
+    },
+    
+    
+    "tabBar": {
+        "color": "#8E8E93",
+        "selectedColor": "#8E8E93",
+        "list": [
+            {
+                "pagePath": "pages/index/index/index",
+                "iconPath": "/img/index.png",
+                "selectedIconPath": "/img/indexone.png",
+                "text": "首页"
+            },
+            {
+                "pagePath": "pages/shop/index/index",
+                "iconPath": "/img/shop.png",
+                "selectedIconPath": "/img/shopoone.png",
+                "text": "门店"
+            },
+            {
+                "pagePath": "pages/shopping/index/index",
+                "iconPath": "/img/shopping.png",
+                "selectedIconPath": "/img/shoppingone.png",
+                "text": "购物车"
+            },
+            {
+                "pagePath": "pages/my/index/index",
+                "iconPath": "/img/my.png",
+                "selectedIconPath": "/img/myone.png",
+                "text": "我的"
+            }
+        ]
+    },
+    "style": "v2",
+    "sitemapLocation": "sitemap.json"
+}

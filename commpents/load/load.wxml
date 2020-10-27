@@ -1,0 +1,3 @@
+<view class="bottomLoad {{isLoad==true?'showLoad':'hideLoad'}}">
+	{{textValue}}
+</view> 

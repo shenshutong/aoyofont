@@ -1,0 +1,56 @@
+<view>
+	<!-- 自定义导航栏 start -->
+	<view class="nav-bar" style="height:{{navBarHeight}}px;">
+		<view class="back" style="height:{{menuHeight}}px; min-height:{{menuHeight}}px; line-height:{{menuHeight}}px; bottom:{{menuBotton}}px;" bindtap="backHome">
+			<view class="backBu">
+				<view class="back-content">
+					<view style="width:100%;height:100%" bindtap="backshoppDetail">
+						<van-icon size="20" name="arrow-left" />
+					</view>
+				</view>
+				<text>商品评论列表</text>
+				<view style="width:120rpx"></view>
+			</view>
+		</view>
+	</view>
+	<!-- 自定义导航栏 end -->
+	<!--评论列表 start -->
+	<view class="commentList" style="margin-top:{{navBarHeight}}px;">
+		<!-- <view class="commentList"> -->
+		<view class='all'>
+			<image src="../../../img/hua.png"></image>
+			<text>用户评价</text>
+			<text>{{count}}条</text>
+		</view>
+		<view class="item" wx:for="{{commentList}}" wx:key="key">
+			<view class="essential">
+				<view class="item_img" style="width:15%">
+					<image src="{{item.organizer.userPhoto}}"></image>
+				</view>
+				<view class="item_name" style="width:85%">
+					<view class="date">
+						<view>
+							<text>{{item.organizer.userName}}</text>
+						</view>
+						<view class="dateD">
+							<text>{{item.createTimeStr}}</text>
+						</view>
+					</view>
+					<view class="rate">
+						<image src="../../../img/star.png" wx:for="{{item.score}}" wx:key="key"></image><text>{{item.score}}.0</text>
+					</view>
+				</view>
+			</view>
+			<view class="commentContent">
+				<view class="commentContent_Typeface">
+					{{item.context.context}}
+				</view>
+				<view class="commentContent_img">
+					<image wx:for="{{item.context.files}}" wx:key="key" src="{{item.name}}" wx:if="{{item.type==2}}" data-src="{{item.name}}" bindtap="preview"></image>
+					<video id="myVideo" poster="{{src}}" controls="true" custom-cache='{{false}}' wx:for="{{item.context.files}}" wx:key="key" wx:if="{{item.type==1}}" data-src="{{item.name}}" src="{{item.name}}"></video>
+				</view>
+			</view>
+		</view>
+	</view>
+	<!--评论列表 end -->
+</view>

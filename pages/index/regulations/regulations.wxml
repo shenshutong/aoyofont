@@ -1,0 +1,48 @@
+<view>
+	<!-- 自定义导航栏 start -->
+	<view class="nav-bar" style="height:{{navBarHeight}}px;">
+		<view class="back" style="height:{{menuHeight}}px; min-height:{{menuHeight}}px; line-height:{{menuHeight}}px;  bottom:{{menuBotton}}px;">
+			<view class="backBu">
+				<view class="back-content">
+					<view style="width:100%;height:100%" bindtap="backIndex3">
+						<van-icon size="20" name="arrow-left" />
+					</view>
+				</view>
+				<text>查询结果</text>
+				<view style="width:120rpx"></view>
+			</view>
+		</view>
+	</view>
+	<!-- 自定义导航栏 end -->
+	<!-- 内容 start -->
+	<view class="contentBox" style="margin-top:{{navBarHeight}}px;">
+		<view class="box">
+			<view class="item" wx:for="{{wzList}}" wx:key="key">
+				<view>
+					违章原因：{{item.reason}}
+				</view>
+				<view>
+					违章地点：{{item.address}}
+				</view>
+				<view>
+					违章时间：{{item.dateTime}}
+				</view>
+				<view>
+					分数：-{{item.score}}分
+				</view>
+				<view>
+					罚款金额：{{item.amount}}元
+				</view>
+				<view>
+					处理结果：{{item.status}}
+				</view>
+			</view>
+			<view class="item" wx:if="{{wzList!=[]}}">
+				<view>
+					暂无查询结果
+				</view>
+			</view>
+		</view>
+	</view>
+	<!-- 内容 end -->
+</view>

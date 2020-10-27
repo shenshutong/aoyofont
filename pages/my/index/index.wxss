@@ -1,0 +1,367 @@
+page {
+    width: 100%;
+    background-color: #f6f6f6;
+}
+
+.nav-bar {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 999;
+    background-color: #FFFFFF;
+}
+
+.back-content {
+    width: 120rpx;
+    border: 1px solid rgb(226, 220, 220);
+    padding: 10rpx 0;
+    border-radius: 30rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.nav-bar .back {
+    width: 100%;
+    position: absolute;
+}
+
+.nav-bar .back .backBu {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding: 0 10rpx 0 20rpx;
+    justify-content: space-between;
+    box-sizing: border-box;
+}
+
+.nav-bar .back view {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.nav-bar .back image {
+    width: 30rpx;
+    height: 30rpx;
+}
+
+.content {
+    width: 100%;
+}
+
+.photoName {
+    width: 100%;
+    height: 180rpx;
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    padding: 20rpx;
+    box-sizing: border-box;
+}
+
+.photoName .photo {
+    width: 24%;
+    height: 100%;
+}
+
+.photoName .photo image {
+    width: 90%;
+    height: 90%;
+    border-radius: 50%;
+}
+
+.photoName .name {
+    width: 67%;
+    height: 100%;
+    padding-left: 30rpx;
+    box-sizing: border-box;
+}
+
+.name view:nth-child(1) {
+    width: 100%;
+    height: 50%;
+    display: flex;
+    align-items: center;
+    font-size: 30rpx;
+}
+
+.name view:nth-child(2) {
+    width: 100%;
+    height: 50%;
+    font-size: 26rpx;
+}
+
+.photoName .setting {
+    width: 32%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+
+/* <!-- 关注  优惠券 车库 爱车 --> */
+.discounts {
+    width: 100%;
+    height: 150rpx;
+    background-color: #fff;
+    display: flex;
+}
+
+.discounts .attention,
+.discounts .ticket,
+.discounts .carList,
+.discounts .loveCar {
+    width: 25%;
+    height: 100%;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 30rpx;
+}
+
+.discounts .attention view:nth-child(1),
+.discounts .ticket view:nth-child(1),
+.discounts .carList view:nth-child(1),
+.discounts .loveCar view:nth-child(1) {
+    margin-bottom: 15rpx;
+    font-size: 30rpx;
+    font-weight: 700;
+}
+
+/* 实名认证 */
+.authentication {
+    width: 100%;
+    height: 190rpx;
+    padding: 0 20rpx;
+    box-sizing: border-box;
+    background-color: #fff;
+    margin-bottom: 30rpx;
+}
+
+.authentication image {
+    width: 100%;
+    height: 100%;
+}
+
+.authenticationY {
+    width: 100%;
+    height: 100rpx;
+    padding: 0 20rpx;
+    box-sizing: border-box;
+    background-color: #fff;
+    margin-bottom: 30rpx;
+    color: #fff;
+    font-size: 22rpx;
+}
+
+.authenticationYContent {
+    padding-left: 30rpx;
+    width: 100%;
+    background-color: #000;
+    height: 100%;
+    border-radius: 20rpx;
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+    font-weight: 700;
+}
+
+.authenticationY image {
+    width: 35rpx;
+    height: 35rpx;
+    margin-right: 30rpx;
+}
+
+.orderForm {
+    width: 100%;
+    padding: 20rpx;
+    box-sizing: border-box;
+}
+
+.orderFormContent {
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    border-radius: 20rpx;
+    padding: 20rpx;
+    box-sizing: border-box;
+}
+
+.lookAll {
+    width: 100%;
+    height: 60rpx;
+    display: flex;
+    padding: 0 0 0 30rpx;
+    box-sizing: border-box;
+    justify-content: space-between;
+}
+
+.lookAll view:nth-child(1) {
+    font-size: 26rpx;
+    font-weight: 600;
+}
+
+.lookAll view:nth-child(2) {
+    font-size: 26rpx;
+    color: #666666;
+}
+
+.status,
+.serve {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.status .status-proceed,
+.status .status-accomplish,
+.status .status-evaluate {
+    width: 25%;
+    height: 100%;
+    padding: 30rpx 0 20rpx 0;
+    box-sizing: border-box;
+    font-size: 26rpx;
+    color: #666666;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.status .status-proceed .number,
+.status .status-accomplish .number,
+.status .status-evaluate .number {
+    width: 25rpx;
+    height: 25rpx;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 25rpx;
+    border: 1px solid #940B0B;
+    color: #940B0B;
+    font-size: 18rpx;
+    position: absolute;
+    top: 5rpx;
+    left: 110rpx;
+}
+
+.status .status-proceed image,
+.status .status-accomplish image,
+.status .status-evaluate image {
+    width: 50rpx;
+    height: 50rpx;
+    margin-bottom: 15rpx;
+}
+
+.serve .serve-proceed,
+.serve .serve-accomplish,
+.serve .serve-evaluate {
+    width: 25%;
+    height: 100%;
+    padding: 30rpx 0 20rpx 0;
+    box-sizing: border-box;
+    font-size: 26rpx;
+    color: #666666;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.serve .serve-proceed image,
+.serve .serve-accomplish image,
+.serve .serve-evaluate image {
+    width: 70rpx;
+    height: 70rpx;
+    margin-bottom: 15rpx;
+}
+
+.modal-mask {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: #000;
+    opacity: 0.5;
+    overflow: hidden;
+    z-index: 9000;
+    color: #fff;
+}
+
+.modal-dialog {
+    width: 540rpx;
+    overflow: hidden;
+    position: fixed;
+    top: 50%;
+    left: 0;
+    z-index: 9999;
+    background: #f9f9f9;
+    margin: -180rpx 105rpx;
+    border-radius: 36rpx;
+}
+
+.modal-title {
+    padding-top: 50rpx;
+    font-size: 36rpx;
+    color: #030303;
+    text-align: center;
+    padding: 80rpx;
+
+}
+
+.modal-title image {
+    width: 30rpx !important;
+    height: 30rpx !important;
+    margin-right: 20rpx;
+    margin-bottom: 0rpx !important;
+}
+
+.modal-footer {
+    display: flex;
+    flex-direction: row;
+    height: 100rpx;
+    border-top: 1px solid #EEEEEE;
+    font-size: 34rpx;
+    line-height: 100rpx;
+}
+
+.btn-cancel {
+    width: 50%;
+    color: #666;
+    text-align: center;
+    border-right: 1px solid #EEEEEE;
+    font-size: 30rpx;
+}
+
+.btn-confirm {
+    width: 50%;
+    color: #000;
+    font-size: 30rpx;
+    text-align: center;
+}
+
+.editLogin {
+    width: 100%;
+    height: 100rpx;
+    margin-bottom: 50rpx;
+    margin-top: 20rpx;
+    padding: 0 20rpx;
+    box-sizing: border-box;
+}
+
+.editLogin view {
+    width: 100%;
+    height: 100%;
+    background: #FFFFFF;
+    border-radius: 30rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 26rpx;
+}

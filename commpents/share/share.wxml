@@ -1,0 +1,10 @@
+<view class='share' style="width:0rpx">
+	<view class='like'>
+		<view class='iconfont icon-aixin'></view>
+	</view>
+	<view class='weixin' style="width:0rpx">
+		<button open-type="share" class='share-button'>
+			<image class="right" src="../../img/weixin.png" style="width:45rpx;height:45rpx;margin-right:15rpx"></image>
+		</button>
+	</view>
+</view>

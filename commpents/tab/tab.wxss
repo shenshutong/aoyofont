@@ -1,0 +1,44 @@
+/* components/tab/tab.wxss */
+.com_tab {
+	display: flex;
+	justify-content: space-around;
+	width: 100%;
+}
+
+.tab_item {
+	color: #3E3E3E;
+	font-size: 28rpx;
+	height: 20px;
+	line-height: 20px;
+	padding: 0px 5px;
+	position: relative;
+	box-sizing: border-box;
+	border-radius: 2px;
+	z-index: 12;
+}
+
+.tab_action {
+	background-color: #fff;
+	color: #000;
+}
+
+.tab_action:after {
+	content: "";
+	position: absolute;
+	z-index: 11;
+	width: 60rpx;
+	height: 6rpx;
+	background: linear-gradient(90deg, rgba(165, 9, 32, 1) 0%, rgba(240, 77, 91, 1) 100%);
+	left:calc(50% - 30rpx);
+	top: 30px;
+}
+
+.tab_action .num_text {
+	color: #fff;
+}
+
+.num_text {
+	margin-left: 2px;
+	color: #9B9B9B;
+	font-size: 22rpx;
+}

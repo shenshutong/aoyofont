@@ -1,0 +1,26 @@
+<view>
+	<!-- 自定义导航栏 start -->
+	<view class="nav-bar" style="height:{{navBarHeight}}px;">
+		<view class="back" style="height:{{menuHeight}}px; min-height:{{menuHeight}}px; line-height:{{menuHeight}}px;  bottom:{{menuBotton}}px;" bindtap="backHome">
+			<view class="backBu">
+				<view class="back-content">
+					<view style="width:100%;height:100%" bindtap="backYear">
+						<van-icon size="20" name="arrow-left" />
+					</view>
+				</view>
+				<text>请选择车型</text>
+				<view style="width:120rpx"></view>
+			</view>
+		</view>
+	</view>
+	<!-- 自定义导航栏 end -->
+	<view class="content" style="margin-top:{{navBarHeight}}px">
+		<view class="carType">
+			<image src="{{carImg}}"></image>{{carName}}
+		</view>
+		<view class="select">请选择车型</view>
+		<view class="options">
+			<view class="items" wx:for="{{items}}" wx:key="key" data-id="{{item.car_model_id}}" bindtap="carBrand">{{item.car_model_name}}</view>
+		</view>
+	</view>
+</view>

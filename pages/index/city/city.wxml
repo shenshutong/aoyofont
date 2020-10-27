@@ -1,0 +1,68 @@
+<view>
+	<!-- 自定义导航栏 start -->
+	<view class="nav-bar" style="height:{{navBarHeight}}px;">
+		<view class="back" style="height:{{menuHeight}}px; min-height:{{menuHeight}}px; line-height:{{menuHeight}}px;  bottom:{{menuBotton}}px;">
+			<view class="backBu">
+				<view class="back-content">
+					<view style="width:100%;height:100%" bindtap="backHome">
+						<van-icon size="20" name="arrow-left" />
+					</view>
+				</view>
+				<text>选择城市</text>
+				<view style="width:120rpx"></view>
+			</view>
+		</view>
+	</view>
+	<!-- 自定义导航栏 end -->
+	<!-- 内容 start -->
+	<view class="contentBox" style="margin-top:{{navBarHeight}}px;">
+		<!-- <view class="contentBox"> -->
+		<view class="search">
+			<image src="../../../img/suo.png"></image>
+			<input placeholder="请输入城市名称" bindinput="getCity" value="{{searchValue}}" bindfocus="searchCity" class="yCancel {{searchShow?'':'Ncancel'}}"></input>
+			<text class="cancel" wx:if="{{searchShow}}" bindtap="cancelSearch">取消</text>
+		</view>
+		<scroll-view class="city-scroll" scroll-y="true" scroll-with-animation="true" scroll-into-view="{{toView}}">
+			<view class="nowCity">
+				<view>
+					<image src="../../../img/dingwei.png"></image><text>当前定位 : </text>
+				</view>
+				<view style="margin-left:15rpx">{{nowCity}}</view>
+			</view>
+			<view class="hotCity">
+				<text style="font-size:26rpx">热门城市</text>
+				<view class="hotCityList">
+					<text wx:for="{{hotCityList}}" wx:key="key" bindtap="hotCity" data-id="{{item.code}}" data-title="{{item.name}}">{{item.name}}</text>
+				</view>
+			</view>
+			<view class="cityBox">
+				<view class="content">
+					<view class="all-city">
+						<view class="city-list">
+							<!-- 循环城市列表 start -->
+							<view wx:for="{{cityList}}" wx:key="key" id="{{'city'+index}}" data-title="{{item.title}}">
+								<view class="nav-text">
+									<text>{{item.title}}</text>
+								</view>
+								<view class="show-city" wx:for="{{item.lists}}" wx:key="key" data-id="{{item.code}}" data-title="{{item.name}}" bindtap='selectcity'>
+									<text >{{item.name}}</text>
+								</view>
+							</view>
+							<!-- 循环城市列表 end -->
+						</view>
+					</view>
+					<!-- 字母索引 start -->
+					<view class="search-nav" bindtouchstart="touchStart" bindtouchmove="touchMove" bindtouchend="touchEnd" style="top:150px">
+						<text bindtap="cityScroll" data-index="{{index}}" wx:for="{{searchNav}}" wx:key="key">{{item}}</text>
+					</view>
+					<!-- 字母索引 end -->
+				</view>
+			</view>
+		</scroll-view>
+		<scroll-view class="{{searchValue?'active':'city-scroll1'}}" scroll-y="true" scroll-with-animation="true" scroll-into-view="{{toView}}" wx:if="{{searchShow}}" bindtap="SearchNone">
+			<view class="{{searchValue?'itemCity':''}}" wx:for="{{searchCityList}}" wx:key="key" data-id="{{item.city_code}}" data-title="{{item.city_name}}" catchtap="goIndex">{{item.city_name}}</view>
+			<view wx:if="{{!searchCityList}}" class="noneCity">没有找到带{{searchValue}}的城市!</view>
+		</scroll-view>
+	</view>
+	<!-- 内容 end -->
+</view>
