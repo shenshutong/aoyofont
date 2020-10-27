@@ -24,9 +24,9 @@
 			<view class="tel">
 				<input type="number" placeholder="请输入手机号" value="{{phoneNumber}}" bindinput="phoneInput" maxlength="11"></input>
 				<image src="../../../img/tel.png"></image>
-			</view>
+			</view>password
 			<view class="tel">
-				<input type="number" placeholder="请输入密码" value="{{password}}" bindinput="passwordInput" maxlength="11"></input>
+				<input type="number" placeholder="请输入密码" value="{{password}}" bindinput="passwordInput" maxlength="11" password></input>
 				<image src="../../../img/tel.png"></image>
 			</view>
 		
