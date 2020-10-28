@@ -38,9 +38,7 @@
   },
   "compileType": "miniprogram",
   "libVersion": "2.11.3",
-
   "appid": "wx13bfcfa9528b2f53",
-
   "projectname": "aoyo",
   "debugOptions": {
     "hidedInDevtools": []
