@@ -1,7 +1,7 @@
 //请求路径
 // const baseUrl = "https://api.aoyosh.com/";
-//const baseUrl = "https://test-api.miyouzhiyun.com/";
-const baseUrl = "http://localhost/8081";
+const baseUrl = "https://test-api.miyouzhiyun.com/";
+//const baseUrl = "http://localhost/8081";
 
 //图片路径
 // const imagePrefix = "https://biz.aoyosh.com/";
