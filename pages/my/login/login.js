@@ -35,11 +35,11 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-        times = 60;
-        clearInterval(timer);
-        this.setData({
-            verCodeTxt: '获取验证码'
-        })
+        // times = 60;
+        // clearInterval(timer);
+        // this.setData({
+        //     verCodeTxt: '获取验证码'
+        // })
     },
 
     /**
@@ -97,7 +97,7 @@ Page({
             })
         }else{
             wx.request({
-              url: 'http://localhost:8081/userlogin',
+              url: 'http://localhost:8081/user/userlogin',
               method:'post',
               data:{
                   phone:_this.data.phoneNumber,

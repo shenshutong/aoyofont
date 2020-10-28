@@ -26,6 +26,7 @@ function request(requestHandler) {
     header: header,
     success: function (res) {
       if (res.data.code == 11090005) {
+
         wx.showModal({
           content: '您还没有登录或登录过期，请登录',
           confirmText: '去登录',
@@ -43,6 +44,9 @@ function request(requestHandler) {
             }
           }
         })
+
+    
+
       }
       wx.hideLoading();
       requestHandler.success(res)

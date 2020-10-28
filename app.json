@@ -1,15 +1,20 @@
 {
     "pages": [
-        
-        "pages/index/bootPage/bootPage",
+      
+
         "pages/my/login/login",
-        "pages/index/regulations/regulations",
+        "pages/my/index/index",
         "pages/index/index/index",
+        "pages/index/bootPage/bootPage",
+       
+
+        "pages/index/regulations/regulations",
+       
         "pages/shop/index/index",
         "pages/shopping/index/index",
-        "pages/my/index/index",
-        
+       
         "pages/my/information/information",
+       
        
         "pages/index/shoppDetail/index",
        
