@@ -26,7 +26,6 @@ function request(requestHandler) {
     header: header,
     success: function (res) {
       if (res.data.code == 11090005) {
-
         wx.showModal({
           content: '您还没有登录或登录过期，请登录',
           confirmText: '去登录',
@@ -35,7 +34,7 @@ function request(requestHandler) {
           success(res) {
             if (res.confirm) {
               wx.reLaunch({
-                url: '/pages/my/login/login',
+                url: '/pages/my/agreement/agreement',
               })
             } else if (res.cancel) {
               wx.reLaunch({
@@ -44,9 +43,6 @@ function request(requestHandler) {
             }
           }
         })
-
-    
-
       }
       wx.hideLoading();
       requestHandler.success(res)
@@ -54,7 +50,7 @@ function request(requestHandler) {
     },
     fail: function () {
       wx.hideLoading();
-      requestHandler.fail();
+      //requestHandler.fail();
     },
     complete: function () {
 

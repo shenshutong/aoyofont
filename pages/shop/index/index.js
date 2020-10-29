@@ -41,38 +41,12 @@ Page({
         var detail = wx.getStorageSync('groupValue')
         netWork.request({
             url: getGroupAllUrl,
-            data: {
-                lng: that.data.lng,
-                lat: that.data.lat,
-                start: 0,
-                length: that.data.thisIndex,
-                filter_type: detail ? detail : '1',
-                code: that.data.id,
-                custom_id: wx.getStorageSync('SYSTEM_USER').USER_ID ? wx.getStorageSync('SYSTEM_USER').USER_ID : 0
+            method:'post',
+            header:{
+                'content-type': 'application/x-www-form-urlencoded' // 默认值
             },
             success: (res) => {
-                if (that.data.thisIndex >= res.data.total) {
-                    that.setData({
-                        isload: false,
-                        dataShow: true
-                    })
-                }
-                var groupList = res.data.data;
-                if (groupList) {
-                    groupList.forEach((item, idnex) => {
-                        if (item.distance_now) {
-                            item.distance_now = item.distance_now.toFixed(2);
-                        }
-                        if (item.groupService != null) {
-                            if (item.groupService.length >= 3) {
-                                item.groupService.length = 2
-                            }
-                        }
-                        if (item.group_score >= 5) {
-                            item.group_score = 5
-                        }
-                    })
-                }
+                var groupList = res.data;
                 that.setData({
                     groupAllList: groupList,
                     isload: false
