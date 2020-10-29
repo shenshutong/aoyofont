@@ -49,20 +49,32 @@
 		</view>
 		<!-- 轮播图 start-->
 		<view class="swiperItem">
-			<swiper autoplay="{{true}}" interval="{{2000}}" duration="{{500}}" indicator-dots="{{true}}" circular
+			<!-- <swiper autoplay="{{true}}" interval="{{2000}}" duration="{{500}}" indicator-dots="{{true}}" circular
 				indicator-active-color="#FFFFFF">
 				<swiper-item wx:for="{{swiperList}}" wx:key="key">
 					<image src="{{imagePrefix+item.imgUrl}}" bindtap="preview" data-id="{{item.imgID}}"></image>
 				</swiper-item>
+			</swiper> -->
+			<swiper 
+				indicator-dots="{{indicatorDots}}"
+				autoplay="{{autoplay}}" 
+				interval="{{interval}}" 
+				duration="{{duration}}" 
+				circular="true">
+				<block wx:for="{{imgUrls}}" wx:key="imgUrls">
+					<swiper-item>
+						<image class="img1" src="{{item.commodityImgUrl}}" mode="widthFix"/>
+					</swiper-item>
+				</block>
 			</swiper>
 		</view>
 		<!-- 轮播图 end-->
 		<!-- 活动 start -->
 		<view class="ServicesAvailable">
-			<view class="item" wx:for="{{Services}}" wx:key="key" data-id="{{item.function_button_id}}"
-				data-path="{{item.jump_path}}" bindtap="getTypePage">
-				<image src="{{imagePrefix+item.function_button_url}}"></image>
-				<text>{{item.function_button_name}}</text>
+			<view class="item" wx:for="{{Services}}" wx:key="key" data-id="{{item.platformImageId}}"
+				data-path="{{item.platformImageDesc}}" bindtap="getTypePage">
+				<image src="{{imagePrefix+item.platformImageUri}}"></image>
+				<text>{{item.platformImageName}}</text>
 			</view>
 		</view>
 		<view class="goGood" bindtap="closeHd">
