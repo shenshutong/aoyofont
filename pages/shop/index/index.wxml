@@ -23,9 +23,9 @@
 		<scroll-view scroll-y="true" class="scroll" bindscrolltolower="updatePage">
 			<view class="content_list">
 
-				<view class="items" wx:for="{{groupAllList}}" wx:key="key" bindtap="goShopDetail" data-id="{{item.groupaddressname}}">
+				<view class="items" wx:if="{{item.groupLevel!=1}}" wx:for="{{groupAllList}}" wx:key="key" bindtap="goShopDetail" data-id="{{item.groupaddressname}}">
 					<view class="items-img">
-						<image src="{{imagePrefix+item.groupIndex.img_url}}"></image>
+						<image src="{{imagePrefix+item.groupImg}}"></image>
 					</view>
 					<view class="items-content">
 						<view class="name">
@@ -34,7 +34,7 @@
 							<text>{{item.groupName}}</text>
 						</view>
 						<view class="site">
-							<text>{{item.groupaddressname}}</text>
+							<text>{{item.groupAddressDetails}}</text>
 							<text wx:if="{{item.distance_now!=null}}">{{item.distance_now}} Km</text>
 						</view>
 						<view class="label">
@@ -45,7 +45,7 @@
 							<view class="star">
 								<text>总评分</text>
 								<text>{{item.group_score}}</text>
-								<image wx:for="{{item.group_score}}" wx:key="key" src="../../../img/star.png"></image>
+								<image wx:key="key" src="{{imagePrefix}}/star.png"></image>
 							</view>
 							<view class="dingNumber">
 								总订单 <text style="color:#DB0202">{{item.orderCount}}</text>
