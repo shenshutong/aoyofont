@@ -1,10 +1,7 @@
 //请求路径
-// const baseUrl = "https://api.aoyosh.com/";
-const baseUrl = "https://test-api.miyouzhiyun.com/";
-//const baseUrl = "http://localhost/8081";
+const baseUrl = "http://localhost:8081/";
 
 //图片路径
-// const imagePrefix = "https://biz.aoyosh.com/";
 const imagePrefix = "";
 
 //首页
@@ -12,7 +9,7 @@ var indexTypeUrl = baseUrl + "functionIconDriver/getFunctionButtonList";//首页
 var indexSweiper = baseUrl + "platformDriver/getCarouselList";//首页轮播图
 var tellUrl = baseUrl + 'serviceDriver/getServiceUserList';//客服电话
 var likeShoppUrl = baseUrl + 'customBrowseDriver/queryBrowse';//猜你喜欢
-var nearbyShopUrl = baseUrl + 'storeDriver/getStoreList';//首页附近门店
+var nearbyShopUrl = baseUrl + 'shop/getStoreList';//首页附近门店
 var shoppDetailUrl = baseUrl + 'commodityDriver/queryCommodityApi';//商品详情、列表
 var getCommodityListByClassId = baseUrl + 'commodity/class/getCommodityListByClassId';//商品详情、列表
 var addShoppCard = baseUrl + 'customShoppingCarDriver/addShoppingCar';//加入购物车

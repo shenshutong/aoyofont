@@ -1,6 +1,6 @@
 {
     "pages": [
-      
+        "pages/shop/index/index",
 
         "pages/my/login/login",
         "pages/my/index/index",
@@ -10,7 +10,7 @@
 
         "pages/index/regulations/regulations",
        
-        "pages/shop/index/index",
+        
         "pages/shopping/index/index",
        
         "pages/my/information/information",
