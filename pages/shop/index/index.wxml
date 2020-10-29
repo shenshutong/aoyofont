@@ -44,11 +44,11 @@
 						<view class="grade">
 							<view class="star">
 								<text>总评分</text>
-								<text>{{item.group_score}}</text>
-								<image wx:key="key" src="{{imagePrefix}}/star.png"></image>
+								<!-- <text>{{item.pingfen}}</text> -->
+								<image wx:for="{{item.pingfen}}" wx:key="key" src="{{imagePrefix}}/star.png"></image>
 							</view>
 							<view class="dingNumber">
-								总订单 <text style="color:#DB0202">{{item.orderCount}}</text>
+								总订单 <text style="color:#DB0202">{{item.zongdingdan}}</text>
 							</view>
 						</view>
 					</view>
