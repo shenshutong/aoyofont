@@ -12,6 +12,18 @@ Page({
      * 页面的初始数据
      */
     data: {
+        imgUrls: [
+ 
+        ],
+     
+        indicatorDots: true, //小点，根据图的数量自动增加小点
+     
+        autoplay: true, //是否自动轮播
+     
+        interval: 3000, //间隔时间
+     
+        duration: 1000, //滑动时间
+    
         navBarHeight: app.globalData.navBarHeight,
         menuRight: app.globalData.menuRight,
         menuBotton: app.globalData.menuBotton,
@@ -34,6 +46,7 @@ Page({
         title: '',
         custom_car_id: 0
     },
+
     //商品分类
     getCommodityIconPlate() {
         var that = this;
@@ -159,9 +172,15 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
+        //轮播图
+        wx.showLoading({
+            title: '加载中',
+       })
+        this.text();
+
         wx.stopPullDownRefresh();
         this.indexType();//首页类型
-        this.sweiperF();//轮播图
+        // this.sweiperF();//轮播图
         this.indexTell();//客服电话
         this.getCommodityIconPlate();//商品分类
 
@@ -251,9 +270,8 @@ Page({
     },
     //首页type
     indexType: function () {
-        var indexTypeUrl = netapi.indexTypeUrl;
         netWork.request({
-            url: indexTypeUrl,
+            url: 'http://localhost:8081/AoyoIndex/getIndexPlatformImage',//后端传数据的路径
             success: (res) => {
                 var _data = res.data.data;
                 this.setData({
@@ -262,41 +280,63 @@ Page({
             }
         })
     },
-    //首页轮播图
-    sweiperF: function () {
-        var indexSweiperUrl = netapi.indexSweiper;
-        this.setData({
-            swiperList: []
-        })
-        netWork.request({
-            url: indexSweiperUrl,
-            success: (res) => {
-                var _data = res.data.data;
-                var arr = this.data.swiperList;
-                _data.forEach((item, index) => {
-                    var obj = {};
-                    obj.imgUrl = item.platform_image_uri;
-                    obj.imgID = item.platform_image_id;
-                    arr.push(obj)
-                })
-                this.setData({
-                    swiperList: arr
-                })
+     //轮播图片
+    text: function() {
+        var that = this;//这部必须有，非常重要
+        wx.request( {//从后端获取数据
+            url: 'http://localhost:8081/AoyoIndex/getIndexImage',//后端传数据的路径
+            data: {},
+            header: {
+                'content-type': 'application/json' // 默认值
+            },
+            success(res) {
+                that.setData({
+                    imgUrls: res.data.data
+                })//这里的imgUrls和<wxml>的imgUrls是同一个变量，就是将从后端获取到的数据赋值给imgUrls，传到前面使用
+                wx.hideLoading();//隐藏加载
+            },error(){
+                console.log("查询失败")
             }
         })
     },
+    // 首页轮播图
+    // sweiperF: function () {
+    //     var indexSweiperUrl = netapi.indexSweiper;
+    //     this.setData({
+    //         swiperList: []
+    //     })
+    //     netWork.request({
+    //         url: indexSweiperUrl,
+    //         success: (res) => {
+    //             var _data = res.data.data;
+    //             var arr = this.data.swiperList;
+    //             _data.forEach((item, index) => {
+    //                 var obj = {};
+    //                 obj.imgUrl = item.platform_image_uri;
+    //                 obj.imgID = item.platform_image_id;
+    //                 arr.push(obj)
+    //             })
+    //             this.setData({
+    //                 swiperList: arr
+    //             })
+    //         }
+    //     })
+    // },
     //客服电话
     indexTell: function () {
         var indexTypeUrl = netapi.tellUrl;
         netWork.request({
             url: indexTypeUrl,
             success: (res) => {
-                var _data = res.data.data;
-                _data.forEach((item, index) => {
-                    this.setData({
-                        KFtell: item.service_tel
+                console.log(res.data)
+                if(res.data.data!=null){
+                    var _data = res.data.data;
+                    _data.forEach((item, index) => {
+                        this.setData({
+                            KFtell: item.service_tel
+                        })
                     })
-                })
+                }
             }
         })
     },
