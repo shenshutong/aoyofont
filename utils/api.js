@@ -59,7 +59,7 @@ var updateCustomCarBrand = baseUrl + 'carManageDetailsDriver/updateCustomCarBran
 
 //门店
 var groupAll = baseUrl + 'groupApiDriver/queryAllGroup';//查询所有商户
-var groupDetail = baseUrl + 'groupApiDriver/queryGroupDetail';//门店详情
+var groupDetail = baseUrl + 'shop/queryGroupDetail';//门店详情----------------------------------
 var queryCommodityClassByGroupId = baseUrl + 'commodityDriver/queryCommodityClassByGroupId';//门店分类筛选
 var queryGroupAppointmentRules = baseUrl + 'customAppointmentDriver/queryGroupAppointmentRules';//预约查询
 var addCustomAppointment = baseUrl + 'customAppointmentOrderDriver/addCustomAppointment';//预约

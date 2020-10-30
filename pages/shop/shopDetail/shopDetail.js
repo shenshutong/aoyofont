@@ -39,25 +39,27 @@ Page({
             });
         }
     },
-    //门店详情
+    //门店详情--------------------------------------
     getGroupDetail: function (id) {
         var groupDetailUrl = netapi.groupDetail + "?groupId=" + id;
         netWork.request({
             url: groupDetailUrl,
             success: (res) => {
-                var _data = res.data.data;
-                if (_data.groupScore >= 6) {
-                    _data.groupScore = 5
-                }
+                var _data = res.data;
                 this.setData({
                     groupDeatil: _data,
-                    shoppAdress: _data.groupAddress,
+                    shoppAdress: _data.groupAddressDetails,
                     groupName: _data.groupName,
                     groupLongitude: _data.groupLongitude,
                     groupLatitude: _data.groupLatitude
                 })
             }
         })
+    },
+
+    //跳转服务页面----------------------------
+    goFuwu : function(e){
+        console.log(1)
     },
     //门店导航
     call_map: function (e) {
@@ -87,7 +89,7 @@ Page({
         })
     },
     /**
-     * 生命周期函数--监听页面加载
+     * 生命周期函数--监听页面加载---------------------------------------------
      */
     onLoad: function (options) {
         var that = this;

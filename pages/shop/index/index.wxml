@@ -23,7 +23,7 @@
 		<scroll-view scroll-y="true" class="scroll" bindscrolltolower="updatePage">
 			<view class="content_list">
 
-				<view class="items" wx:if="{{item.groupLevel!=1}}" wx:for="{{groupAllList}}" wx:key="key" bindtap="goShopDetail" data-id="{{item.groupaddressname}}">
+				<view class="items" wx:for="{{groupAllList}}" wx:key="key" bindtap="goShopDetail" data-id="{{item.groupId}}">
 					<view class="items-img">
 						<image src="{{imagePrefix+item.groupImg}}"></image>
 					</view>

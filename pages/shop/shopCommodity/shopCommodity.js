@@ -148,7 +148,7 @@ Page({
             delta: 1
         })
     },
-    //查看商品详情
+    //查看商品详情------------------------
     goShopDetail: function () {
         wx.navigateTo({
             url: '/pages/shop/shopDetail/shopDetail?groupId=' + Number(this.data.groupId)
@@ -197,22 +197,22 @@ Page({
             url: '/pages/index/shoppDetail/index?commodityId=' + id
         })
     },
-    //门店详情
+    //门店详情--------------------------------
     shopCardOptions: function () {
         var groupDetail = netapi.groupDetail + '?groupId=' + Number(this.data.groupId);
         netWork.request({
             url: groupDetail,
             success: (res) => {
-                var _data = res.data.data;
+                var _data = res.data;
                 this.setData({
-                    shopCardImg: _data.groupIndexImg,
-                    shopCardName: _data.groupNickName
+                    shopCardImg: _data.groupImg,
+                    shopCardName: _data.groupName
                 })
             }
         })
     },
     /**
-     * 生命周期函数--监听页面加载
+     * 生命周期函数--监听页面加载--------------------------
      */
     onLoad: function (options) {
         var that = this;

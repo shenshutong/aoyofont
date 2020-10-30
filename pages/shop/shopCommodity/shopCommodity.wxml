@@ -13,20 +13,20 @@
 			</view>
 		</view>
 	</view>
-	<!-- content start -->
-	<view class="content" style="margin-top:{{navBarHeight}}px">
+	<!-- content start --> 
+	<view class="items" style="margin-top:{{navBarHeight}}px">
 		<view class="shop">
 			<view class="shopImg">
 				<image src="{{imagePrefix+shopCardImg}}"></image>
 			</view>
 			<view class="shopName">
-				<view bindtap="goShopDetail" style="font-weight: 700;">{{shopCardName}} ></view>
+				<view bindtap="goShopDetail" style="font-weight: 700;">{{shopCardName}} > </view>
 				<view>
 					<image src="../../../img/kefu.png" bindtap="callPhone"></image>
 					<view class="modal-mask" bindtap="hideModal" catchtouchmove="preventTouchMove" wx:if="{{showModal}}"></view>
 					<view class="modal-dialog" wx:if="{{showModal}}">
 						<view class="modal-title">
-							<image src="../../../img/phone.png"></image>{{KFtell}}
+							<image src="../../../img/phone.png"></image>{{KFtell}}你打尼玛的客服啊，你不买，你找我干尼玛呢
 						</view>
 						<view class="modal-footer">
 							<view class="btn-cancel" bindtap="onCancel" data-status="cancel">取消</view>

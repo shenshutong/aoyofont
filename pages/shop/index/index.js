@@ -1,9 +1,8 @@
 const app = getApp();
 var netapi = require("../../../utils/api.js");
 var netWork = require('../../../utils/netWork.js');
-
 Page({
-
+    
     /**
      * 页面的初始数据
      */
@@ -39,7 +38,7 @@ Page({
         var that = this;
         var getGroupAllUrl = netapi.nearbyShopUrl;
         var detail = wx.getStorageSync('groupValue')
-        netWork.request({
+        wx.request({
             url: getGroupAllUrl,
             method:'post',
             header:{
@@ -57,7 +56,9 @@ Page({
     },
     //门店商品列表
     goShopDetail: function (e) {
-        var id = e.currentTarget.dataset.id;
+        var that= this;
+        var id=e.currentTarget.dataset.id;
+        console.log(id)
         wx.navigateTo({
             url: '/pages/shop/shopCommodity/shopCommodity?id=' + id
         })
