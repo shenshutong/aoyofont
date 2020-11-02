@@ -63,15 +63,16 @@
 					</view>
 				</view>
 			</pop-up>
+
 			<view class="list">
 				<view class="list-content">
-					<view class="items" wx:for="{{GroupShoppTab}}" wx:key="key" data-index="{{item.commodity_id}}" bindtap="goShoppDetail">
+					<view class="items" wx:for="{{GroupShoppTab}}" wx:key="key" data-index="{{item.commodityId}}" bindtap="goShoppDetail">
 						<view class="items_img">
-							<image src="{{imagePrefix+item.imgs[0].commodity_img_url}}"></image>
+							<image src="{{item.commodityImgUrl}}"></image>
 						</view>
 						<view class="items_con">
-							<view class="con_name">{{item.commodity_name}}</view>
-							<view class="con_money">￥{{item.commodity_selling_price}}</view>
+							<view class="con_name">{{item.commodityName}}</view>
+							<view class="con_money">￥{{item.commodityCostPrice}}</view>
 							<view class="con_star">
 								<view>评价 <image wx:for="{{3}}" wx:key="key" src="../../../img/star.png"></image>
 								</view>

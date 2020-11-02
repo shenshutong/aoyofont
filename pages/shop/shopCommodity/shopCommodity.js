@@ -154,14 +154,13 @@ Page({
             url: '/pages/shop/shopDetail/shopDetail?groupId=' + Number(this.data.groupId)
         })
     },
-    //商户商品列表推荐
-    groupShoppList: function (data) {
-        var groupShoppList = netapi.shoppDetailUrl;
+    //商户商品列表推荐----------------------
+    groupShoppList: function () {
+        var groupShoppList = netapi.shoppDetailUrl + '?groupId=' + Number(this.data.groupId);
         netWork.request({
             url: groupShoppList,
-            data: data,
             success: (res) => {
-                var _data = res.data.data;
+                var _data = res.data;
                 this.setData({
                     GroupShoppTab: _data
                 })
@@ -226,7 +225,7 @@ Page({
                 "cutom_id": wx.getStorageSync('SYSTEM_USER').USER_ID
             },
         }
-        that.groupShoppList(data);//门店商品
+        that.groupShoppList();//门店商品
         that.shopCardOptions();//门店信息
     },
     //分类推荐
