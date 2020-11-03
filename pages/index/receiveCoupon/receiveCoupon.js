@@ -23,9 +23,9 @@ Page({
     //查询优惠券列表
     getCouponListByStatus() {
         var that = this;
-        var getCustomAllowReceiveCouponList = netapi.getCustomAllowReceiveCouponList;
+        // var getCustomAllowReceiveCouponList = netapi.getCustomAllowReceiveCouponList;
         netWork.request({
-            url: getCustomAllowReceiveCouponList,
+            url: "http://localhost:8081/coupon/getCouponList",
             method: "GET",
             header: {
                 "content-type": "application/json",
@@ -35,8 +35,8 @@ Page({
             success: function (res) {
                 var _data = res.data.data;
                 _data.forEach((item, index) => {
-                    if (item.coupon_type_id == 2) {
-                        item.coupon_amt = item.coupon_amt * 10
+                    if (item.couponTypeId == 2) {
+                        item.couponAmt = item.couponAmt * 10
                     }
                 })
                 that.setData({
@@ -47,7 +47,7 @@ Page({
     },
     //领取优惠劵
     receive(e) {
-        var typeid = e.target.dataset.typeid;
+        var typeid = e.target.dataset.typeId;
         var id = e.target.dataset.id;
         var receiveCoupon = netapi.receiveCoupon;
         wx.request({

@@ -85,7 +85,7 @@
 		<view class="shoppClassIfy">
 			<view class="items" wx:for="{{shoppList}}" wx:key="key" data-path="{{item.jump_path}}"
 				data-id="{{item.panel_id}}" bindtap="goShoppList">
-				<image src="{{item.panel_url}}"></image>
+				<image src="{{item.panelUrl}}"></image>
 			</view>
 		</view>
 		<!-- 商品分类模块 end -->

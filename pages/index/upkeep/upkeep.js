@@ -40,9 +40,8 @@ Page({
     //查询保养套餐
     getUpkeepList() {
         var that = this;
-        var querySuitDetail = netapi.querySuitDetail;
         netWork.request({
-            url: querySuitDetail,
+            url: "http://localhost:8081/commodity/querySuitDetail",
             data: {
                 suitType: 2
             },
@@ -59,8 +58,8 @@ Page({
         let carts = this.data.upkeepList[index];// 获取购物车列表
         let total = 0;
         if (carts.selectedStatus == true) {
-            carts.commoditys.forEach((item) => {
-                total += item.commodityCount * item.commodityPrice;
+            carts.aoyoCommoditylist.forEach((item) => {
+                total += item.commodityCount * item.commoditySellingPrice;
             })
 
             if (carts.discount_tser == 1) {

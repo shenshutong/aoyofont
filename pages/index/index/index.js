@@ -50,9 +50,9 @@ Page({
     //商品分类
     getCommodityIconPlate() {
         var that = this;
-        var CommodityIconPlate = netapi.getCommodityIconPlate;
+        // var CommodityIconPlate = netapi.getCommodityIconPlate;
         netWork.request({
-            url: CommodityIconPlate,
+            url: "http://localhost:8081/AoyoIndex/getCommodityPanel",
             success: function (res) {
                 var _data = res.data.data;
                 that.setData({
