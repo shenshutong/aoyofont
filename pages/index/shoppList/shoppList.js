@@ -63,10 +63,8 @@ Page({
                 storeShow: false
             })
             var data = {
-                "param": {
                     "commodity_name": this.data.inputValue,
                     "panelId": Number(panel_id)
-                },
             }
             this.getShoppList(data);
         }
@@ -78,18 +76,14 @@ Page({
             var val = this.data.inputValue;
             if (val) {
                 data = {
-                    "param": {
                         "commodity_name": this.data.inputValue,
                         "recommendCommodity": 1,
                         "panelId": Number(panel_id)
-                    },
                 }
             } else {
                 data = {
-                    "param": {
                         "recommendCommodity": 1,
-                        "panelId": Number(panel_id)
-                    },
+                        "panelId": Number(panelId)
                 }
             }
             this.getShoppList(data);
@@ -102,22 +96,18 @@ Page({
             var val = this.data.inputValue;
             if (val) {
                 data = {
-                    "param": {
                         "lng": wx.getStorageSync('lng'),
                         "lat": wx.getStorageSync('lat'),
                         "nearbyCommodity": 1,
                         "commodity_name": this.data.inputValue,
                         "panelId": Number(panel_id)
-                    },
                 }
             } else {
                 data = {
-                    "param": {
                         "lng": wx.getStorageSync('lng'),
                         "lat": wx.getStorageSync('lat'),
                         "nearbyCommodity": 1,
                         "panelId": Number(panel_id)
-                    },
                 }
             }
             this.getShoppList(data);
@@ -133,18 +123,16 @@ Page({
                 var val = this.data.inputValue;
                 if (val) {
                     data = {
-                        "param": {
-                            "commodity_name": this.data.inputValue,
+                            "commodityName": this.data.inputValue,
                             "commodity_selling_price": -1,
-                            "panelId": Number(panel_id)
-                        },
+                            "panelId": Number(panel_id),
+                            "activeT": !this.data.activeT
                     }
                 } else {
                     data = {
-                        "param": {
                             "commodity_selling_price": -1,
-                            "panelId": Number(panel_id)
-                        },
+                            "panelId": Number(panel_id),
+                            "activeT": !this.data.activeT,
                     }
                 }
                 this.getShoppList(data);
@@ -153,18 +141,15 @@ Page({
                 var val = this.data.inputValue;
                 if (val) {
                     data = {
-                        "param": {
+                            "commodityName": this.data.inputValue,
                             "commodity_name": this.data.inputValue,
                             "commodity_selling_price": -2,
                             "panelId": Number(panel_id)
-                        },
                     }
                 } else {
                     data = {
-                        "param": {
                             "commodity_selling_price": -2,
                             "panelId": Number(panel_id)
-                        },
                     }
                 }
                 this.getShoppList(data);
@@ -178,20 +163,16 @@ Page({
             var val = this.data.inputValue;
             if (val) {
                 data = {
-                    "param": {
                         "commodity_name": this.data.inputValue,
                         "groupFilter": 1,
                         "custom_id": wx.getStorageSync('SYSTEM_USER').USER_ID,
                         "panelId": Number(panel_id)
-                    },
                 }
             } else {
                 data = {
-                    "param": {
                         "groupFilter": 1,
                         "custom_id": wx.getStorageSync('SYSTEM_USER').USER_ID,
                         "panelId": Number(panel_id)
-                    },
                 }
             }
             var shoppListUrl = netapi.shoppDetailUrl;
@@ -224,9 +205,8 @@ Page({
     },
     //获取商品列表
     getShoppList: function (data) {
-        var shoppListUrl = netapi.getCommodityListByClassId;
-        netWork.request({
-            url: shoppListUrl,
+        netWork.request({ 
+            url: 'http://localhost:8081/AoyoIndex/queryshoppList',
             data: data,
             success: (res) => {
                 var _data = res.data.data;
@@ -283,15 +263,12 @@ Page({
     SearchComShopList() {
         var that = this;
         var val = that.data.inputValue;
-        var groupShoppList = netapi.shoppDetailUrl;
+        // var groupShoppList = netapi.shoppDetailUrl;
         if (val) {
             netWork.request({
-                url: groupShoppList,
+                url: 'http://localhost:8081/AoyoIndex/queryshoppList',//groupShoppList,
                 data: {
-                    "param": {
-                        commodity_name: val,
-                        custom_id: wx.getStorageSync('SYSTEM_USER').USER_ID
-                    }
+                    commodityName: val,
                 },
                 success: function (res) {
                     var _data = res.data.data;
@@ -340,15 +317,9 @@ Page({
      */
     onLoad: function (options) {
         this.setData({
-            inputValue: options.commodity_name,
-            panelId: options.panel_id
+            inputValue: options.commodityName,
         })
-        var data = {
-            "param": {
-                "panelId": Number(options.panel_id),
-                "custom_id": wx.getStorageSync('SYSTEM_USER').USER_ID
-            },
-        }
+        var data = {"commodityName":options.commodityName}
         this.getShoppList(data);
         this.indexTell();//客服电话
 

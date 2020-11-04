@@ -66,7 +66,7 @@ Page({
         var path = e.currentTarget.dataset.path;
         var id = e.currentTarget.dataset.id;
         wx.navigateTo({
-            url: path + id
+            url: path //+ id
         })
     },
     //选择城市
@@ -352,6 +352,7 @@ Page({
                 code: 0
             },
             success: (res) => {
+                console.log("附近门店")
                 var shopList = res.data.data;
                 if (shopList) {
                     shopList.forEach((item, idnex) => {

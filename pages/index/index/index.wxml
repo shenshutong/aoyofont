@@ -83,8 +83,8 @@
 		<!-- 活动 end -->
 		<!-- 商品分类模块 start -->
 		<view class="shoppClassIfy">
-			<view class="items" wx:for="{{shoppList}}" wx:key="key" data-path="{{item.jump_path}}"
-				data-id="{{item.panel_id}}" bindtap="goShoppList">
+			<view class="items" wx:for="{{shoppList}}" wx:key="key" data-path="{{item.jumpPath}}"
+				data-id="{{item.panelId}}" bindtap="goShoppList">
 				<image src="{{item.panelUrl}}"></image>
 			</view>
 		</view>

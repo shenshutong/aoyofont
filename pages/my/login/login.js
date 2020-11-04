@@ -28,7 +28,11 @@ Page({
     },
    
     
-   
+   clickPhone:function(){
+       wx.navigateTo({
+         url: '/pages/my/phoneLogin/phoneLogin',
+       })
+   },
    
    
     /**
@@ -97,7 +101,7 @@ Page({
             })
         }else{
             wx.request({
-              url: 'http://localhost:8081/user/userlogin',
+              url: 'http://localhost:8081/token/userlogin',
               method:'post',
               data:{
                   phone:_this.data.phoneNumber,
@@ -107,10 +111,27 @@ Page({
                 'content-type': 'application/x-www-form-urlencoded' // 默认值
               },
               success(res){
-                if(res.data!=null){
-                    console.log("登录成功")
-                    wx.switchTab({
+                console.log(res.data)
+                if(res.data=='null'){
+                    wx.navigateTo({
+                        url: '/pages/my/login/login'
+                      })
+                }else  if(res.data.code==0){
+                    console.log("success");
+                    wx.setStorageSync('token', res.data)
+                    // wx.setStorage({
+                    //   data: res.data,
+                    //   key: 'token',
+                    // })
+                    wx.reLaunch({
                       url: '/pages/index/index/index',
+                    })
+                }else{
+                    console.log("false");
+                    wx.showToast({
+                        title: '用户名或密码错误',
+                        icon: 'none',
+                        duration: 2000
                     })
                 }
               }
@@ -120,4 +141,5 @@ Page({
     }
    
   
+
 })

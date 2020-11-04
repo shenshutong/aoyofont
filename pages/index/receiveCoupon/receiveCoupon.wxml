@@ -44,10 +44,16 @@
 								<view>有效期至{{item.couponEndTime}}</view>
 								<view>{{item.couponDesc}}</view>
 							</view>
-							<view class="right">
-								<text data-id="{{item.couponId}}" data-typeid="{{item.couponId}}"
+							<view class="right"> 
+								<text  wx:if="{{item.aoyoCouponUser.aoyoUserId == 2}}" data-id="{{item.couponId}}" data-typeid="{{item.couponId}}"
+									bindtap="receive">已领取</text>
+									<text  wx:if="{{item.aoyoCouponUser.aoyoUserId == null}}" data-id="{{item.couponId}}" data-typeid="{{item.couponId}}"
 									bindtap="receive">领取</text>
 							</view>
+							<!-- <view  wx:elif="{{item.aoyoCouponUser.aoyoUserId = null}}" class="right">
+								<text data-id="{{item.couponId}}" data-typeid="{{item.couponId}}"
+									bindtap="receive">领取</text>
+							</view> -->
 						</view>
 					</view>
 				</view>
