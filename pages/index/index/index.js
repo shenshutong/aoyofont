@@ -50,9 +50,9 @@ Page({
     //商品分类
     getCommodityIconPlate() {
         var that = this;
-        var CommodityIconPlate = netapi.getCommodityIconPlate;
+        // var CommodityIconPlate = netapi.getCommodityIconPlate;
         netWork.request({
-            url: CommodityIconPlate,
+            url: "http://localhost:8081/AoyoIndex/getCommodityPanel",
             success: function (res) {
                 var _data = res.data.data;
                 that.setData({
@@ -66,7 +66,7 @@ Page({
         var path = e.currentTarget.dataset.path;
         var id = e.currentTarget.dataset.id;
         wx.navigateTo({
-            url: path + id
+            url: path //+ id
         })
     },
     //选择城市
@@ -352,6 +352,7 @@ Page({
                 code: 0
             },
             success: (res) => {
+                console.log("附近门店")
                 var shopList = res.data.data;
                 if (shopList) {
                     shopList.forEach((item, idnex) => {

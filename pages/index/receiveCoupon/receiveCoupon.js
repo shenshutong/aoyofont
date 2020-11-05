@@ -23,9 +23,9 @@ Page({
     //查询优惠券列表
     getCouponListByStatus() {
         var that = this;
-        var getCustomAllowReceiveCouponList = netapi.getCustomAllowReceiveCouponList;
+        // var getCustomAllowReceiveCouponList = netapi.getCustomAllowReceiveCouponList;
         netWork.request({
-            url: getCustomAllowReceiveCouponList,
+            url: "http://localhost:8081/coupon/getCouponList",
             method: "GET",
             header: {
                 "content-type": "application/json",
@@ -35,8 +35,8 @@ Page({
             success: function (res) {
                 var _data = res.data.data;
                 _data.forEach((item, index) => {
-                    if (item.coupon_type_id == 2) {
-                        item.coupon_amt = item.coupon_amt * 10
+                    if (item.couponTypeId == 2) {
+                        item.couponAmt = item.couponAmt * 10
                     }
                 })
                 that.setData({
@@ -47,25 +47,26 @@ Page({
     },
     //领取优惠劵
     receive(e) {
-        var typeid = e.target.dataset.typeid;
+        var that = this;
+        // var typeid = e.target.dataset.typeId;
         var id = e.target.dataset.id;
-        var receiveCoupon = netapi.receiveCoupon;
+        // var receiveCoupon = netapi.receiveCoupon;
         wx.request({
-            url: receiveCoupon,
+            url: "http://localhost:8081/coupon/getCoupon?id="+id,//receiveCoupon,
             method: "POST",
             header: {
                 "Content-Type": "application/x-www-form-urlencoded",
                 "Ltoken": wx.getStorageSync('token'),
                 "LclientCode": 3
             },
-            data: {
-                id: Number(id),
-                classId: Number(typeid)
-            },
+            // data: {
+            //     id: Number(id),
+            //     classId: Number(typeid)
+            // },
             success: function (res) {
-                if (res.data.status == false) {
+                if (res.data.flag == false) {
                     wx.showToast({
-                        title: res.data.desc,
+                        title: res.data.message,
                         icon: "none",
                         duration: 2000
                     })
@@ -73,10 +74,17 @@ Page({
                     wx.showToast({
                         title: '领取成功',
                         duration: 2000
-                    })
+                    }),
+                    that.onLoad()
                 }
             }
         })
+    },
+    onShow: function(){
+        if (app.globalData.Flag) {
+              app.globalData.Flag = false;
+              this.getData();//调用接口获取数据
+        }  
     },
     /**
      * 生命周期函数--监听页面加载

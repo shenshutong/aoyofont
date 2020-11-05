@@ -40,9 +40,8 @@ Page({
     //查询镀晶套餐
     getUpkeepList() {
         var that = this;
-        var querySuitDetail = netapi.querySuitDetail;
         netWork.request({
-            url: querySuitDetail,
+            url: "http://localhost:8081/commodity/querySuitDetail?typeId="+6,
             data: {
                 suitType: 3
             },

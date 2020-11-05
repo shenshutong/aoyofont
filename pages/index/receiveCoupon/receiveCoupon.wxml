@@ -24,8 +24,8 @@
 						<image src="../../../img/jin.png"></image>
 						<view class="detail">
 							<view class="left">
-								<view>{{item.coupon_name}}</view>
-								<view>满{{item.coupon_minimum_amount}}可用</view>
+								<view>{{item.couponName}}</view>
+								<view>满{{item.couponFullLess}}可用</view>
 							</view>
 							<view class="right">
 								<text wx:if="{{item.coupon_type_id==1}}">￥</text>
@@ -41,13 +41,19 @@
 						<image src="../../../img/tuo.png"></image>
 						<view class="detail">
 							<view class="left">
-								<view>有效期至{{item.coupon_end_time}}</view>
-								<view>{{item.coupon_desc}}</view>
+								<view>有效期至{{item.couponEndTime}}</view>
+								<view>{{item.couponDesc}}</view>
 							</view>
-							<view class="right">
-								<text data-id="{{item.coupon_id}}" data-typeid="{{item.coupon_type_id}}"
+							<view class="right"> 
+								<text  wx:if="{{item.aoyoCouponUser.aoyoUserId == 2}}" data-id="{{item.couponId}}" data-typeid="{{item.couponId}}"
+									bindtap="receive">已领取</text>
+									<text  wx:if="{{item.aoyoCouponUser.aoyoUserId == null}}" data-id="{{item.couponId}}" data-typeid="{{item.couponId}}"
 									bindtap="receive">领取</text>
 							</view>
+							<!-- <view  wx:elif="{{item.aoyoCouponUser.aoyoUserId = null}}" class="right">
+								<text data-id="{{item.couponId}}" data-typeid="{{item.couponId}}"
+									bindtap="receive">领取</text>
+							</view> -->
 						</view>
 					</view>
 				</view>

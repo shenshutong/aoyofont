@@ -24,22 +24,24 @@
 						<radio class="radio" checked="{{cellF.selectedStatus}}" data-index="{{cellFindex}}" value="{{cellFindex}}"></radio>
 					</view>
 					<view class="setMeal">
-						<view>{{cellF.suit_name}}</view>
-						<view>{{cellF.suit_desc}}</view>
+						<view>{{cellF.commoditySuitName}}</view>
+						<view>{{cellF.commoditySuitDesc}}</view>
 					</view>
 				</view>
 				<!-- 套餐下的商品 -->
-				<view class="shoppItem" wx:for="{{cellF.commoditys}}" wx:key="key">
-					<view class="items" data-id="{{item.commodity_id}}" bindtap="goShoppDetail">
+				<view class="shoppItem" wx:for="{{cellF.aoyoCommoditylist}}" wx:key="key">
+					<view class="items" data-id="{{item.commodityId}}" bindtap="goShoppDetail">
 						<view class="photo">
-							<image src="{{imagePrefix+item.imgs[0].commodity_img_url}}"></image>
+							<image src="{{cellF.commodityImgUrl}}"></image>
 						</view>
 						<view class="shoContent">
 							<view class="introduce">
+							<!-- 商品名称 -->
 								<text>{{item.commodityName}}</text>
 							</view>
 							<view class="numberMoney">
-								<text>￥{{item.commodityPrice}}</text>
+							<!-- 价钱 -->
+								<text>￥{{item.commoditySellingPrice}}</text>
 								<van-stepper value="{{item.commodityCount}}" disabled="{{item.whether_id==2}}" min="{{item.min_number}}" max="{{item.max_number}}" disable-input="true" bind:plus="addCount" bind:minus="minusCount" data-index="{{index}}" data-findex='{{cellFindex}}' />
 							</view>
 						</view>

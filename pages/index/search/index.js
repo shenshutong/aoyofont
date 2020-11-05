@@ -96,7 +96,7 @@ Page({
     //搜索商品
     searchShopp: function () {
         wx.navigateTo({
-            url: '/pages/index/shoppList/shoppList?commodity_name=' + this.data.inputValue
+            url: '/pages/index/shoppList/shoppList?commodityName=' + this.data.inputValue
         })
     },
     //搜索历史
