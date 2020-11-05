@@ -43,7 +43,8 @@ Page({
         netWork.request({
             url: "http://localhost:8081/commodity/querySuitDetail",
             data: {
-                suitType: 2
+                typeId: 2,
+                id : 1
             },
             success: function (res) {
                 var _data = res.data.data;

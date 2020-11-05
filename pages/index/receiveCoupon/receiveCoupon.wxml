@@ -24,14 +24,25 @@
 						<image src="../../../img/jin.png"></image>
 						<view class="detail">
 							<view class="left">
-								<view>{{item.couponName}}</view>
-								<view>满{{item.couponFullLess}}可用</view>
+								<view>{{item.couponNewName}}</view>
+								<view>
+									<text wx:if="{{item.couponNewTypeId==1}}"></text>
+									<text wx:if="{{item.couponNewTypeId==1}}">代金券{{item.couponNewTypeAtribute}}￥</text>
+									<text wx:if="{{item.couponNewTypeId==2}}">优惠{{item.couponNewTypeAtribute}}折</text>
+										<text wx:if="{{item.couponNewSill==1}}">
+											无门槛
+										</text>
+										<text wx:if="{{item.couponNewSill==2}}">
+											满{{item.couponNewRebateMax}}减
+										</text>
+										<text wx:if="{{item.couponNewTypeId==1}}"></text>
+								</view>
 							</view>
 							<view class="right">
-								<text wx:if="{{item.coupon_type_id==1}}">￥</text>
-								<text wx:if="{{item.coupon_type_id==2}}"></text>
-								<text>{{item.coupon_amt}}</text>
-								<text wx:if="{{item.coupon_type_id==2}}">折</text>
+								<text wx:if="{{item.couponNewTypeId==1}}">￥</text>
+								<text wx:if="{{item.couponNewTypeId==2}}"></text>
+								<text>{{item.couponNewTypeAtribute}}</text>
+								<text wx:if="{{item.couponNewTypeId==2}}">折</text>
 							</view>
 						</view>
 					</view>
@@ -41,13 +52,13 @@
 						<image src="../../../img/tuo.png"></image>
 						<view class="detail">
 							<view class="left">
-								<view>有效期至{{item.couponEndTime}}</view>
-								<view>{{item.couponDesc}}</view>
+								<view>有效期至{{item.couponNewEndTime}}</view>
+								<view>{{item.couponNewDesc}}</view>
 							</view>
 							<view class="right"> 
-								<text  wx:if="{{item.aoyoCouponUser.aoyoUserId == 2}}" data-id="{{item.couponId}}" data-typeid="{{item.couponId}}"
+								<text  wx:if="{{item.aoyoCoupon.userId == 2}}" data-id="{{item.couponNewId}}" data-typeid="{{item.couponNewId}}"
 									bindtap="receive">已领取</text>
-									<text  wx:if="{{item.aoyoCouponUser.aoyoUserId == null}}" data-id="{{item.couponId}}" data-typeid="{{item.couponId}}"
+									<text  wx:if="{{item.aoyoCoupon.userId == null}}" data-id="{{item.couponNewId}}" data-typeid="{{item.couponNewId}}"
 									bindtap="receive">领取</text>
 							</view>
 							<!-- <view  wx:elif="{{item.aoyoCouponUser.aoyoUserId = null}}" class="right">

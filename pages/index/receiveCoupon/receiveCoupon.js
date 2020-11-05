@@ -25,7 +25,7 @@ Page({
         var that = this;
         // var getCustomAllowReceiveCouponList = netapi.getCustomAllowReceiveCouponList;
         netWork.request({
-            url: "http://localhost:8081/coupon/getCouponList",
+            url: "http://localhost:8081/coupon/getCouponNewList",
             method: "GET",
             header: {
                 "content-type": "application/json",
@@ -34,11 +34,6 @@ Page({
             },
             success: function (res) {
                 var _data = res.data.data;
-                _data.forEach((item, index) => {
-                    if (item.couponTypeId == 2) {
-                        item.couponAmt = item.couponAmt * 10
-                    }
-                })
                 that.setData({
                     discounts: _data
                 })
@@ -48,21 +43,18 @@ Page({
     //领取优惠劵
     receive(e) {
         var that = this;
-        // var typeid = e.target.dataset.typeId;
         var id = e.target.dataset.id;
-        // var receiveCoupon = netapi.receiveCoupon;
         wx.request({
-            url: "http://localhost:8081/coupon/getCoupon?id="+id,//receiveCoupon,
+            url: "http://localhost:8081/coupon/getCoupon",//receiveCoupon,
             method: "POST",
             header: {
                 "Content-Type": "application/x-www-form-urlencoded",
                 "Ltoken": wx.getStorageSync('token'),
                 "LclientCode": 3
             },
-            // data: {
-            //     id: Number(id),
-            //     classId: Number(typeid)
-            // },
+            data: {
+                "couponNewId":id
+            },
             success: function (res) {
                 if (res.data.flag == false) {
                     wx.showToast({
