@@ -7,7 +7,7 @@
         "pages/my/index/index",
         "pages/index/bootPage/bootPage",
        
-
+        "pages/classify/index/index",
         "pages/index/regulations/regulations",
        
         
@@ -63,6 +63,11 @@
                 "iconPath": "/img/index.png",
                 "selectedIconPath": "/img/indexone.png",
                 "text": "首页"
+            } ,{
+                "pagePath": "pages/classify/index/index",
+                "iconPath": "/img/classify.png",
+                "selectedIconPath": "/img/classifyone.png",
+                "text": "分类"
             },
             {
                 "pagePath": "pages/shop/index/index",

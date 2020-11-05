@@ -1,0 +1,39 @@
+<view>
+	<!-- 自定义导航栏 start -->
+	<view class="nav-bar" style="height:{{navBarHeight}}px;">
+		<view class="back" style="height:{{menuHeight}}px; min-height:{{menuHeight}}px; line-height:{{menuHeight}}px; bottom:{{menuBotton}}px;">
+			<view class="backBu">
+				<view style="width:120rpx"></view>
+				<text>商品分类</text>
+				<view style="width:120rpx"></view>
+			</view>
+		</view>
+	</view>
+	<!-- 自定义导航栏 end -->
+	<view class="content" style="margin-top:{{navBarHeight}}px">
+		<view class="search" bindtap="goSearch">
+			<van-search shape="round" placeholder="请输入商品名称进行搜索" />
+		</view>
+		<view class="classifyList">
+			<scroll-view class='nav_left' scroll-y='true'>
+				<block wx:for="{{cateItems}}" wx:key="key">
+					<view class="nav_left_items {{curNav==item.appClassId?'active':''}}" bindtap="switchRightTab" data-index='{{index}}' data-id="{{item.appClassId}}">{{item.appClassName}}</view>
+				</block>
+			</scroll-view>
+			<scroll-view class="nav_right" scroll-y="true">
+				<!--如果有数据，才遍历项-->
+				<view wx:if="{{shoppDetailList.length>0}}" class="nav_right_list">
+					<block wx:for="{{shoppDetailList}}" wx:key="key">
+						<view class="nav_right_items" bindtap="iqoo" data-id="{{item.commodityId}}" data-name="{{item.commodityName}}">
+							<view class='name1'>{{item.commodityName}}</view>
+						</view>
+					</block>
+				</view>
+				<!--如果无数据，则显示数据-->
+				<view class="nocate" wx:else>
+					<text>该分类暂无品牌</text>
+				</view>
+			</scroll-view>
+		</view>
+	</view>
+</view>

@@ -1,0 +1,139 @@
+.nav-bar {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 999;
+    background-color: #FFFFFF;
+}
+
+.back-content {
+    width: 120rpx;
+    border: 1px solid rgb(226, 220, 220);
+    padding: 10rpx 0;
+    border-radius: 30rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.nav-bar .back {
+    width: 100%;
+    position: absolute;
+}
+
+.nav-bar .back .backBu {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding: 0 10rpx 0 20rpx;
+    justify-content: space-between;
+    box-sizing: border-box;
+}
+
+.nav-bar .back view {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.nav-bar .back image {
+    width: 30rpx;
+    height: 30rpx;
+}
+.search {
+    width: 100%;
+    height: 100rpx;
+    padding: 20rpx;
+    box-sizing: border-box;
+}
+
+.classifyList {
+    width: 100%;
+    padding: 20rpx;
+    box-sizing: border-box;
+    display: flex;
+
+}
+
+.nav_left {
+    width: 25%;
+    height: 100%;
+    background: #F6F6F6;
+    text-align: center;
+}
+
+.nav_left .nav_left_items {
+    height: 100rpx;
+    line-height: 100rpx;
+    font-size: 28rpx;
+}
+
+.nav_left .nav_left_items.active {
+    position: relative;
+    color: #FF6F52;
+    background-color: #fff;
+}
+
+.nav_left .nav_left_items.active::before {
+    display: inline-block;
+    width: 6rpx;
+    height: 60rpx;
+    background: #FF6F52;
+    content: '';
+    position: absolute;
+    top: 20rpx;
+    left: 0;
+}
+
+/****************** 右方数据栏 *******************/
+.nav_right {
+    width: 75%;
+    height: 100%;
+}
+
+.nav_right_list {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.nav_right .nav_right_items {
+    width: 48%;
+    display: flex;
+    margin-left: 10rpx;
+    margin-bottom: 10rpx;
+}
+
+.name1 {
+    width: 100%;
+    background-color: #F6F6F6;
+    border-radius: 15rpx;
+    padding: 20rpx 0;
+    font-size: 25rpx;
+    text-align: center;
+}
+
+.nocate {
+    padding: 100rpx;
+    text-align: center;
+}
+
+.nocate image {
+    width: 70rpx;
+    height: 70rpx;
+}
+
+.nocate text {
+    font-size: 28rpx;
+    display: block;
+    color: #BBB;
+}
+
+/*隐藏滚动条*/
+::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+    color: transparent;
+}
