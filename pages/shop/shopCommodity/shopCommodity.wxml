@@ -55,7 +55,7 @@
 							<view class="proup_content">
 								<scroll-view class="city-scroll" scroll-y="true" scroll-with-animation="true">
 									<view class="itemsType">
-										<view class="itemsList" wx:for="{{shoppType}}" wx:key="key" data-id="{{item.class_id}}" bindtap="getTypeShoppList">{{item.class_name}}</view>
+										<view class="itemsList" wx:for="{{shoppType}}" wx:key="key" data-id="{{item.classId}}" bindtap="getTypeShoppList">{{item.className}}</view>
 									</view>
 								</scroll-view>
 							</view>
@@ -72,7 +72,7 @@
 						</view>
 						<view class="items_con">
 							<view class="con_name">{{item.commodityName}}</view>
-							<view class="con_money">￥{{item.commodityCostPrice}}</view>
+							<view class="con_money">￥{{item.commoditySellingPrice}}</view>
 							<view class="con_star">
 								<view>评价 <image wx:for="{{3}}" wx:key="key" src="../../../img/star.png"></image>
 								</view>

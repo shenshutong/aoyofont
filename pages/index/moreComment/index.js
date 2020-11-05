@@ -25,52 +25,45 @@ Page({
             delta: 1
         })
     },
-    //查询商品评论
+    //查询商品评论--------------------------------------------------------
     getCommodityToMongoJSON(id) {
         var that = this;
-        var getCommentByCommoditId = netapi.getCommentByCommoditId;
+        var getCommentByCommoditshop = netapi.getCommentByCommoditshop;
         netWork.request({
-            url: getCommentByCommoditId,
-            method: "GET",
-            header: {
-                "content-type": "application/json",
-                "Ltoken": wx.getStorageSync('token'),
-                "LclientCode": 3
-            },
+            url: getCommentByCommoditshop,
             data: {
-                commoditId: id,
-                start: 0,
-                length: 0
+                commoditId: id
             },
             success: function (res) {
-                var _data = res.data.data;
+                var _data = res.data;
                 var arr = that.data.photoList;
-                _data.forEach(item => {
-                    var commentList = item.context.files;
-                    var newArr = [];
-                    commentList.forEach((item, index) => {
-                        var filename = item;
-                        var index1 = filename.lastIndexOf(".");
-                        var index2 = filename.length;
-                        var type = filename.substring(index1, index2);
-                        if (type == ".mp4" || type == ".avi" || type == ".flv" || type == ".webm") {
-                            commentList = []
-                            var obj = {};
-                            obj.type = "1";
-                            obj.name = item;
-                            newArr.push(obj)
-                        }
+                console.log(_data)
+                // _data.forEach(item => {
+                //     var commentList = item;
+                //     var newArr = [];
+                //     commentList.forEach((item, index) => {
+                //         var filename = item;
+                //         var index1 = filename.lastIndexOf(".");
+                //         var index2 = filename.length;
+                //         var type = filename.substring(index1, index2);
+                //         if (type == ".mp4" || type == ".avi" || type == ".flv" || type == ".webm") {
+                //             commentList = []
+                //             var obj = {};
+                //             obj.type = "1";
+                //             obj.name = item;
+                //             newArr.push(obj)
+                //         }
 
-                        if (type == ".png" || type == ".jpg" || type == ".jpeg") {
-                            arr.push(item)
-                            var obj = {};
-                            obj.type = "2";
-                            obj.name = item;
-                            newArr.push(obj)
-                        }
-                    })
-                    item.context.files = newArr;
-                })
+                //         if (type == ".png" || type == ".jpg" || type == ".jpeg") {
+                //             arr.push(item)
+                //             var obj = {};
+                //             obj.type = "2";
+                //             obj.name = item;
+                //             newArr.push(obj)
+                //         }
+                //     })
+                //     item.context.files = newArr;
+                // })
                 that.setData({
                     commentList: _data,
                     photoList: arr
@@ -94,6 +87,7 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
+        console.log(options.shoppid)
         this.setData({
             count: options.count
         })

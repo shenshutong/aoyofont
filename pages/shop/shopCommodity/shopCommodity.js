@@ -156,9 +156,13 @@ Page({
     },
     //商户商品列表推荐----------------------
     groupShoppList: function () {
-        var groupShoppList = netapi.shoppDetailUrl + '?groupId=' + Number(this.data.groupId);
+        var groupShoppList = netapi.shoppDetailUrl;
+        var id=this.data.groupId;
         netWork.request({
             url: groupShoppList,
+            data: {
+                "groupId": id,
+            },
             success: (res) => {
                 var _data = res.data;
                 this.setData({
@@ -189,7 +193,7 @@ Page({
         })
 
     },
-    //商品详情
+    //商品详情--
     goShoppDetail: function (e) {
         var id = e.currentTarget.dataset.index;
         wx.navigateTo({
@@ -228,7 +232,7 @@ Page({
         that.groupShoppList();//门店商品
         that.shopCardOptions();//门店信息
     },
-    //分类推荐
+    //分类推荐-----
     selectcity() {
         var that = this;
         that.setData({ visible: true });
@@ -239,7 +243,7 @@ Page({
                 groupId: that.data.groupId
             },
             success: function (res) {
-                var _data = res.data.data;
+                var _data = res.data;
                 that.setData({
                     shoppType: _data
                 })
@@ -259,36 +263,39 @@ Page({
             searchVal: val
         })
     },
-    //根据分类查询商品
+    //根据分类查询商品---
     getTypeShoppList(e) {
         var that = this;
         var id = e.target.dataset.id;
         var groupShoppList = netapi.shoppDetailUrl;
         var val = that.data.searchVal;
         var data;
-        if (val) {
-            data = {
-                "param": {
-                    type_id: id,
-                    group_id: that.data.groupId,
-                    commodity_name: that.data.searchVal,
-                    cutom_id: wx.getStorageSync('SYSTEM_USER').USER_ID
-                }
-            }
-        } else {
-            data = {
-                "param": {
-                    type_id: id,
-                    group_id: that.data.groupId,
-                    cutom_id: wx.getStorageSync('SYSTEM_USER').USER_ID
-                }
-            }
-        }
+        // if (val) {
+        //     data = {
+        //         "param": {
+        //             type_id: id,
+        //             groupId: that.data.groupId,
+        //             commodity_name: that.data.searchVal,
+        //             cutom_id: wx.getStorageSync('SYSTEM_USER').USER_ID
+        //         }
+        //     }
+        // } else {
+        //     data = {
+        //         "param": {
+        //             type_id: id,
+        //             groupId: that.data.groupId,
+        //             cutom_id: wx.getStorageSync('SYSTEM_USER').USER_ID
+        //         }
+        //     }
+        // }
         netWork.request({
             url: groupShoppList,
-            data: data,
+            data: {
+                type_id: id,
+                groupId: that.data.groupId
+            },
             success: function (res) {
-                var _data = res.data.data;
+                var _data = res.data;
                 that.setData({
                     GroupShoppTab: _data
                 })

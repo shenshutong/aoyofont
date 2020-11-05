@@ -27,6 +27,7 @@ var getCarIllegal = baseUrl + 'car/illegal/getCarIllegal';//查询违章
 var querySuitDetail = baseUrl + 'suitAPPDriver/querySuitDetail';//套餐查询
 var upLocation = baseUrl + 'location/upLocation';//实时上传地理位置
 var getCommentByCommoditId = baseUrl + 'comment/getCommentByCommoditId';//查询评论列表
+var getCommentByCommoditshop = baseUrl + 'shop/getCommentByCommoditId';//查询评论列表------------------------------
 var getCommodityToMongoJSON = baseUrl + 'commodityDriver/getCommodityToMongoJSON';//获取商品介绍
 var getCommodityIconPlate = baseUrl + 'commodityPanelDriver/getCommodityPanel';//查询首页商品分类
 var getCustomAllowReceiveCouponList = baseUrl + 'coupon/getCustomAllowReceiveCouponList';//查询可领取的优惠劵
@@ -60,7 +61,7 @@ var updateCustomCarBrand = baseUrl + 'carManageDetailsDriver/updateCustomCarBran
 //门店
 var groupAll = baseUrl + 'groupApiDriver/queryAllGroup';//查询所有商户
 var groupDetail = baseUrl + 'shop/queryGroupDetail';//门店详情----------------------------------
-var queryCommodityClassByGroupId = baseUrl + 'commodityDriver/queryCommodityClassByGroupId';//门店分类筛选
+var queryCommodityClassByGroupId = baseUrl + 'shop/queryCommodityClassByGroupId';//门店分类筛选-----
 var queryGroupAppointmentRules = baseUrl + 'customAppointmentDriver/queryGroupAppointmentRules';//预约查询
 var addCustomAppointment = baseUrl + 'customAppointmentOrderDriver/addCustomAppointment';//预约
 
@@ -143,6 +144,7 @@ var getProgressNodeByWorkOrderId = baseUrl + 'work/progress/getProgressNodeByWor
 //node的导出方式
 module.exports = {
   indexTypeUrl: indexTypeUrl,
+  getCommentByCommoditshop:getCommentByCommoditshop,
   upLoadFileWork: upLoadFileWork,
   customSignture: customSignture,
   delOptions: delOptions,

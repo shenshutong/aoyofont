@@ -14,7 +14,7 @@ Page({
         menuHeight: app.globalData.menuHeight,
         imagePrefix: netapi.imagePrefix,//图片路径
         shoppID: "",
-        swiperList: [],
+        swiperList:"",
         cateItems: [
             {
                 cate_id: 1,
@@ -48,7 +48,8 @@ Page({
         group_id: 0,//商户id
         KFtell: '',//客服电话
         html: "",
-        commodit_comment_count: ""
+        commodit_comment_count: "",
+        commodityId:''
     },
     // 返回首页
     backHome: function () {
@@ -107,7 +108,7 @@ Page({
     //查看更多评论
     lookMoreComment: function () {
         wx.navigateTo({
-            url: '/pages/index/moreComment/index?shoppid=' + this.data.shoppID + "&count=" + this.data.commodit_comment_count
+            url: '/pages/index/moreComment/index?shoppid=' + this.data.commodityId + "&count=" + this.data.commodit_comment_count
         })
     },
     //加入购物车
@@ -149,22 +150,21 @@ Page({
         netWork.request({
             url: shoppDetailUrl,
             data: {
-                "param": {
-                    "commodity_id": id,
-                    "custom_id": wx.getStorageSync('SYSTEM_USER').USER_ID
-                }
+                "commodity_id": id,
             },
             success: (res) => {
-                var imgs = res.data.data[0].imgs;
-                var norms = res.data.data[0].norms;
-                var featured = res.data.data[0].featured;
-                var shoppDesc = res.data.data[0].commodity_name;
-                var shoppPrice = res.data.data[0].commodity_selling_price;
-                var collection = res.data.data[0].collection;
-                var group_id = res.data.data[0].group_id;
-                var commodity_number = res.data.data[0].commodity_number;
-                var commodit_comment_count = res.data.data[0].commodit_comment_count;
+                var imgs = res.data[0].commodityImgUrl;
+                var norms = res.data[0].aoyoCommodityNorms;
+                var featured = res.data[0].featured;
+                var shoppDesc = res.data[0].commodityName;
+                var shoppPrice = res.data[0].commoditySellingPrice;
+                var collection = res.data[0].collection;
+                var group_id = res.data[0].groupId;
+                var commodity_number = res.data[0].commodityNumber;
+                var commodit_comment_count = res.data[0].aoyoGroupCommodity.length;
+                var commodityId=res.data[0].commodityId;
                 that.setData({
+                    commodityId:commodityId,
                     swiperList: imgs,
                     shoppDesc: shoppDesc,
                     commodit_comment_count: commodit_comment_count,
@@ -176,7 +176,7 @@ Page({
                 })
 
                 // 获取商品介绍详情
-                if (res.data.data[0].commodity_number) {
+                if (res.data[0].commodityNumber) {
                     var getCommodityToMongoJSON = netapi.getCommodityToMongoJSON;
                     wx.request({
                         url: getCommodityToMongoJSON,

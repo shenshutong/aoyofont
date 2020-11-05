@@ -24,21 +24,23 @@
 		</view>
 		<view class="item" wx:for="{{commentList}}" wx:key="key">
 			<view class="essential">
-				<view class="item_img" style="width:15%">
-					<image src="{{item.organizer.userPhoto}}"></image>
-				</view>
 				<view class="item_name" style="width:85%">
 					<view class="date">
 						<view>
-							<text>{{item.organizer.userName}}</text>
+							<text>评分：{{item.pingfen}}</text>
 						</view>
 						<view class="dateD">
-							<text>{{item.createTimeStr}}</text>
+							<text>评论：{{item.groupCommentContent}}</text>
 						</view>
 					</view>
-					<view class="rate">
-						<image src="../../../img/star.png" wx:for="{{item.score}}" wx:key="key"></image><text>{{item.score}}.0</text>
+					<view class="date">
+						<view>
+							<text>评论时间：{{item.groupCommentTime}}</text>
+						</view>
 					</view>
+					<!-- <view class="rate">
+						<image src="../../../img/star.png" wx:for="{{item.score}}" wx:key="key"></image><text>{{item.score}}</text>
+					</view> -->
 				</view>
 			</view>
 			<view class="commentContent">

@@ -58,7 +58,6 @@ Page({
     goShopDetail: function (e) {
         var that= this;
         var id=e.currentTarget.dataset.id;
-        console.log(id)
         wx.navigateTo({
             url: '/pages/shop/shopCommodity/shopCommodity?id=' + id
         })
