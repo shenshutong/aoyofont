@@ -1,0 +1,164 @@
+<view>
+	<!-- 自定义导航栏 start -->
+	<view class="nav-bar" style="height:{{navBarHeight}}px;">
+		<view class="back"
+			style="height:{{menuHeight}}px; min-height:{{menuHeight}}px; line-height:{{menuHeight}}px;  bottom:{{menuBotton}}px;"
+			bindtap="backHome">
+			<view class="backBu">
+				<view class="back-content">
+					<view style="width:100%;height:100%" bindtap="backS">
+						<van-icon size="20" name="arrow-left" />
+					</view>
+				</view>
+				<text>订单详情</text>
+				<view style="width:120rpx"></view>
+			</view>
+		</view>
+	</view>
+	<!-- 自定义导航栏 end -->
+	<view class="box" style="margin-top:{{navBarHeight}}px">
+		<view class="success">
+			<view class="content" wx:if="{{cancelStatus==1}}">
+				<view>等待您下单</view>
+				<view>还剩{{countdown.minute}}分钟{{countdown.second}}秒自动取消订单</view>
+			</view>
+			<view class="content" wx:if="{{cancelStatus==2}}">
+				<!-- 待支付状态包含：等待下单、订单已取消、订单详情
+							待评价、进行中状态包含：申请退货、订单详情
+							已完成状态包含：订单详情	
+				-->
+				<view>订单已取消</view>   
+				<view>很遗憾未能为您提供服务，期待您再次光临奥友</view>
+			</view>
+			<view class="content" wx:if="{{cancelStatus==3}}">
+				<view>申请退货</view>
+			</view>
+			<view class="content" wx:if="{{cancelStatus==4}}">
+				<view>已为您申请退单，退款金额在1~7个工作日中退还到您支付的账号，请耐心等待！</view>
+			</view>
+			<view class="content" wx:if="{{cancelStatus==5}}">
+				<view>订单详情</view>
+			</view>
+			<view class="content" wx:if="{{cancelStatus==6}}">
+				<view>商品已成功退货，期待您再次购买</view>
+			</view>
+			<view class="content" wx:if="{{cancelStatus==7}}">
+				<view>该订单已取消</view>
+			</view>
+			<view class="content" wx:if="{{cancelStatus==8}}">
+				<view>该订单已失效</view>
+			</view>
+			<view class="content" wx:if="{{cancelStatus==9}}">
+				<view>退货处理中</view>
+			</view>
+		</view>
+		<view class="line"></view>
+		<!-- 商品 -->
+		<view class="shopp">
+			<view class="items" wx:for="{{content}}"  wx:key='key'  style="margin-bottom:30rpx;position: relative;">
+				<view class="shoppName">
+					<image src="../../../img/dianpu.png"></image><text>{{item.groupName}}</text>
+				</view>
+				<view class="shoppName" wx:if="{{item.suitName!=null}}">
+					<text style="margin-left:30rpx">{{item.suitName}}</text>
+				</view>
+					<view class="detail_i">
+						<image src="{{item.commodityImgUrl}}"></image>
+					</view>
+			</view>
+				<!-- </view> -->
+		</view>
+		<view class="line"></view>
+		<view class="callK" bindtap="callPhone">
+			<image src="../../../img/phone.png"></image>联系客服
+			<view class="modal-mask" catchtap="hideModal" catchtouchmove="preventTouchMove" wx:if="{{showModal}}">
+			</view>
+			<view class="modal-dialog" wx:if="{{showModal}}">
+				<view class="modal-title">
+					<image src="../../../img/phone.png"></image>{{KFtell}}
+				</view>
+				<view class="modal-footer">
+					<view class="btn-cancel" catchtap="onCancel" data-status="cancel">取消</view>
+					<view class="btn-confirm" catchtap="onConfirm" data-status="confirm">呼叫</view>
+				</view>
+			</view>
+		</view>
+		<view class="line"></view>
+		<view class="dOptions">
+			<view class="dOptions-T">
+				<view class="title">订单信息</view>
+				<view class="dOptions-T_C">
+					<view wx:if="{{content.order[0].orderStatus==1}}">
+						<view class="c_L">特色服务</view>
+						<view class="c_R" data-code="{{content.timeCode}}" bindtap="goServe">去选择/更换预约服务</view>
+					</view>
+					<view>
+						<view class="c_L">订单编号</view>
+						<view class="c_R">{{content.orderPayNumber}}</view>
+					</view>
+					<view>
+						<view class="c_L">下单时间</view>
+						<view class="c_R">{{content.orderInputTime}}</view>
+					</view>
+					<view>
+						<view class="c_L">支付方式</view>
+						<view class="c_R">微信小程序支付</view>
+					</view>
+					<view>
+						<view class="c_L">配送方式</view>
+						<view class="c_R">门店自提</view>
+					</view>
+				</view>
+			</view>
+			<view class="dOptions-B">
+				<view>
+					<view class="c_L">账单金额</view>
+					<view class="c_R">￥{{content.orderAmount}}</view>
+				</view>
+				<view>
+					<view class="c_L">优惠</view>
+					<view class="c_R">- ￥0.00</view>
+				</view>
+				<view>
+					<view class="c_L">实付金额</view>
+					<view class="c_R" style="color:#DB0101">￥{{content.orderPracticalAmount}}</view>
+				</view>
+			</view>
+		</view>
+		<view class="footer" wx:if='{{orderStatus==1}}'>
+			<view class="cancel" bindtap="cancelOeder">取消订单</view>
+			<view class="wchatPayment" bindtap="wchatPaymentB">微信支付</view>
+		</view>
+		<view class="footer" wx:if='{{orderStatus==3}}'>
+			<view class="wchatPayment" bindtap="tuiOrder">申请退货</view>
+		</view>
+		<view class="modal-mask1" bindtap="hideModal1" catchtouchmove="preventTouchMove1" wx:if="{{showModal1}}"></view>
+		<view class="modal-dialog1" wx:if="{{showModal1}}">
+			<view class="modal-title1">
+				<view class="title">请填写取消订单原因</view>
+				<view class="cancelContent">
+					<textarea bindinput='textareaValue' placeholder="请输入取消订单原因" maxlength="100"></textarea>
+					<text class="currentWordNumber">{{currentNoteLen|0}}/{{noteMaxLen}}个字</text>
+				</view>
+			</view>
+			<view class="modal-footer1">
+				<view class="btn-cancel1" catchtap="onCancel1" data-status="cancel">取消</view>
+				<view class="btn-confirm1" catchtap="onConfirm1" data-status="confirm">确认</view>
+			</view>
+		</view>
+		<view class="modal-mask2" bindtap="hideModal2" catchtouchmove="preventTouchMove2" wx:if="{{showModal2}}"></view>
+		<view class="modal-dialog2" wx:if="{{showModal2}}">
+			<view class="modal-title2">
+				<view class="title">请填写申请退货原因</view>
+				<view class="cancelContent">
+					<textarea bindinput='textareaValue1' placeholder="请输入申请退货原因" maxlength="100"></textarea>
+					<text class="currentWordNumber">{{currentNoteLen1|0}}/{{noteMaxLen}}个字</text>
+				</view>
+			</view>
+			<view class="modal-footer2">
+				<view class="btn-cancel1" catchtap="onCancel2" data-status="cancel">取消</view>
+				<view class="btn-confirm1" catchtap="onConfirm2" data-status="confirm">确认</view>
+			</view>
+		</view>
+	</view>
+</view>

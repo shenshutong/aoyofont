@@ -1,0 +1,445 @@
+@import "../../../commpents/navbar.wxss";
+
+page {
+    background-color: #fff;
+}
+
+.success {
+    width: 100%;
+    height: 140rpx;
+    background: linear-gradient(90deg, rgba(255, 140, 101, 1) 0%, rgba(255, 89, 68, 1) 100%);
+    display: flex;
+    align-items: center;
+    font-size: 24rpx;
+    border-top: 1px solid #ccc;
+}
+
+.content {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    padding-left: 30rpx;
+    box-sizing: border-box;
+    color: #fff;
+}
+
+.content image {
+    width: 130rpx;
+    height: 130rpx;
+}
+
+/* shopp */
+.shopp {
+    width: 100%;
+    background-color: #fff;
+    padding: 20rpx;
+    box-sizing: border-box;
+}
+
+.shoppName {
+    width: 88%;
+    height: 50rpx;
+    display: flex;
+    align-items: center;
+    color: #333;
+    font-size: 24rpx;
+}
+
+.shoppName image {
+    width: 25rpx;
+    height: 30rpx;
+    margin-right: 15rpx;
+}
+
+.shoppDetail {
+    width: 100%;
+    height: 150rpx;
+    padding: 10rpx 0;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.shoppDetail .detail_i {
+    width: 22%;
+    height: 100%;
+}
+
+.shoppDetail .detail_i image {
+    width: 100%;
+    height: 100%;
+}
+
+.shoppDetail .detail_c {
+    width: 75%;
+    height: 100%;
+}
+
+.shoppDetail .detail_c view {
+    margin-bottom: 15rpx;
+}
+
+.shoppDetail .detail_c view:nth-child(1) {
+    width: 70%;
+    font-size: 28rpx;
+    display: -webkit-box;
+    overflow: hidden;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+}
+
+.shoppDetail .detail_c view:nth-child(2) {
+    font-size: 24rpx;
+    color: #999999;
+}
+
+.shoppDetail .detail_c .money {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 90%;
+}
+
+.shoppDetail .detail_c .money text:nth-child(1) {
+    font-size: 26rpx;
+    color: #DB0202;
+}
+
+.shoppDetail .detail_c .money text:nth-child(2) {
+    font-size: 26rpx;
+}
+
+.callK {
+    width: 100%;
+    height: 70rpx;
+    padding: 5rpx 0;
+    box-sizing: border-box;
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28rpx;
+}
+
+.callK image {
+    width: 30rpx;
+    height: 30rpx;
+    margin-right: 20rpx;
+}
+
+.dOptions {
+    width: 100%;
+    background-color: #fff;
+    margin-top: 20rpx;
+    padding: 20rpx;
+    box-sizing: border-box;
+    margin-bottom: 100rpx;
+}
+
+.dOptions-T,
+.dOptions-B {
+    width: 100%;
+    border-bottom: 1px solid rgba(237, 237, 237, 1);
+    padding-bottom: 20rpx;
+}
+
+.dOptions-T .title {
+    font-size: 32rpx;
+}
+
+.dOptions-T .dOptions-T_C view {
+    display: flex;
+    margin-top: 10rpx;
+}
+
+.dOptions-T .dOptions-T_C view .c_L {
+    width: 25%;
+    color: #656565;
+    font-size: 26rpx;
+}
+
+.dOptions-T .dOptions-T_C view .c_R {
+    width: 75%;
+    color: #333333;
+    font-size: 26rpx;
+}
+
+.dOptions-B {
+    width: 100%;
+    padding-right: 30rpx;
+    box-sizing: border-box;
+    margin-top: 20rpx;
+    border-bottom: none;
+}
+
+.dOptions-B view {
+    width: 100%;
+    display: flex;
+    margin-top: 10rpx;
+    justify-content: space-between;
+    font-size: 26rpx;
+}
+
+.dOptions-B view .c_R {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.line {
+    width: 100%;
+    height: 20rpx;
+    background-color: #f6f6f6;
+}
+
+.modal-mask {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: #000;
+    opacity: 0.5;
+    overflow: hidden;
+    z-index: 9000;
+    color: #fff;
+}
+
+.modal-dialog {
+    width: 540rpx;
+    overflow: hidden;
+    position: fixed;
+    top: 50%;
+    left: 0;
+    z-index: 9999;
+    background: #f9f9f9;
+    margin: -180rpx 105rpx;
+    border-radius: 36rpx;
+}
+
+.modal-title {
+    padding-top: 50rpx;
+    font-size: 36rpx;
+    color: #030303;
+    text-align: center;
+    padding: 80rpx;
+}
+
+.modal-title image {
+    width: 30rpx !important;
+    height: 30rpx !important;
+    margin-right: 20rpx;
+}
+
+.modal-footer {
+    display: flex;
+    flex-direction: row;
+    height: 100rpx;
+    border-top: 1px solid #EEEEEE;
+    font-size: 34rpx;
+    line-height: 100rpx;
+}
+
+.btn-cancel {
+    width: 50%;
+    color: #666;
+    text-align: center;
+    border-right: 1px solid #EEEEEE;
+    font-size: 30rpx;
+}
+
+.btn-confirm {
+    width: 50%;
+    color: #000;
+    font-size: 30rpx;
+    text-align: center;
+}
+
+.footer {
+    width: 100%;
+    height: 100rpx;
+    background-color: #fff;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+
+}
+
+.footer .cancel {
+    width: 20%;
+    height: 70%;
+    border: 1px solid #ccc;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24rpx;
+    border-radius: 10rpx;
+}
+
+.footer .wchatPayment {
+    width: 20%;
+    height: 70%;
+    border: 1px solid red;
+    color: red;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24rpx;
+    border-radius: 10rpx;
+    margin-left: 20rpx;
+    margin-right: 30rpx;
+}
+
+.erma {
+    width: 60rpx;
+    height: 60rpx;
+    position: absolute;
+    top: 50rpx;
+    right: 38rpx;
+}
+
+.erma image {
+    width: 100%;
+    height: 100%;
+}
+
+
+.modal-mask1,
+.modal-mask2,
+.modal-mask3 {
+
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: #000;
+    opacity: 0.5;
+    overflow: hidden;
+    z-index: 9000;
+    color: #fff;
+}
+
+.modal-dialog1,
+.modal-dialog2 {
+    width: 540rpx;
+    overflow: hidden;
+    position: fixed;
+    top: 50%;
+    left: 0;
+    z-index: 9999;
+    background: #f9f9f9;
+    margin: -180rpx 105rpx;
+    border-radius: 36rpx;
+}
+
+.modal-dialog3 {
+    width: 500rpx;
+    overflow: hidden;
+    position: fixed;
+    top: 50%;
+    left: 0;
+    z-index: 9999;
+    background: #f9f9f9;
+    margin: -180rpx 130rpx;
+    border-radius: 36rpx;
+}
+
+.modal-title1,
+.modal-title2 {
+    padding-top: 50rpx;
+    color: #030303;
+    padding: 0 20rpx;
+    box-sizing: border-box;
+    margin-bottom: 20rpx;
+}
+
+.modal-title3 {
+    color: #030303;
+    width: 100%;
+    height: 465rpx;
+    padding: 20rpx;
+    box-sizing: border-box;
+}
+
+.modal-title3 image {
+    width: 100%;
+    height: 100%;
+    border-radius: 36rpx;
+
+}
+
+.modal-title1 .title,
+.modal-title2 .title {
+    width: 100%;
+    height: 90rpx;
+    line-height: 90rpx;
+    text-align: center;
+}
+
+.cancelContent textarea {
+    width: 100%;
+    border: 1px solid #EEEEEE;
+    border-radius: 20rpx;
+    padding: 30rpx;
+    box-sizing: border-box;
+    font-size: 26rpx;
+}
+
+.currentWordNumber {
+    color: #999999;
+    font-size: 24rpx;
+    position: absolute;
+    right: 40rpx;
+    bottom: 140rpx;
+}
+
+
+
+.modal-footer1,
+.modal-footer2 {
+    display: flex;
+    flex-direction: row;
+    height: 100rpx;
+    border-top: 1px solid #EEEEEE;
+    font-size: 34rpx;
+    line-height: 100rpx;
+}
+
+.btn-cancel1,
+.btn-cancel1 {
+    width: 50%;
+    color: #666;
+    text-align: center;
+    border-right: 1px solid #EEEEEE;
+    font-size: 30rpx;
+}
+
+.btn-confirm1,
+.btn-confirm2 {
+    width: 50%;
+    color: #000;
+    font-size: 30rpx;
+    text-align: center;
+}
+
+.goMap {
+    width: 15%;
+    height: 42rpx;
+    font-size: 22rpx;
+    border: 1px solid #ccc;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 30rpx;
+    background-color: rgba(80, 92, 116, 1);
+    color: #fff;
+    position: absolute;
+    top: 0rpx;
+    right: 10rpx;
+}

@@ -1,0 +1,119 @@
+@import "../../../commpents/navbar.wxss";
+.con_del{
+    padding: 30px 0;
+    width: 100%;
+    height: 800rpx;
+    background-color: #fff;
+}
+.header{
+    width: 100%;
+    height: 100rpx;
+    box-sizing: border-box;
+}
+.header van-tabs{
+    width: 100%;
+    height: 100%;
+    background-color: red;
+}
+.line{
+    width: 100%;
+    height: 20rpx;
+    background-color: #f6f6f6;
+}
+.items{
+    width: 100%;
+    background-color: #fff;
+    border-bottom: 20rpx solid #f6f6f6;
+}
+.items-t{
+    width: 100%;
+    height: 70rpx;
+    padding: 10rpx 20rpx;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+}
+.items-t .items-t-l{
+    width: 85%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    font-size: 28rpx;
+    color: #333333;
+}
+.items-t .items-t-l image{
+    width: 5%;
+    height: 55%;
+    margin-right: 15rpx;
+}
+.items-t-r{
+    width: 15%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    font-size: 28rpx;
+    color: #F3733B;
+}
+.items-m{
+    width: 100%;
+    padding: 0 20rpx;
+    box-sizing: border-box;
+    display: flex;
+}
+.items-m .items-m-l{
+    width: 30%;
+    height: 100%;
+    padding: 20rpx;
+    box-sizing: border-box;
+}
+.items-m .items-m-l image{
+    width: 100%;
+    height: 160rpx;
+}
+.items-m .items-m-m{
+    width: 50%;
+    height: 100%;
+    padding: 20rpx 20rpx 20rpx 0;
+    box-sizing: border-box;
+}
+.items-m .items-m-m view:nth-child(1){
+    font-size: 28rpx;
+    display: -webkit-box;
+    overflow: hidden;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+.items-m .items-m-m view:nth-child(2){
+    font-size: 26rpx;
+    color: #999999;
+    margin-top: 20rpx;
+}
+.items-m .items-m-r{
+    width: 20%;
+    height: 100%;
+    padding: 20rpx;
+    box-sizing: border-box;
+    text-align: end;
+}
+.items-m .items-m-r view:nth-child(2){
+    font-size: 26rpx;
+    color: #999999;
+    margin-top: 60rpx;
+}
+.items-b{
+    width: 100%;
+    height: 100rpx;
+    padding: 0 40rpx;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+.items-b text{
+    font-size: 24rpx;
+    display: inline-block;
+    padding: 10rpx 30rpx;
+    border: 1rpx solid #E5E5E5;
+    border-radius: 30rpx;
+    margin-left: 15rpx;
+}

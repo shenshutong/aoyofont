@@ -21,7 +21,7 @@
 				<!-- 套餐名称 -->
 				<view class="shopName">
 					<view class="checkBox">
-						<radio class="radio" checked="{{cellF.selectedStatus}}" data-index="{{cellFindex}}" value="{{cellFindex}}"></radio>
+						<radio class="radio" checked="1" data-index="{{cellFindex}}" value="{{cellFindex}}"></radio>
 					</view>
 					<view class="setMeal">
 						<view>{{cellF.commoditySuitName}}</view>
@@ -42,7 +42,7 @@
 							<view class="numberMoney">
 							<!-- 价钱 -->
 								<text>￥{{item.commoditySellingPrice}}</text>
-								<van-stepper value="{{item.commodityCount}}" disabled="{{item.whether_id==2}}" min="{{item.min_number}}" max="{{item.max_number}}" disable-input="true" bind:plus="addCount" bind:minus="minusCount" data-index="{{index}}" data-findex='{{cellFindex}}' />
+								<van-stepper value="" disabled="{{item.whether_id==2}}" min="{{0}}" max="{{item.commodityStockNumber}}" disable-input="true" bind:plus="addCount" bind:minus="minusCount" data-index="{{index}}" data-findex='{{cellFindex}}' />
 							</view>
 						</view>
 					</view>

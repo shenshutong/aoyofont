@@ -21,6 +21,24 @@ Page({
             delta: 1
         })
     },
+     //查询保养套餐
+     getUpkeepList() {
+        var that = this;
+        netWork.request({
+            url: "http://localhost:8081/commodity/querySuitDetail",
+            data: {
+                typeId: 2,
+                id : 1
+            },
+            success: function (res) {
+                var _data = res.data.data;
+                that.setData({
+                    upkeepList: _data
+                })
+                console.log(_data)
+            }
+        })
+    },
     // 单选按钮事件
     radioChange(e) {
         var Findex = e.detail.value;
@@ -37,25 +55,9 @@ Page({
         })
         this.getTotalPrice(Findex);
     },
-    //查询保养套餐
-    getUpkeepList() {
-        var that = this;
-        netWork.request({
-            url: "http://localhost:8081/commodity/querySuitDetail",
-            data: {
-                typeId: 2,
-                id : 1
-            },
-            success: function (res) {
-                var _data = res.data.data;
-                that.setData({
-                    upkeepList: _data
-                })
-            }
-        })
-    },
     //计算金额
     getTotalPrice(index) {
+        console.log("计算金额")
         let carts = this.data.upkeepList[index];// 获取购物车列表
         let total = 0;
         if (carts.selectedStatus == true) {
@@ -88,6 +90,7 @@ Page({
         this.setData({
             upkeepList: carts
         });
+        console.log(Findex)
         this.getTotalPrice(Findex);
     },
     //减少数量
@@ -106,6 +109,7 @@ Page({
     },
     //去结算
     goShoppOrder() {
+        console.log(this.data.total)
         if (this.data.total > 0) {
             var shoppList = this.data.upkeepList;
             var arr = [];

@@ -32,7 +32,7 @@ Page({
     //订单列表
     goorderList: function () {
         wx.navigateTo({
-            //url: '/pages/my/orderList/orderList?index=0'
+            url: '/pages/my/orderList/orderList?index=0'
         })
     },
     //优惠券

@@ -1,0 +1,222 @@
+<view>
+	<!-- 自定义导航栏 start -->
+	<view class="nav-bar" style="height:{{navBarHeight}}px;">
+		<view class="back" style="height:{{menuHeight}}px; min-height:{{menuHeight}}px; line-height:{{menuHeight}}px;  bottom:{{menuBotton}}px;" bindtap="backHome">
+			<view class="backBu">
+				<view class="back-content">
+					<view style="width:40%" bindtap="backMy">
+						<van-icon name="arrow-left" />
+					</view>
+					<view style="width:20%">
+						<image src="../../../img/line.png"></image>
+					</view>
+					<view style="width:40%" bindtap="backHome">
+						<van-icon name="home-o" />
+					</view>
+				</view>
+				<text>订单列表</text>
+				<view style="width:120rpx"></view>
+			</view>
+		</view>
+	</view>
+	<!-- 自定义导航栏 end -->
+	<view class="content" style="margin-top:{{navBarHeight}}px">
+		<view class="tabRoot">
+			<tab list="{{cateItems}}" isShowNum="{{true}}" thisIndex="{{thisIndex}}" bind:tabclick="tabClick"></tab>
+		</view>
+
+		<view class="con_del">
+			<!-- 全部 -->
+			<block wx:if="{{thisIndex==0}}">
+				<view class="items" wx:for="{{list}}" wx:key="key" data-code="{{item.orderId}}" bindtap="getOrderDetail">
+							<view class="items-t">
+								<view class="items-t-l">
+									<image src="../../../img/dianpu.png"></image>{{item.groupName}}
+								</view>
+								<view class="items-t-r">
+									<text wx:if="{{item.sendOrderStatus==1}}">待支付</text>
+									<text wx:if="{{item.sendOrderStatus==2}}">进行中</text>
+									<text wx:if="{{item.sendOrderStatus==3}}">待评价</text>
+									<text wx:if="{{item.sendOrderStatus==4}}">已完成</text>
+								</view>
+							</view>
+							<view class="items-m">
+								<view class="items-m-l">
+									<image src="{{item.commodityImgUrl}}"></image>
+								</view>
+								<view class="items-m-m">
+									<view>{{item.commodityName}}</view>
+									<view>{{item.commodityDesc}}</view>
+								</view>
+								<view class="items-m-r">
+                  <view style="font-size:28rpx">￥{{item.commoditySellingPrice}}.00</view>
+                  <view>x{{item.commoditySort}}</view>
+								</view>
+							</view>
+							<view class="items-b">
+                <text wx:if="{{item.sendOrderStatus==1}}">去支付</text>
+								<text wx:if="{{item.sendOrderStatus==4 || item.sendOrderStatus==3}}">加入购物车</text>
+								<text data-id="{{item.orderId}}" wx:if="{{item.sendOrderStatus==4}}" catchtap="delOrder">删除订单</text>
+                <text wx:if="{{item.sendOrderStatus==2}}">查看物流</text>
+                <text wx:if="{{item.sendOrderStatus==3}}" bindtap="goevaluate">去评价</text>
+							</view>
+						</view>
+			</block>
+
+				<!-- 待支付 -->
+				<block wx:if="{{thisIndex==1}}">
+					<view class="items" wx:for="{{list}}" wx:key="key" data-code="{{item.orderId}}" bindtap="getOrderDetail">
+						<view wx:if="{{item.sendOrderStatus==1}}">
+							<view class="items-t">
+								<view class="items-t-l">
+									<image src="../../../img/dianpu.png"></image>{{item.groupName}}
+								</view>
+								<view class="items-t-r">
+									<text wx:if="{{item.sendOrderStatus==1}}">待支付</text>
+									<text wx:if="{{item.sendOrderStatus==2}}">进行中</text>
+									<text wx:if="{{item.sendOrderStatus==3}}">待评价</text>
+									<text wx:if="{{item.sendOrderStatus==4}}">已完成</text>
+								</view>
+							</view>
+							<view class="items-m">
+								<view class="items-m-l">
+									<image src="{{item.commodityImgUrl}}"></image>
+								</view>
+								<view class="items-m-m">
+									<view>{{item.commodityName}}</view>
+									<view>{{item.commodityDesc}}</view>
+								</view>
+								<view class="items-m-r">
+                  <view style="font-size:28rpx">￥{{item.commoditySellingPrice}}.00</view>
+                  <view>x{{item.commoditySort}}</view>
+                </view>
+							</view>
+							<view class="items-b">
+                <text wx:if="{{item.sendOrderStatus==1}}">去支付</text>
+								<text wx:if="{{item.sendOrderStatus==2 || item.sendOrderStatus==4 || item.sendOrderStatus==3}}">加入购物车</text>
+								<text data-id="{{item.orderId}}" wx:if="{{item.sendOrderStatus==4}}" catchtap="delOrder">删除订单</text>
+                <text wx:if="{{item.sendOrderStatus==2 || item.sendOrderStatus==4 || item.sendOrderStatus==3}}">查看物流</text>
+                <text wx:if="{{item.sendOrderStatus==3}}" bindtap="goevaluate">去评价</text>
+							</view>
+						</view>
+						
+						</view>
+			</block>
+			<!-- 进行中 -->
+			<block wx:if="{{thisIndex==2}}">
+				<view class="items" wx:for="{{list}}" wx:key="key" data-code="{{item.orderId}}" bindtap="getOrderDetail">
+						<view wx:if="{{item.sendOrderStatus==2}}">
+							<view class="items-t">
+								<view class="items-t-l">
+									<image src="../../../img/dianpu.png"></image>{{item.groupName}}
+								</view>
+								<view class="items-t-r">
+									<text wx:if="{{item.sendOrderStatus==1}}">待支付</text>
+									<text wx:if="{{item.sendOrderStatus==2}}">进行中</text>
+									<text wx:if="{{item.sendOrderStatus==3}}">待评价</text>
+									<text wx:if="{{item.sendOrderStatus==4}}">已完成</text>
+								</view>
+							</view>
+							<view class="items-m">
+								<view class="items-m-l">
+									<image src="{{item.commodityImgUrl}}"></image>
+								</view>
+								<view class="items-m-m">
+									<view>{{item.commodityName}}</view>
+									<view>{{item.commodityDesc}}</view>
+								</view>
+								<view class="items-m-r">
+                  <view style="font-size:28rpx">￥{{item.commoditySellingPrice}}.00</view>
+                  <view>x{{item.commoditySort}}</view>
+                </view>
+							</view>
+							<view class="items-b">
+                <text wx:if="{{item.sendOrderStatus==1}}">去支付</text>
+								<text wx:if="{{item.sendOrderStatus==2 || item.sendOrderStatus==4 || item.sendOrderStatus==3}}">加入购物车</text>
+								<text data-id="{{item.orderId}}" wx:if="{{item.sendOrderStatus==4}}" catchtap="delOrder">删除订单</text>
+                <text wx:if="{{item.sendOrderStatus==2 || item.sendOrderStatus==4 || item.sendOrderStatus==3}}">查看物流</text>
+                <text wx:if="{{item.sendOrderStatus==3}}" bindtap="goevaluate">去评价</text>
+							</view>
+						</view>
+				</view>
+			</block>
+			<!-- 待评价 -->
+			<block wx:if="{{thisIndex==3}}">
+				<view class="items" wx:for="{{list}}" wx:key="key" data-code="{{item.orderId}}" bindtap="getOrderDetail">
+						<view wx:if="{{item.sendOrderStatus==3}}">
+							<view class="items-t">
+								<view class="items-t-l">
+									<image src="../../../img/dianpu.png"></image>{{item.groupName}}
+								</view>
+								<view class="items-t-r">
+									<text wx:if="{{item.sendOrderStatus==1}}">待支付</text>
+									<text wx:if="{{item.sendOrderStatus==2}}">进行中</text>
+									<text wx:if="{{item.sendOrderStatus==3}}">待评价</text>
+									<text wx:if="{{item.sendOrderStatus==4}}">已完成</text>
+								</view>
+							</view>
+							<view class="items-m">
+								<view class="items-m-l">
+									<image src="{{item.commodityImgUrl}}"></image>
+								</view>
+								<view class="items-m-m">
+									<view>{{item.commodityName}}</view>
+									<view>{{item.commodityDesc}}</view>
+								</view>
+								<view class="items-m-r">
+                  <view style="font-size:28rpx">￥{{item.commoditySellingPrice}}.00</view>
+                  <view>x{{item.commoditySort}}</view>
+                </view>
+							</view>
+							<view class="items-b">
+                <text wx:if="{{item.sendOrderStatus==1}}">去支付</text>
+								<text wx:if="{{item.sendOrderStatus==2 || item.sendOrderStatus==4 || item.sendOrderStatus==3}}">加入购物车</text>
+								<text data-id="{{item.orderId}}" wx:if="{{item.sendOrderStatus==4}}" catchtap="delOrder">删除订单</text>
+                <text wx:if="{{item.sendOrderStatus==2 || item.sendOrderStatus==4 || item.sendOrderStatus==3}}">查看物流</text>
+                <text wx:if="{{item.sendOrderStatus==3}}" data-id="{{item.commodity_id}}" data-detailID="{{item.order_detail_id}}" data-code="{{cell.orderId}}" data-groupId="{{cell.groupId}}" bindtap="goevaluate">去评价</text>
+							</view>
+						</view>
+						
+						</view>
+			</block>
+			<!-- 已完成 -->
+			<block wx:if="{{thisIndex==4}}">
+				<view class="items" wx:for="{{list}}" wx:key="key" data-code="{{item.orderId}}" bindtap="getOrderDetail">
+						<view wx:if="{{item.sendOrderStatus==4}}">
+							<view class="items-t">
+								<view class="items-t-l">
+									<image src="../../../img/dianpu.png"></image>{{item.groupName}}
+								</view>
+								<view class="items-t-r">
+									<text wx:if="{{item.sendOrderStatus==1}}">待支付</text>
+									<text wx:if="{{item.sendOrderStatus==2}}">进行中</text>
+									<text wx:if="{{item.sendOrderStatus==3}}">待评价</text>
+									<text wx:if="{{item.sendOrderStatus==4}}">已完成</text>
+								</view>
+							</view>
+							<view class="items-m">
+								<view class="items-m-l">
+									<image src="{{item.commodityImgUrl}}"></image>
+								</view>
+								<view class="items-m-m">
+									<view>{{item.commodityName}}</view>
+									<view>{{item.commodityDesc}}</view>
+								</view>
+								<view class="items-m-r">
+                  <view style="font-size:28rpx">￥{{item.commoditySellingPrice}}.00</view>
+                  <view>x{{item.commoditySort}}</view>
+                </view>
+							</view>
+							<view class="items-b">
+                <text wx:if="{{item.sendOrderStatus==1}}">去支付</text>
+								<text wx:if="{{item.sendOrderStatus==2 || item.sendOrderStatus==4 || item.sendOrderStatus==3}}">加入购物车</text>
+								<text data-id="{{item.orderId}}" wx:if="{{item.sendOrderStatus==4}}" catchtap="delOrder">删除订单</text>
+                <text wx:if="{{item.sendOrderStatus==2 || item.sendOrderStatus==4 || item.sendOrderStatus==3}}">查看物流</text>
+                <text wx:if="{{item.sendOrderStatus==3}}" bindtap="goevaluate">去评价</text>
+							</view>
+						</view>
+						</view>
+			</block>
+		</view>
+	</view>
+</view>
