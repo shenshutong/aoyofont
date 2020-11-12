@@ -73,7 +73,7 @@
 		<view class="ServicesAvailable">
 			<view class="item" wx:for="{{Services}}" wx:key="key" data-id="{{item.platformImageId}}"
 				data-path="{{item.platformImageDesc}}" bindtap="getTypePage">
-				<image src="{{imagePrefix+item.platformImageUri}}"></image>
+				<image src="{{item.platformImageUri}}"></image>
 				<text>{{item.platformImageName}}</text>
 			</view>
 		</view>

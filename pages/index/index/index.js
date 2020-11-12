@@ -277,6 +277,7 @@ Page({
                 this.setData({
                     Services: _data
                 })
+                console.log(_data)
             }
         })
     },

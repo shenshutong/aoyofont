@@ -57,14 +57,13 @@ Page({
     },
     //计算金额
     getTotalPrice(index) {
-        console.log("计算金额")
         let carts = this.data.upkeepList[index];// 获取购物车列表
         let total = 0;
         if (carts.selectedStatus == true) {
             carts.aoyoCommoditylist.forEach((item) => {
                 total += item.commodityCount * item.commoditySellingPrice;
             })
-
+            console.log("打印选中以后")
             if (carts.discount_tser == 1) {
                 this.setData({
                     total: (total - carts.discount_value).toFixed(2)
@@ -76,22 +75,24 @@ Page({
                 })
             }
         }
+        console.log(total)
 
     },
     // 增加数量
     addCount: function (e) {
-        let Findex = e.currentTarget.dataset.findex;//父元素下标
-        let Sindex = e.currentTarget.dataset.index;//子元素下标
-        let carts = this.data.upkeepList;
-        let arr = carts[Findex].commoditys;
-        let num = arr[Sindex].commodityCount;
-        num = num + 1;
-        arr[Sindex].commodityCount = num;
-        this.setData({
-            upkeepList: carts
-        });
-        console.log(Findex)
-        this.getTotalPrice(Findex);
+        
+        // var commodityCount = e.currentTarget.dataset.commodityCount;
+        // console.log(commodityCount)
+        // let Findex = e.currentTarget.dataset.findex;//父元素下标
+        // let Sindex = e.currentTarget.dataset.index;//子元素下标
+        // let carts = this.data.upkeepList;
+        // let arr = carts[Findex].aoyoCommoditylist;
+        // let num = arr[Sindex].commodityCount;
+        // num = num + 1;
+        // arr[Sindex].commodityCount = num;
+        // this.setData({
+        //     upkeepList: carts
+        // });
     },
     //减少数量
     minusCount: function (e) {
@@ -109,7 +110,6 @@ Page({
     },
     //去结算
     goShoppOrder() {
-        console.log(this.data.total)
         if (this.data.total > 0) {
             var shoppList = this.data.upkeepList;
             var arr = [];
