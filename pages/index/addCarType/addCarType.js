@@ -1,5 +1,5 @@
 // pages/index/addCarType/addCarType.js
-const app= getApp();
+const app = getApp();
 var netapi = require("../../../utils/api.js");
 var netWork = require('../../../utils/netWork.js');
 Page({
