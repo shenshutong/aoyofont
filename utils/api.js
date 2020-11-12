@@ -18,10 +18,30 @@ var getCarList=baseUrl + 'carBrand/getCarList'//查询所有车辆品牌
 var searchCar=baseUrl + 'carBrand/searchCarList'//搜索框查询车辆
 var getCustomCarList=baseUrl + 'carBrand/getCustomCarList'//车库拥有车辆
 var nearbyShopUrl = baseUrl + 'shop/getStoreList';//首页附近门店-------------------------------------------------
+<<<<<<< HEAD
+=======
+var shoppDetailUrl = baseUrl + 'shop/queryCommodityApi';//商品详情、列表---------------------------------------
+var addShoppCardJT = baseUrl + 'shop/addShoppingCar';//加入购物车-----------jt
+var searchHot = baseUrl + 'hotClassDriver/queryHotClass';//热门搜索
+var searchHistory = baseUrl + 'customQueryHistoryDriver/queryCustomQueryHistory';//搜索历史
+var delSearchHistory = baseUrl + 'customQueryHistoryDriver/deleteAllCustomQueryHistory';//删除搜索历史
+var cityList = baseUrl + 'cityLocationDriver/getcityLocationList';//查询城市列表
+var hotCityList = baseUrl + 'cityLocationDriver/getHotCityList';//查询城市列表
+var addhotCityList = baseUrl + 'cityLocationDriver/saveCityLocation';//添加热门城市
+var OneCityID = baseUrl + 'storeDriver/getLocationName';//首次定位查找城市ID
+var searchCity = baseUrl + 'cityLocationDriver/getcityLocationByName';//模糊搜索城市
+var getCustomCarwhetherIs = baseUrl + 'carManageDriver/getCustomCarwhetherIs';//查询默认车辆
+var CustomCollection = baseUrl + 'customCollectionDriver/addCustomCollection';//关注商品
+var getCarIllegal = baseUrl + 'car/illegal/getCarIllegal';//查询违章
+var querySuitDetail = baseUrl + 'suitAPPDriver/querySuitDetail';//套餐查询
+var upLocation = baseUrl + 'location/upLocation';//实时上传地理位置
+var getCommentByCommoditId = baseUrl + 'comment/getCommentByCommoditId';//查询评论列表
+>>>>>>> master
 var shoppDetailUrljt = baseUrl + 'shop/queryCommodityApi';//商品详情、列表---------------------------------------
 var getCommentByCommoditshop = baseUrl + 'shop/getCommentByCommoditId';//查询评论列表------------------------------
 var groupDetail = baseUrl + 'shop/queryGroupDetail';//门店详情----------------------------------
 var queryCommodityClassByGroupId = baseUrl + 'shop/queryCommodityClassByGroupId';//门店分类筛选-----
+<<<<<<< HEAD
 
 //node的导出方式
 module.exports = {
@@ -73,6 +93,61 @@ module.exports = {
 // var receiveCoupon = baseUrl + 'coupon/receiveCoupon';//领取优惠劵
 
 
+=======
+
+//node的导出方式
+module.exports = {
+  shoppDetailUrljt:shoppDetailUrljt,
+  shoppTypeDetail:shoppTypeDetail,
+  shoppListUrl: shoppListUrl,//获取商品列表\顶部搜索框
+  searchHot: searchHot,//热门搜索
+  shoppTypeUrl:shoppTypeUrl,
+  shoppDetailUrl:shoppDetailUrl,
+  getHotCar:getHotCar,
+  imagePrefix:imagePrefix,
+  getCarList:getCarList,
+  searchCar:searchCar,
+  getCityList:getCityList,
+  searchCityList:searchCityList,
+  getCustomCarList:getCustomCarList
+// =======
+// >>>>>>> Stashed changes
+//   nearbyShopUrl: nearbyShopUrl,
+//   groupDetail: groupDetail,
+//   queryCommodityClassByGroupId: queryCommodityClassByGroupId,
+//   getCommentByCommoditshop:getCommentByCommoditshop
+
+
+  //首页
+// var indexTypeUrl = baseUrl + "functionIconDriver/getFunctionButtonList";//首页类型
+// var indexSweiper = baseUrl + "platformDriver/getCarouselList";//首页轮播图
+// var tellUrl = baseUrl + 'serviceDriver/getServiceUserList';//客服电话
+// var likeShoppUrl = baseUrl + 'customBrowseDriver/queryBrowse';//猜你喜欢
+
+// var getCommodityListByClassId = baseUrl + 'commodity/class/getCommodityListByClassId';//商品详情、列表
+// var addShoppCard = baseUrl + 'customShoppingCarDriver/addShoppingCar';//加入购物车
+// var searchHot = baseUrl + 'hotClassDriver/queryHotClass';//热门搜索
+// var searchHistory = baseUrl + 'customQueryHistoryDriver/queryCustomQueryHistory';//搜索历史
+// var delSearchHistory = baseUrl + 'customQueryHistoryDriver/deleteAllCustomQueryHistory';//删除搜索历史
+// var cityList = baseUrl + 'cityLocationDriver/getcityLocationList';//查询城市列表
+// var hotCityList = baseUrl + 'cityLocationDriver/getHotCityList';//查询城市列表
+// var addhotCityList = baseUrl + 'cityLocationDriver/saveCityLocation';//添加热门城市
+// var OneCityID = baseUrl + 'storeDriver/getLocationName';//首次定位查找城市ID
+// var searchCity = baseUrl + 'cityLocationDriver/getcityLocationByName';//模糊搜索城市
+// var getCustomCarwhetherIs = baseUrl + 'carManageDriver/getCustomCarwhetherIs';//查询默认车辆
+// var CustomCollection = baseUrl + 'customCollectionDriver/addCustomCollection';//关注商品
+// var getCarIllegal = baseUrl + 'car/illegal/getCarIllegal';//查询违章
+// var querySuitDetail = baseUrl + 'suitAPPDriver/querySuitDetail';//套餐查询
+// var upLocation = baseUrl + 'location/upLocation';//实时上传地理位置
+// var getCommentByCommoditId = baseUrl + 'comment/getCommentByCommoditId';//查询评论列表
+
+// var getCommodityToMongoJSON = baseUrl + 'commodityDriver/getCommodityToMongoJSON';//获取商品介绍
+// var getCommodityIconPlate = baseUrl + 'commodityPanelDriver/getCommodityPanel';//查询首页商品分类
+// var getCustomAllowReceiveCouponList = baseUrl + 'coupon/getCustomAllowReceiveCouponList';//查询可领取的优惠劵
+// var receiveCoupon = baseUrl + 'coupon/receiveCoupon';//领取优惠劵
+
+
+>>>>>>> master
 // //车辆
 // var getHotCar = baseUrl + 'carBrandHotDriver/getCarBrandHotList';//查询热门车辆品牌
 // var getSearcchCar = baseUrl + 'carBrandHotDriver/getCarSeriesByName';//搜索车辆品牌

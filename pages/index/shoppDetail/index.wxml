@@ -21,15 +21,11 @@
 
 		<view class="swiperItem">
 			<!-- 轮播图 -->
-			<!-- <swiper autoplay="{{true}}" interval="{{3000}}" duration="{{800}}" indicator-dots="{{true}}">
+			<swiper autoplay="{{true}}" interval="{{3000}}" duration="{{800}}" indicator-dots="{{true}}">
 				<swiper-item wx:for="{{swiperList}}" wx:key="key">
 					<image src="{{imagePrefix+item.commodity_img_url}}" bindtap="preview" data-src="{{imagePrefix+item.commodity_img_url}}"></image>
 				</swiper-item>
-			</swiper> -->
-			<!-- 轮播图 -->
-			<!-- <swiper autoplay="{{true}}" interval="{{3000}}" duration="{{800}}" indicator-dots="{{true}}"> -->
-					<image src="{{swiperList}}" bindtap="preview" data-src="{{imagePrefix+item.commodity_img_url}}"></image>
-			<!-- </swiper> -->
+			</swiper>
 			<!-- 商品名称 -->
 			<view class="shoppName">
 				<text>{{shoppDesc}}</text>
@@ -141,10 +137,10 @@
 								</view>
 								<view class="header-content">
 									<view class="table-L">
-										<view wx:for="{{norms}}" wx:key="key">{{item.normsName}}</view>
+										<view wx:for="{{norms}}" wx:key="key">{{item.norms_name}}</view>
 									</view>
 									<view class="table-R">
-										<view wx:for="{{norms}}" wx:key="key">{{item.normsValue}}</view>
+										<view wx:for="{{norms}}" wx:key="key">{{item.norms_value}}</view>
 									</view>
 								</view>
 							</view>

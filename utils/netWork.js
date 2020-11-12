@@ -50,7 +50,7 @@ function request(requestHandler) {
     },
     fail: function () {
       wx.hideLoading();
-      //requestHandler.fail();
+      requestHandler.fail();
     },
     complete: function () {
 
