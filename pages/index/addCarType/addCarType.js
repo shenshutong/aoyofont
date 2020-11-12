@@ -1,7 +1,9 @@
-const app = getApp();
+// pages/index/addCarType/addCarType.js
+const app= getApp();
 var netapi = require("../../../utils/api.js");
 var netWork = require('../../../utils/netWork.js');
 Page({
+  
     /**
      * 页面的初始数据
      */
@@ -20,20 +22,20 @@ Page({
         searchNav: [],//zimusuoyin
         visible: false,
         searchShow: false,
-        searchCityList: [],
+        searchCarList: [],
         carHotList: [],//热门车辆
         carChridren: [],//车辆子集
         offlineOrderFLg: 0,
         newCastomid: 0
     },
-    //返回首页
+    // 返回主页
     backfirst: function () {
         wx.navigateBack({
             delta: 1
         })
     },
-    //打开弹出层
-    isshow() {
+     //打开弹出层
+     isshow() {
         this.setData({
             visible: true,
         })
@@ -44,11 +46,12 @@ Page({
             visible: false
         })
     },
-    //获取热门车辆品牌
-    getCItyList() {
+
+    // 获取热门车辆品牌
+    getHotCar() {
         var getHotCar = netapi.getHotCar;
         var that = this;
-        netWork.request({
+        wx.request({
             url: getHotCar,
             method: "GET",
             header: {
@@ -60,19 +63,23 @@ Page({
                 var _data = res.data.data;
                 that.setData({
                     carHotList: _data
+                    
                 })
+               
             }
         })
     },
-    //获取车辆品牌
-    getCarListT() {
+     //获取所有车辆品牌
+    getCarList() {
         var getCarList = netapi.getCarList;
         var that = this;
-        netWork.request({
+        wx.request({
             url: getCarList,
             success: function (res) {
                 var _data = res.data.data;
+                console.log(_data)
                 let searchNav = that.data.searchNav;
+                console.log(searchNav)
                 let cityList = that.data.cityList;
                 for (var i in _data) {
                     searchNav.push(i);
@@ -88,7 +95,7 @@ Page({
             }
         })
     },
-    // 获取车辆名称以及数据索引
+       // 获取车辆名称以及数据索引
     selectcity(e) {
         var that = this;
         let title = e.currentTarget.dataset.title;
@@ -99,12 +106,12 @@ Page({
         var data = {
             car_brand_id: id
         }
-        //添加车辆热门
-        netWork.request({
+         //添加车辆热门
+         wx.request({
             url: addHotCar,
             data: data,
             success: function (res) {
-                // console.log(res)
+                 console.log(res)
             }
         });
         //添加车辆子集品牌
@@ -119,8 +126,8 @@ Page({
         });
         this.setData({ visible: true, carTiele: title, carImg: img });
     },
-    //点击英文字母进行跳转到相应位置
-    cityScroll(e) {
+     //点击英文字母进行跳转到相应位置
+     cityScroll(e) {
         let index = e.currentTarget.dataset.index;
         this.setData({
             toView: `car${index}`
@@ -150,20 +157,20 @@ Page({
             searchValue: ''
         })
     },
-    //获取输入的车辆
-    getCity: function (e) {
+    //获取搜索车辆信息
+    searchCar: function (e) {
         let searchValue = e.detail.value;
         var that = this;
         that.setData({
             searchValue: searchValue
         });
-        var searchCity = netapi.getSearcchCar + "?name=" + that.data.searchValue;
-        netWork.request({
-            url: searchCity,
+        var searchCar = netapi.searchCar + "?name=" + that.data.searchValue;
+        wx.request({
+            url: searchCar,
             success: function (res) {
                 var _data = res.data.data;
                 that.setData({
-                    searchCityList: _data
+                    searchCarList: _data
                 })
             }
         })
@@ -176,9 +183,11 @@ Page({
             url: '/pages/index/displacement/displacement?id=' + carCid + "&carName=" + carCname
         })
     },
-	/**F
-	 * 生命周期函数--监听页面加载
-	 */
+
+
+    /**
+     * 生命周期函数--监听页面加载
+     */
     onLoad: function (options) {
         if (options.offlineOrderFLg) {
             this.setData({
@@ -186,9 +195,11 @@ Page({
                 newCastomid: options.newCastomid
             })
         }
-        this.getCItyList();
-        this.getCarListT();
+        this.getHotCar();
+        this.getCarList();
+        this.searchCar();
     },
+
     /**
      * 生命周期函数--监听页面初次渲染完成
      */
@@ -200,7 +211,9 @@ Page({
      * 生命周期函数--监听页面显示
      */
     onShow: function () {
+
     },
+
     /**
      * 生命周期函数--监听页面隐藏
      */

@@ -1,0 +1,329 @@
+@import "../../../commpents/navbar.wxss";
+
+page {
+    background-color: #fff;
+}
+
+.content {
+    width: 100%;
+    height: 800rpx;
+}
+
+.line {
+    width: 100%;
+    height: 30rpx;
+    background-color: #f6f6f6;
+}
+
+.formB {
+    width: 100%;
+    background-color: #fff;
+    margin-bottom: 20rpx;
+}
+
+.formB .form-t {
+    width: 100%;
+    background-color: #fff;
+    padding: 20rpx;
+    box-sizing: border-box;
+    margin-bottom: 20rpx;
+}
+
+.form-t .form-name,
+.form-t .form-phone,
+.form-t .form-region,
+.form-t .form-detail {
+    width: 100%;
+    height: 100rpx;
+    border-bottom: 1px solid #EEEEEE;
+    display: flex;
+    align-items: center;
+}
+
+.form-t .form-name .label,
+.form-t .form-phone .label,
+.form-t .form-region .label,
+.form-t .form-detail .label {
+    width: 20%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    font-size: 28rpx;
+}
+
+.form-t .form-name .content,
+.form-t .form-phone .content,
+.form-t .form-region .content,
+.form-t .form-detail .content {
+    width: 80%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    color: #000;
+    font-size: 24rpx;
+}
+
+.form-t .form-name .content input,
+.form-t .form-phone .content input,
+.form-t .form-detail .content input {
+    width: 100%;
+    height: 100%;
+}
+
+.form-region .content input {
+    width: 300%;
+    height: 100rpx;
+    color: #000;
+}
+
+/* 地区级联选择器 */
+
+.picker-view {
+    width: 100%;
+    display: flex;
+    background-color: #fff;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.picker-item {
+    line-height: 70rpx;
+    margin-left: 5rpx;
+    margin-right: 5rpx;
+    text-align: center;
+}
+
+.picker-view__pane {
+    height: 100rpx;
+    width: 100%;
+    padding: 20rpx 32rpx;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+.picker-view__pane text {
+    color: #000;
+    font-size: 30rpx;
+}
+
+.pick-view__group {
+    width: 100%;
+    height: 400rpx;
+}
+
+.ztb {
+    width: 100%;
+    height: 50rpx;
+    padding: 10rpx 0;
+    box-sizing: border-box;
+    font-size: 22rpx;
+    color: #C2C1C1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10rpx;
+}
+
+.ztb image {
+    width: 13rpx;
+    height: 10rpx;
+}
+
+.form-B {
+    width: 100%;
+    background-color: #fff;
+    padding: 40rpx 25rpx;
+    box-sizing: border-box;
+}
+
+.form-B_t {
+    width: 100%;
+    display: flex;
+}
+
+.form-B_t .form-B_t_L {
+    width: 15%;
+    height: 100%;
+    font-size: 28rpx;
+
+}
+
+.form-B_t .form-B_t_R {
+    width: 85%;
+    height: 100%;
+    font-size: 20rpx;
+}
+
+.form-B_t .form-B_t_R text {
+    display: inline-block;
+    padding: 5rpx 30rpx;
+    border-radius: 30rpx;
+    border: 1px solid #DCDCDC;
+    margin-right: 20rpx;
+    margin-bottom: 10rpx;
+}
+
+.form-B_t .form-B_t_R image {
+    width: 80rpx;
+    height: 35rpx;
+    margin-top: 10rpx;
+}
+
+.form-B_m {
+    margin-top: 40rpx;
+    width: 100%;
+    height: 100rpx;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20rpx;
+}
+
+.form-B_m .form-B_m_T view:nth-child(1) {
+    font-size: 28rpx;
+}
+
+.form-B_m .form-B_m_T view:nth-child(2) {
+    font-size: 24rpx;
+    margin-top: 10rpx;
+}
+
+.save {
+    width: 100%;
+    height: 100rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.save view {
+    width: 60%;
+    height: 100%;
+    background: linear-gradient(90deg, rgba(255, 140, 101, 1) 0%, rgba(255, 89, 68, 1) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 32rpx;
+    border-radius: 60rpx;
+}
+
+.active {
+    background: linear-gradient(90deg, rgba(255, 139, 101, 1) 0%, rgba(255, 89, 68, 1) 100%);
+    color: #fff;
+}
+
+.deleteAddress {
+    width: 100%;
+    height: 90rpx;
+    background-color: #fff;
+    padding: 0 25rpx;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    font-size: 28rpx;
+    color: red;
+}
+
+.modal-mask {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: #000;
+    opacity: 0.5;
+    overflow: hidden;
+    z-index: 9000;
+    color: #fff;
+}
+
+.modal-dialog {
+    width: 540rpx;
+    overflow: hidden;
+    position: fixed;
+    top: 50%;
+    left: 0;
+    z-index: 9999;
+    background: #f9f9f9;
+    margin: -180rpx 105rpx;
+    border-radius: 36rpx;
+}
+
+.modal-title {
+    padding-top: 50rpx;
+    font-size: 32rpx;
+    color: #030303;
+    text-align: center;
+    padding: 42rpx;
+}
+
+.modal-title image {
+    width: 30rpx !important;
+    height: 30rpx !important;
+    margin-right: 20rpx;
+}
+
+.modal-footer {
+    display: flex;
+    flex-direction: row;
+    height: 100rpx;
+    border-top: 1px solid #EEEEEE;
+    font-size: 34rpx;
+    line-height: 100rpx;
+}
+
+.btn-cancel {
+    width: 50%;
+    color: #666;
+    text-align: center;
+    border-right: 1px solid #EEEEEE;
+    font-size: 30rpx;
+}
+
+.btn-confirm {
+    width: 50%;
+    color: #000;
+    font-size: 30rpx;
+    text-align: center;
+}
+
+
+.anit {
+    width: 100%;
+    height: 70rpx;
+    background: #FF976A;
+    position: absolute;
+    color: white;
+    font-size: 30rpx;
+    line-height: 70rpx;
+    top: 0rpx;
+    text-align: center;
+}
+
+.show {
+    top: 130rpx;
+    animation: show 3s;
+    animation-timing-function: ease;
+}
+
+@keyframes show {
+    0% {
+        top: 0rpx;
+    }
+
+    10% {
+        top: 105rpx;
+    }
+
+    80% {
+        top: 105rpx;
+    }
+
+    100% {
+        top: 0rpx;
+    }
+}

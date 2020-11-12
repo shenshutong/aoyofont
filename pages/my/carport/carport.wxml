@@ -1,0 +1,50 @@
+<view>
+	<!-- 自定义导航栏 start -->
+	<view class="nav-bar" style="height:{{navBarHeight}}px;">
+		<view class="back" style="height:{{menuHeight}}px; min-height:{{menuHeight}}px; line-height:{{menuHeight}}px;  bottom:{{menuBotton}}px;" bindtap="backHome">
+			<view class="backBu">
+				<view class="back-content">
+					<view style="width:100%;height:100%" bindtap="backOneMy">
+						<van-icon size="20" name="arrow-left" />
+					</view>
+				</view>
+				<text>我的车库</text>
+				<view style="width:120rpx"></view>
+			</view>
+		</view>
+	</view>
+	<!-- 自定义导航栏 end -->
+	<view class="content" style="margin-top:{{navBarHeight}}px">
+		<view class="items" wx:for="{{list}}" wx:key="key" data-id="{{item.custom_car_id}}" bindtap="goLovecar">
+			<view class="items-top">
+				<view class="t-L">
+					<image wx:if="{{item.status==1}}" src="../../../img/biao.png" class="def"></image>
+					<view class="img">
+						<image src="{{item.car_model[0].car_brand_logo_url_1}}"></image>
+					</view>
+					<view class="type">
+						<view>{{item.car_model[0].car_brand_name}}</view>
+						<view>{{item.car_model[0].car_model_name}}</view>
+					</view>
+				</view>
+				<view class="t-R">
+					<image wx:if="{{item.whether_id==1}}" class="defl" src="../../../img/deflut.png"></image>
+					<text wx:if="{{item.whether_id!=1}}" data-id="{{item.custom_car_id}}" catchtap="defelut">设置为默认</text>
+				</view>
+			</view>
+			<view class="items-bottom">
+				<view wx:if="{{item.custom_driving==null}}" data-id="{{item.custom_car_id}}" catchtap="myAuthent">还未认证，赶快去认证吧 ></view>
+				<view wx:if="{{item.custom_driving}}" data-id="{{item.custom_driving[0].driving_id}}" catchtap="goJdriving">
+					<image src="../../../img/wrz.png"></image> 已认证
+				</view>
+				<view data-id="{{item.custom_car_id}}" data-code="{{item.whether_id}}" catchtap="deleteCar">
+					<image src="../../../img/ls.png"></image> 删除
+				</view>
+				<text wx:if="{{item.custom_driving}}" data-code="{{item.custom_driving[0].plate_number}}" data-fh="{{item.custom_driving[0].engine_number}}" data-vin="{{item.custom_driving[0].vin_number}}" data-addr="{{item.custom_driving[0].addr}}" data-name="{{item.custom_driving[0].custom_name}}" data-img="{{item.custom_driving[0].driving_img_url}}" data-issueDate="{{item.custom_driving[0].issue_date}}" data-model="{{item.custom_driving[0].model}}" data-registerTime="{{item.custom_driving[0].register_time}}" data-useCharacter="{{item.custom_driving[0].use_character}}" data-vehicleType="{{item.custom_driving[0].vehicle_type}}" catchtap="goChaweiZ">查违章</text>
+			</view>
+		</view>
+		<view class="footer" bindtap="GoAddCar" wx:if="{{total<5}}">
+			<text>+</text> <text>添加车辆</text>
+		</view>
+	</view>
+</view>

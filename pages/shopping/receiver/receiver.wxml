@@ -1,0 +1,96 @@
+<view>
+    <!-- 自定义导航栏 start -->
+	<view class="nav-bar" style="height:{{navBarHeight}}px;">
+		<view class="back" style="height:{{menuHeight}}px; min-height:{{menuHeight}}px; line-height:{{menuHeight}}px;  bottom:{{menuBotton}}px;" bindtap="backHome">
+			<view class="backBu">
+				<view class="back-content">
+					<view style="width:100%;height:100%" bindtap="backOrder">
+						<van-icon size="20" name="arrow-left" />
+					</view>
+				</view>
+				<text>收货地址</text>
+				<view style="width:120rpx"></view>
+			</view>
+		</view>
+	</view>
+	<!-- 自定义导航栏 end -->
+    <!-- 收货列表 -->
+    <!-- <view class="content_list" style="margin-top:{{navBarHeight}}px;margin-bottom:180rpx">
+        <view class="defalut" wx:for="{{defultAddress}}" wx:key="key"  data-id="{{item.addressId}}">
+            <view class="defalut-L">
+                <image src="../../../img/checked.png"></image>
+            </view>
+            <view class="defalut-M" >
+                <view class="m-T">
+                    <text>{{item.consigneeName}}</text>
+                    <text>{{item.telephone}}</text>
+                    <text>默认</text>
+                    <text>{{item.labelName}}</text>
+                </view>
+                <view class="m-B">
+                   {{item.pname}}-{{item.cityname}}-{{item.areaname}}-{{item.streetsname}}
+                </view>
+            </view>
+            <view class="defalut-R" >
+                <image src="../../../img/edit.png" data-id="{{item.addressId}}" catchtap="goAddressDetail"></image>
+            </view>
+        </view>
+        <view class="items" wx:for="{{addressList}}" wx:key="key" data-id="{{item.addressId}}">
+            <view class="defalut-M">
+                <view class="m-T">
+                    <text>{{item.consigneeName}}</text>
+                    <text>{{item.telephone}}</text>
+                    <text wx:if="{{addressList.defultAddress==1}}">默认</text>
+                    <text>{{item.labelName}}</text>
+                </view>
+                <view class="m-B">
+                    {{item.pname}}-{{item.cityname}}-{{item.areaname}}-{{item.streetsname}}
+                </view>
+            </view>
+            <view class="defalut-R" >
+                <image src="../../../img/edit.png" data-id="{{item.addressId}}" catchtap="goAddressDetail"></image>
+            </view>
+        </view>
+    </view> -->
+
+    <view class="content_list" style="margin-top:{{navBarHeight}}px;margin-bottom:180rpx">
+        <view class="defalut" wx:for="{{defultAddress}}" wx:key="key" data-id="{{item.addressId}}">
+            <view class="defalut-L">
+                <image src="../../../img/checked.png"></image>
+            </view>
+            <view class="defalut-M" >
+                <view class="m-T">
+                    <text>{{item.consigneeName}}</text>
+                    <text>{{item.telephone}}</text>
+                    <text>默认</text>
+                    <text>{{item.labelName}}</text>
+                </view>
+                <view class="m-B">
+                    {{item.pname}}-{{item.cityname}}-{{item.areaname}}-{{item.streetsname}}
+                </view>
+            </view>
+            <view class="defalut-R" >
+                <image src="../../../img/edit.png" data-id="{{item.addressId}}" catchtap="goAddressDetail"></image>
+            </view>
+        </view>
+        <view class="items" wx:for="{{addressList}}" wx:key="key" data-id="{{item.addressId}}">
+            <view class="defalut-M">
+                <view class="m-T">
+                    <text>{{item.consigneeName}}</text>
+                    <text>{{item.telephone}}</text>
+                    <text>{{item.labelName}}</text>
+                </view>
+                <view class="m-B">
+                    {{item.pname}}-{{item.cityname}}-{{item.areaname}}-{{item.streetsname}}
+                </view>
+            </view>
+            <view class="defalut-R" >
+                <image src="../../../img/edit.png" data-id="{{item.addressId}}" catchtap="goAddressDetail"></image>
+            </view>
+        </view>
+    </view>
+    <!-- 新建收货地址 -->
+    <view class="add">
+        <image src="../../../img/button.png" bindtap="goAdd"></image>
+    </view>
+</view>

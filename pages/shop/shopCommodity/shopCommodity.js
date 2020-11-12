@@ -156,7 +156,7 @@ Page({
     },
     //商户商品列表推荐----------------------
     groupShoppList: function () {
-        var groupShoppList = netapi.shoppDetailUrl;
+        var groupShoppList = netapi.shoppDetailUrljt;
         var id=this.data.groupId;
         netWork.request({
             url: groupShoppList,
@@ -267,7 +267,7 @@ Page({
     getTypeShoppList(e) {
         var that = this;
         var id = e.target.dataset.id;
-        var groupShoppList = netapi.shoppDetailUrl;
+        var groupShoppList = netapi.shoppDetailUrljt;
         var val = that.data.searchVal;
         var data;
         // if (val) {
@@ -306,7 +306,7 @@ Page({
     SearchComShopList() {
         var that = this;
         var val = that.data.searchVal;
-        var groupShoppList = netapi.shoppDetailUrl;
+        var groupShoppList = netapi.shoppDetailUrljt;
         var data;
         if (val) {
             data = {

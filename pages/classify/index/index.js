@@ -18,7 +18,22 @@ Page({
         curNav: 1,
         curIndex: 0
     },
-   
+//    //搜索商品
+//    searchShopp: function () {
+//     var that=this;
+//     if(this.data.inputValue!=null && this.data.inputValue!=''){
+//         that.inputValue='搜索商品';
+//         wx.navigateTo({
+//             url: '/pages/classify/shoppList/shoppList?commodityName=' + this.data.inputValue
+//         })
+//     }else{
+//         that.inputValue='搜索商品';
+//         wx.navigateTo({
+//             url: '/pages/classify/shoppList/shoppList?commodityName=' + '搜索商品'
+//         })
+//     }
+// },
+ 
     //商品分类列表
     ShoppTypeList: function () {
         var shoppTypeUrl = netapi.shoppTypeUrl;
@@ -75,6 +90,7 @@ Page({
      */
     onLoad: function (options) {
         this.ShoppTypeList(); //商品分类列表
+       
     },
 
     /**

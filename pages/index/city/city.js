@@ -1,11 +1,6 @@
 const app = getApp();
-var netWork = require('../../../utils/netWork.js');
 var netapi = require("../../../utils/api.js");
-var QQMapWX = require('../../../utils/qqmap-wx-jssdk.min.js');
-
-var qqmapsdk = new QQMapWX({
-    key: 'PJTBZ-3P6RW-HOBRW-OLTH6-AWCN3-RTF3I' // 必填
-});
+var netWork = require('../../../utils/netWork.js');
 
 Page({
     /**
@@ -19,81 +14,50 @@ Page({
         searchCtiy: '',
         searchValue: '',
         toView: '',//用来做定位联动
+        searchShow: false,
         cityList: [],
         searchNav: [],
-        nowCity: "",
-        hotCityList: [],
-        searchShow: false,
-        searchCityList: []
+        nowCity: "上海",
+        hotCityList: ["北京市", "天津市", "广州市","阿拉善"]
     },
-    //返回上一页
     backHome: function () {
         wx.navigateBack({
             delta: 1
         })
     },
+    //打开弹出层
+    isshow() {
+        this.setData({
+            visible: true,
+        })
+    },
     hotCity: function (e) {
         this.selectcity(e)
     },
-    //点击取消
-    cancelSearch: function () {
-        this.SearchNone();
+    //   获取输入的城市
+    // getCity: function (e) {
+    //     let searchValue = e.detail.value;
+    //     this.setData({
+    //         searchValue: searchValue
+    //     })
+    // },
+    // 传输要查找的城市
+    chooseCity: function () {
+        let cityName = this.data.searchValue;
+        wx.reLaunch({
+            url: '../index/index?cityName=' + cityName,
+        });
     },
-    //获取输入的城市
-    getCity: function (e) {
-        let searchValue = e.detail.value;
+    //   获取城市的数据
+    getCItyList() {
+        var getCityList = netapi.getCityList;
         var that = this;
-        that.setData({
-            searchValue: searchValue
-        });
-        var searchCity = netapi.searchCity + "?name=" + that.data.searchValue;
-        netWork.request({
-            url: searchCity,
-            success: function (res) {
-                var _data = res.data.data;
-                that.setData({
-                    searchCityList: _data
-                })
-            }
-        })
-    },
-    // 获取城市名称以及数据索引 并且返回上一页
-    selectcity(e) {
-        let title = e.currentTarget.dataset.title;
-        let id = e.currentTarget.dataset.id;
-        let pages = getCurrentPages();
-        let prevPage = pages[pages.length - 2];
-        prevPage.setData({
-            title: title,
-            id: id
-        })
-        wx.navigateBack({
-            success: function () {
-                prevPage.onLoad(); // 执行前一个页面的onLoad方法
-            }
-        });
-
-        var addHotCity = netapi.addhotCityList;
-        var data = {
-            code: id
-        }
         wx.request({
-            url: addHotCity,
-            data: data,
-            success: function (res) {
-                console.log(res)
-            }
-        })
-    },
-    //获取城市列表
-    getCitySList: function () {
-        var url = netapi.cityList;
-        var that = this;
-        netWork.request({
-            url: url,
+            url: getCityList,
             success: function (res) {
                 var _data = res.data.data;
                 let searchNav = that.data.searchNav;
+                console.log(searchNav)
                 let cityList = that.data.cityList;
                 for (var i in _data) {
                     searchNav.push(i);
@@ -109,25 +73,27 @@ Page({
             }
         })
     },
-    //热门城市列表
-    getHotCityList: function () {
-        var hotList = netapi.hotCityList;
+    //获取搜索城市信息
+    searchCityList: function (e) {
+        let searchValue = e.detail.value;
         var that = this;
-        netWork.request({
-            url: hotList,
+        that.setData({
+            searchValue: searchValue
+        });
+        var searchCityList = netapi.searchCityList + "?name=" + that.data.searchValue;
+        wx.request({
+            url: searchCityList,
             success: function (res) {
                 var _data = res.data.data;
                 that.setData({
-                    hotCityList: _data
+                    searchCityList: _data
                 })
             }
         })
     },
-    //搜索城市
-    searchCity: function () {
-        this.setData({
-            searchShow: true
-        })
+     //点击取消
+     cancelSearch: function () {
+        this.SearchNone();
     },
     //点击遮罩层消失
     SearchNone: function () {
@@ -136,16 +102,23 @@ Page({
             searchValue: ''
         })
     },
-    //选择城市
-    goIndex: function (e) {
-        this.selectcity(e)
+    // 获取城市名称以及数据索引
+    selectcity(e) {
+        let title = e.currentTarget.dataset.title;
+        wx.showToast({
+            title: 'title:' + title,
+            icon: 'none'
+        })
     },
 	/**
 	 * 生命周期函数--监听页面加载
 	 */
     onLoad: function (options) {
-        this.getCitySList();//城市列表
-        this.getHotCityList();//热门城市列表
+        this.getCItyList();
+        this.searchCityList();
+        qqmapsdk = new QQMapWX({
+            key: 'ACUBZ-DBG3X-JGX4H-7RXDI-4KFLQ-JVBWH' // 必填
+        });
     },
     // 点击英文字母进行跳转到相应位置
     cityScroll(e) {
@@ -153,6 +126,20 @@ Page({
         this.setData({
             toView: `city${index}`
         })
+    },
+    // 点击英文字母进行跳转到相应位置
+    cityScroll(e) {
+        let index = e.currentTarget.dataset.index;
+        this.setData({
+            toView: `city${index}`
+        })
+    },
+    /**
+     * 生命周期函数--监听页面加载
+     */
+    onLoad: function (options) {
+        this.getCItyList();
+        this.searchCityList();
     },
 
     /**
@@ -166,66 +153,88 @@ Page({
      * 生命周期函数--监听页面显示
      */
     onShow: function () {
-        this.setData({
-            nowCity: wx.getStorageSync('cityName')
+        // var _this = this;
+        //调用定位方法
+        // _this.getUserLocation();
+    },
+    //定位方法
+    getUserLocation: function () {
+        var _this = this;
+        wx.getSetting({
+            success: (res) => {
+                if (res.authSetting['scope.userLocation'] != undefined && res.authSetting['scope.userLocation'] != true) {
+                    //未授权
+                    wx.showModal({
+                        title: '请求授权当前位置',
+                        content: '需要获取您的地理位置，请确认授权',
+                        success: function (res) {
+                            if (res.cancel) {
+                                //取消授权
+                                wx.showToast({
+                                    title: '拒绝授权',
+                                    icon: 'none',
+                                    duration: 1000
+                                })
+                            } else if (res.confirm) {
+                                //确定授权，通过wx.openSetting发起授权请求
+                                wx.openSetting({
+                                    success: function (res) {
+                                        if (res.authSetting["scope.userLocation"] == true) {
+                                            wx.showToast({
+                                                title: '授权成功',
+                                                icon: 'success',
+                                                duration: 1000
+                                            })
+                                            //再次授权，调用wx.getLocation的API
+                                            _this.geo();
+                                        } else {
+                                            wx.showToast({
+                                                title: '授权失败',
+                                                icon: 'none',
+                                                duration: 1000
+                                            })
+                                        }
+                                    }
+                                })
+                            }
+                        }
+                    })
+                } else if (res.authSetting['scope.userLocation'] == undefined) {
+                    //用户首次进入页面,调用wx.getLocation的API
+                    _this.geo();
+                }
+                else {
+                    console.log('授权成功')
+                    //调用wx.getLocation的API
+                    _this.geo();
+                }
+            }
         })
-        //授权地理位置
+    },
+    // 获取定位城市
+    geo: function () {
         var _this = this;
         wx.getLocation({
             type: 'wgs84',
             success(res) {
-                const latitude = res.latitude;//纬度
-                const longitude = res.longitude;//经度
-                wx.setStorage({ key: 'lng', data: longitude });
-                wx.setStorage({ key: 'lat', data: latitude });
                 qqmapsdk.reverseGeocoder({
                     location: {
-                        latitude: latitude,
-                        longitude: longitude
+                        latitude: res.latitude,
+                        longitude: res.longitude
                     },
-                    success: function (res) {//成功后的回调
-                        var res = res.result;
-                        _this.setData({
-                            nowCity: res.ad_info.city ? res.ad_info.city : "定位失败"
-                        })
-                    }
-                })
-            },
-            fail(res) {
-                wx.getSetting({
                     success: function (res) {
-                        var statu = res.authSetting;
-                        if (!statu['scope.userLocation']) {
-                            wx.showModal({
-                                title: '是否授权当前位置',
-                                content: '需要获取您的地理位置，请确认授权，否则地图功能将无法使用',
-                                success: function (tip) {
-                                    if (tip.confirm) {
-                                        wx.openSetting({
-                                            success: function (data) {
-                                                if (data.authSetting["scope.userLocation"] === true) {
-                                                    wx.showToast({
-                                                        title: '授权成功',
-                                                        icon: 'success',
-                                                        duration: 1000,
-                                                    })
-                                                } else {
-                                                    wx.showToast({
-                                                        title: '授权失败',
-                                                        icon: 'success',
-                                                        duration: 1000
-                                                    })
-                                                }
-                                            }
-                                        })
-                                    }
-                                }
-                            })
-                        }
+                        console.log(res)  //获取成功
+                        console.log(res.result.address_component.province)  //当前位置省会
+                        console.log(res.result.address_component.city)  //当前位置城市
+                        console.log(res.result.address_component.district)  //当前位置区域
+                        _this.setData({
+                            nowCity: res.result.address_component.city
+                        })
                     }
                 })
             }
         })
+
     },
     /**
      * 生命周期函数--监听页面隐藏

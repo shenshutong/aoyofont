@@ -1,0 +1,151 @@
+<!--pages/my/discounts/discounts.wxml-->
+<view>
+	<!-- 自定义导航栏 start -->
+	<view class="nav-bar" style="height:{{navBarHeight}}px;">
+		<view class="back"
+			style="height:{{menuHeight}}px; min-height:{{menuHeight}}px; line-height:{{menuHeight}}px;  bottom:{{menuBotton}}px;"
+			bindtap="backHome">
+			<view class="backBu">
+				<view class="back-content">
+					<view style="width:100%;height:100%" bindtap="backMyIndex">
+						<van-icon size="20" name="arrow-left" />
+					</view>
+				</view>
+				<text>我的优惠券</text>
+				<view style="width:120rpx"></view>
+			</view>
+		</view>
+	</view>
+	<!-- 自定义导航栏 end -->
+	<view class="content" style="margin-top:{{navBarHeight}}px">
+		<view class="items">
+			<view bindtap="switchRightTab" wx:for="{{cateItems}}" data-index='{{index}}' data-id="{{item.cate_id}}"
+				wx:key="key" class="nav_left_items {{curNav==item.cate_id?'active':''}}">{{item.cate_name}}</view>
+		</view>
+		<view class="wei" wx:if="{{curNav==0}}">
+			<view class="item" wx:for="{{discounts}}" wx:key="key" wx:if="{{item.couponStatus==1}}">
+					<view class="item-top">
+					<view class="content">
+						<image src="../../../img/jin.png"></image>
+						<view class="detail">
+							<view class="left">
+								<view>{{item.couponNewName}}</view>
+								<view>满{{item.couponNewSillNum}}可用</view>
+							</view>
+							<view class="right">
+								<text wx:if="{{item.couponTypeId==1}}">￥</text>
+								<text wx:if="{{item.couponTypeId==2}}"></text>
+								<text>{{item.couponAmt}}</text>
+								<text wx:if="{{item.couponTypeId==2}}">折</text>
+							</view>
+						</view>
+					</view>
+				</view>
+				<view class="item-bottom">
+					<view class="content">
+						<image src="../../../img/tuo.png"></image>
+						<view class="detail">
+							<view class="left">
+								<view>有效期至{{item.couponNewEndTime}}</view>
+								<view>{{item.couponNewDesc}}</view>
+							</view>
+							<view class="right">
+								<text data-id="{{item.coupon_id}}" data-typeid="{{item.coupon_type_id}}">去使用</text>
+							</view>
+						</view>
+					</view>
+				</view>
+				<view class="nodis" wx:if="{{discounts.length<1}}">
+				<image src="../../../img/wudd.png"></image>
+				<view>暂无优惠券可以使用</view>
+			</view>
+		
+			</view>
+
+
+		
+		</view>
+		<view class="yi" wx:if="{{curNav==1}}">
+			<view class="item" wx:for="{{discounts}}" wx:key="key" wx:if="{{item.couponStatus==0}}">
+				<!-- <view > -->
+					<view class="item-top">
+					<view class="content">
+						<image src="../../../img/yin.png"></image>
+						<view class="detail">
+							<view class="left">
+								<view>{{item.couponNewName}}</view>
+								<view>满{{item.couponNewSillNum}}可用</view>
+							</view>
+							<view class="right">
+								<text wx:if="{{item.couponTypeId==1}}">￥</text>
+								<text wx:if="{{item.couponTypeId==2}}"></text>
+								<text>{{item.couponAmt}}</text>
+								<text wx:if="{{item.couponTypeId==2}}">折</text>
+							</view>
+						</view>
+					</view>
+				</view>
+				<view class="item-bottom">
+					<view class="content">
+						<image src="../../../img/tuo.png"></image>
+						<view class="detail">
+							<view class="left">
+								<view>有效期至{{item.couponNewEndTime}}</view>
+								<view>{{item.couponNewDesc}}</view>
+							</view>
+							<view class="right">
+								<text>已使用</text>
+							</view>
+						</view>
+					</view>
+				<!-- </view> -->
+				</view>
+				<view class="nodis" wx:if="{{discounts.length<1}}">
+					<image src="../../../img/wudd.png"></image>
+					<view>暂无优惠券可以使用</view>
+				</view>
+			</view>
+
+		</view>
+		<view class="yi" wx:if="{{curNav==-1}}">
+			<view class="item" wx:for="{{discounts}}" wx:key="key" wx:if="{{item.couponStatus==-1}}">
+					<view class="item-top">
+					<view class="content">
+						<image src="../../../img/yin.png"></image>
+						<view class="detail">
+							<view class="left">
+								<view>{{item.couponNewName}}</view>
+								<view>满{{item.couponNewSillNum}}可用</view>
+							</view>
+							<view class="right">
+								<text wx:if="{{item.couponTypeId==1}}">￥</text>
+								<text wx:if="{{item.couponTypeId==2}}"></text>
+								<text>{{item.couponAmt}}</text>
+								<text wx:if="{{item.couponTypeId==2}}">折</text>
+							</view>
+						</view>
+					</view>
+				</view>
+				<view class="item-bottom">
+					<view class="content">
+						<image src="../../../img/tuo.png"></image>
+						<view class="detail">
+							<view class="left">
+								<view>有效期至{{item.couponNewEndTime}}</view>
+								<view>{{item.couponNewDesc}}</view>
+							</view>
+							<view class="right">
+								<text>已失效</text>
+							</view>
+						</view>
+					</view>
+				</view>
+				<view class="nodis" wx:if="{{discounts.length<1}}">
+					<image src="../../../img/wudd.png"></image>
+					<view>暂无优惠券可以使用</view>
+				</view>
+			</view>
+	
+		</view>
+	</view>
+</view>

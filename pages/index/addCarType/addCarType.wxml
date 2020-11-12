@@ -17,7 +17,7 @@
 	<view style="margin-top:{{navBarHeight}}px">
 		<view class="search">
 			<image src="../../../img/suo.png"></image>
-			<input placeholder="请输入汽车品牌关键字" bindinput="getCity" value="{{searchValue}}" bindfocus="searchCity" class="yCancel {{searchShow?'':'Ncancel'}}"></input>
+			<input placeholder="请输入汽车品牌关键字" bindinput="searchCar" value="{{searchValue}}" bindfocus="searchCity" class="yCancel {{searchShow?'':'Ncancel'}}"></input>
 			<text class="cancel" wx:if="{{searchShow}}" bindtap="cancelSearch">取消</text>
 		</view>
 		<view class="list">
@@ -25,9 +25,12 @@
 				<view class="hotBrand">
 					<view class="header">热门品牌</view>
 					<view class="content">
-						<view class="items" wx:for="{{carHotList}}" wx:key="key" data-img="{{item.car_brand_logo_url}}" data-title="{{item.car_brand_name}}" data-id="{{item.car_brand_id}}" bindtap="selectcity">
-							<image src="{{imagePrefix + item.car_brand_logo_url}}"></image>
-							<view>{{item.car_brand_name}}</view>
+						
+						<view class="items"  data-item="item"  wx:for="{{carHotList}}" wx:key="key" data-img="{{item.carBrandLogoUrl}}" data-title="{{item.carBrandName}}" data-id="{{item.carBrandId}}" bindtap="selectcity">
+							
+							<image src="{{imagePrefix + item.carBrandLogoUrl}}"></image>
+							<view>{{item.carBrandName}}</view>
+							
 						</view>
 					</view>
 				</view>
@@ -35,17 +38,17 @@
 					<view class="content">
 						<view class="all-city">
 							<view class="city-list">
-								<!-- 循环车列表 start -->
+								<!-- 循环列表 start -->
 								<view wx:for="{{cityList}}" wx:key="key" id="{{'car'+index}}" data-title="{{item.title}}">
 									<view class="nav-text">
 										<text>{{item.title}}</text>
 									</view>
-									<view class="show-city" wx:for="{{item.lists}}" wx:key="key" data-id="{{item.car_brand_id}}" data-title="{{item.car_brand_name}}" data-img="{{item.car_brand_logo_url}}" bindtap='selectcity'>
-									    <image src="{{item.car_brand_logo_url}}"></image>
-										<text >{{item.car_brand_name}}</text>
+									<view class="show-city" wx:for="{{item.lists}}" wx:key="key" data-id="{{item.carBrandId}}" data-title="{{item.carBrandName}}" data-img="{{item.carBrandUrl}}" bindtap='selectcity'>
+									    <image src="{{item.carBrandUrl}}"></image>
+										<text >{{item.carBrandName}}</text>
 									</view>
 								</view>
-								<!-- 循环车列表 end -->
+								<!-- 循环列表 end -->
 							</view>
 						</view>
 						<!-- 字母索引 start -->
@@ -80,8 +83,8 @@
 			</scroll-view>
 		</view>
 		<scroll-view class="{{searchValue?'active':'city-scroll1'}}" scroll-y="true" scroll-with-animation="true" scroll-into-view="{{toView}}" wx:if="{{searchShow}}" bindtap="SearchNone">
-			<view class="{{searchValue?'itemCity':''}}" wx:for="{{searchCityList}}" wx:key="key" data-id="{{item.car_series_id}}" data-title="{{item.car_series_name}}" catchtap="goIndex">{{item.car_series_name}}</view>
-			<view wx:if="{{!searchCityList}}" class="noneCity">没有找到带{{searchValue}}的车辆!</view>
+			<view class="{{searchValue?'itemCity':''}}" wx:for="{{searchCarList}}" wx:key="key" data-id="{{item.carBrandId}}" data-title="{{item.carBrandName}}" catchtap="goIndex">{{item.carBrandName}}</view>
+			<view wx:if="{{!searchCarList}}" class="noneCity">没有找到带{{searchValue}}的车辆!</view>
 		</scroll-view>
 	</view>
 </view>

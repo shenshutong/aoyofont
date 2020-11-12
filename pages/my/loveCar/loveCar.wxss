@@ -1,0 +1,342 @@
+@import "../../../commpents/navbar.wxss";
+
+
+.carName {
+    width: 100%;
+    height: 400rpx;
+}
+
+.content {
+    width: 100%;
+    overflow-x: hidden;
+}
+
+.carName image {
+    width: 100%;
+    height: 100%;
+}
+
+.detailCar {
+    width: 100%;
+    height: 150rpx;
+    position: relative;
+    top: -150rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.detailCar .con_car {
+    width: 90%;
+    height: 100%;
+    background-color: #fff;
+    border-top-left-radius: 20rpx;
+    border-top-right-radius: 20rpx;
+    display: flex;
+}
+
+.detailCar .con_car .left {
+    width: 70%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    margin-left: 50rpx;
+}
+
+.detailCar .con_car .left image {
+    width: 60rpx;
+    height: 60rpx;
+    margin-right: 20rpx;
+}
+
+.detailCar .con_car .right {
+    width: 30%;
+    height: 100%;
+    padding-top: 37rpx;
+    padding-left: 55rpx;
+    font-size: 22rpx;
+    color: #BB2D2F;
+    font-weight: 600;
+    box-sizing: border-box;
+}
+
+.detailCar .con_car .left .text view:nth-child(1) {
+    font-size: 28rpx;
+    margin-bottom: 10rpx;
+}
+
+.detailCar .con_car .left .text view:nth-child(2) {
+    font-size: 22rpx;
+    color: #274A84;
+}
+
+.detailCar .con_car .right image {
+    width: 30rpx;
+    height: 35rpx;
+    margin-right: 10rpx;
+    vertical-align: top;
+}
+
+.detailCar_bottom {
+    width: 100%;
+    height: 60rpx;
+    margin-top: -150rpx;
+    display: flex;
+    justify-content: center;
+}
+
+.detailCar_bottom .content {
+    width: 90%;
+    height: 100%;
+    box-shadow: 0px 20rpx 42rpx 0px rgba(91, 91, 91, 0.2);
+}
+
+.detailCar_bottom .content .deta {
+    width: 100%;
+    height: 70%;
+    margin: 4rpx 0 0 0rpx;
+    display: flex;
+}
+
+.detailCar_bottom .content .deta .detaleft {
+    width: 70%;
+    height: 100%;
+    position: relative;
+}
+
+.detailCar_bottom .content .deta .detaleft .carHao {
+    color: #787676;
+    font-size: 20rpx;
+    position: absolute;
+    top: 10rpx;
+    left: 93rpx;
+}
+
+.detailCar_bottom .content .deta .detaleft image {
+    width: 100%;
+    height: 100%;
+}
+
+.detailCar_bottom .content .deta .detaright {
+    width: 30%;
+    font-size: 22rpx;
+    color: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.titile {
+    width: 100%;
+    height: 70rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 60rpx;
+}
+
+.titile .content {
+    width: 90%;
+    height: 100%;
+    line-height: 70rpx;
+    font-weight: 700;
+    font-size: 30rpx;
+    position: relative;
+}
+
+.titile .content .line {
+    width: 114rpx;
+    height: 20rpx;
+    background: linear-gradient(90deg, rgba(214, 80, 82, 1) 0%, rgba(255, 255, 255, 1) 100%);
+    border-radius: 9px;
+    position: absolute;
+    bottom: 12rpx;
+    left: 0;
+    z-index: -1;
+}
+
+.title_one {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    overflow: hiddle;
+}
+
+.title_two {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 5rpx;
+    margin-bottom: 70rpx;
+    overflow: hiddle;
+
+}
+
+.title_one .content,
+.title_two .content {
+    width: 90%;
+    height: 100%;
+    border: 1px solid rgba(000, 000, 000, 1);
+    border-bottom: none;
+    font-size: 30rpx;
+    font-weight: 700;
+    color: #000;
+}
+
+.title_one .content image,
+.title_two .content image {
+    width: 20rpx;
+    height: 20rpx;
+    vertical-align: middle;
+}
+
+.title_one .content picker,
+.title_two .content picker {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.title_one .content picker text,
+.title_two .content picker text {
+    display: inline-block;
+    width: 300rpx;
+    height: 50rpx;
+    line-height: 50rpx;
+}
+
+.title_one .content input,
+.title_two .content input {
+    width: 88%;
+}
+
+.title_one .content .car_content,
+.title_two .content .car_content {
+    width: 100%;
+    height: 50%;
+    padding: 0 10rpx;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 24rpx !important;
+    font-weight: 700;
+    color: #000;
+}
+
+.title_one .content .car_title,
+.title_two .content .car_title {
+    width: 100%;
+    height: 50%;
+    padding-left: 10rpx;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+}
+
+.title_one .content .firstLine,
+.title_one .content .secondLine,
+.title_one .content .thirdLine,
+.title_one .content .fourLine {
+    width: 100%;
+    height: 125rpx;
+    border-bottom: 1px solid rgba(000, 000, 000, 1);
+    display: flex;
+}
+
+.title_two .content .firstLine,
+.title_two .content .secondLine,
+.title_two .content .thirdLine {
+    width: 100%;
+    height: 125rpx;
+    border-bottom: 1px solid rgba(000, 000, 000, 1);
+    display: flex;
+}
+
+.firstLine .one,
+.firstLine .two,
+.firstLine .three {
+    height: 100%;
+    width: 33.3%;
+    border-right: 1px solid rgba(000, 000, 000, 1);
+}
+
+.secondLine .one {
+    width: 100%;
+    height: 100%;
+}
+
+.secondLine .two {
+    width: 33.4%;
+    height: 100%;
+    border-right: 1px solid rgba(000, 000, 000, 1);
+}
+
+.thirdLine .one,
+.thirdLine .two,
+.thirdLine .three {
+    width: 33.3%;
+    height: 100%;
+    border-right: 1px solid rgba(000, 000, 000, 1);
+}
+
+.fourLine .one,
+.fourLine .two {
+    width: 50%;
+    height: 100%;
+    border-right: 1px solid rgba(000, 000, 000, 1);
+}
+
+.save {
+    width: 100%;
+    height: 100rpx;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 70rpx;
+}
+
+.save view {
+    width: 70%;
+    height: 100%;
+    border: 1px solid #BB2D2F;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30rpx;
+    color: #BB2D2F;
+    border-radius: 50rpx;
+}
+
+/* 地区级联选择器 */
+
+.picker-view {
+    width: 100%;
+    display: flex;
+    background-color: #fff;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.picker-item {
+    line-height: 70rpx;
+    margin-left: 5rpx;
+    margin-right: 5rpx;
+    text-align: center;
+}
+
+.picker-view__pane {
+    height: 100rpx;
+    width: 100%;
+    padding: 20rpx 32rpx;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+.pick-view__group {
+    width: 100%;
+    height: 400rpx;
+}

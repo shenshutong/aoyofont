@@ -1,6 +1,4 @@
-
 <!--pages/my/information/information.wxml-->
-
 <view>
 	<!-- 自定义导航栏 start -->
 	<view class="nav-bar" style="height:{{navBarHeight}}px;">
@@ -17,13 +15,13 @@
 		</view>
 	</view>
 	<!-- 自定义导航栏 end -->
-	<view class="content" style="margin-top:{{navBarHeight}}px">
+	<view class="content" style="margin-top:{{navBarHeight}}px" data-id="{{aoyoUserId}}">
 		<view class="items">
 			<view class="item-L">
 				<text>头像</text>
 			</view>
 			<view class="item-R">
-				<image mode="aspectFitf" src="{{photo}}" bindtap='changeAvatar'></image> >
+				<image mode="aspectFitf" wx:if="{{aoyoAlblumCover}}" src="{{aoyoAlblumCover}}" bindtap='changeAvatar' data-id="{{aoyoUserId}}"></image> >
 			</view>
 		</view>
 		<view class="items">
@@ -31,7 +29,7 @@
 				<text>昵称</text>
 			</view>
 			<view class="item-R" bindtap="goeditName">
-				<text>{{nikeName}}</text> >
+				<text>{{aoyoNikeName}}</text> >
 			</view>
 		</view>
 		<view class="items">
@@ -39,7 +37,7 @@
 				<text>手机号</text>
 			</view>
 			<view class="item-R" bindtap="goEditTell">
-				<text>{{tell}}</text> >
+				<text>{{aoyoPhone}}</text> >
 			</view>
 		</view>
 		<view class="items">
@@ -47,7 +45,8 @@
 				<text>真实姓名</text>
 			</view>
 			<view class="item-R" bindtap="goRealName">
-				<text>{{name}}</text> >
+				<text>{{aoyoName}}</text> >
+				<!-- <text>{{name}}</text> > -->
 			</view>
 		</view>
 		<view class="items">
@@ -56,7 +55,7 @@
 			</view>
 			<view class="item-R">
 				<radio-group class="radio-group" bindchange="radioChange">
-					<radio class="radio" wx:for-items="{{sexItems}}" wx:key="name" value="{{item.value}}" checked="{{item.checked}}">
+					<radio class="radio" wx:for-items="{{aoyoSex}}" wx:key="name" value="{{item.value}}" checked="{{item.checked}}">
 					   <text>{{item.name}}</text>
 					 </radio>
 				</radio-group>

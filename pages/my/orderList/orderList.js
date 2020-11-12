@@ -70,22 +70,22 @@ Page({
         if (thisIndex == 0) {
             this.getOrderList();
         }
-        // if (thisIndex == 1) {
-        //     this.getunpaidList();
-        // }
-        // if (thisIndex == 2) {
-        //     this.underwayList();
-        // }
-        // if (thisIndex == 3) {
-        //     this.getcommentList();//进行中
-        // }
-        // if (thisIndex == 4) {
-        //     this.getsuccessList();//已完成
-        // }
+        if (thisIndex == 1) {
+            this.getunpaidList();
+        }
+        if (thisIndex == 2) {
+            this.underwayList();
+        }
+        if (thisIndex == 3) {
+            this.getcommentList();//进行中
+        }
+        if (thisIndex == 4) {
+            this.getsuccessList();//已完成
+        }
     },
-    // onChange(event) {
-    //     console.log(event.detail.name)
-    // },
+    onChange(event) {
+        console.log(event.detail.name)
+    },
     //去评价
     goevaluate: function (e) {
         var commID = e.currentTarget.dataset.id;

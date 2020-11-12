@@ -105,19 +105,22 @@ Page({
         })
         that.hideModal();
     },
-    //查看更多评论
+    //查看更多评论--
     lookMoreComment: function () {
         wx.navigateTo({
             url: '/pages/index/moreComment/index?shoppid=' + this.data.commodityId + "&count=" + this.data.commodit_comment_count
         })
     },
-    //加入购物车
+    //加入购物车-----------------------------------
     successShoppCar: function () {
         var id = this.data.shoppID;
-        var addShoppCardUrl = netapi.addShoppCard + "?commodityId=" + id;
+        var addShoppCardUrl = netapi.addShoppCardJT;
+        console.log(id)
         netWork.request({
             url: addShoppCardUrl,
-            method: "GET",
+            data: {
+                commodityId: id
+            },
             header: {
                 "content-type": "application/json",
                 "Ltoken": wx.getStorageSync('token'),
@@ -146,7 +149,7 @@ Page({
     //查询商品详情
     getShoppDetail: function (id) {
         var that = this;
-        var shoppDetailUrl = netapi.shoppDetailUrl;
+        var shoppDetailUrl = netapi.shoppDetailUrljt;
         netWork.request({
             url: shoppDetailUrl,
             data: {

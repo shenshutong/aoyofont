@@ -1,0 +1,73 @@
+<view>
+	<!-- 自定义导航栏 start -->
+	<view class="nav-bar" style="height:{{navBarHeight}}px;">
+		<view class="back" style="height:{{menuHeight}}px; min-height:{{menuHeight}}px; line-height:{{menuHeight}}px;  bottom:{{menuBotton}}px;" bindtap="backHome">
+			<view class="backBu">
+				<view class="back-content">
+					<view style="width:100%;height:100%" bindtap="backorderList">
+						<van-icon size="20" name="arrow-left" />
+					</view>
+				</view>
+				<text>评价</text>
+				<view style="width:120rpx"></view>
+			</view>
+		</view>
+	</view>
+	<!-- 自定义导航栏 end -->
+	<!-- 内容 -->
+	<view class="content" style="margin-top:{{navBarHeight}}px">
+		<view class="content-t">
+			<view class="content-shopp" wx:for="{{shoppDetail}}" wx:key="key">
+				<view class="shoppimg">
+					<image src="{{imagePrefix + item.imgs[0].commodity_img_url}}"></image>
+				</view>
+				<view class="shoppdetail">
+					<view>{{item.commodity_name}}</view>
+					<view>19款 13.3寸 普通款 共1件</view>
+				</view>
+			</view>
+			<view class="content-star">
+				<text>满意度</text>
+				<view class="star">
+					<block wx:for="{{one_2}}" wx:key="index">
+						<image class="red" catchtap='in_xin' id='{{index+1}}' data-in='use_sc2' src='../../../img/redstar.png'></image>
+					</block>
+					<block wx:for="{{two_2}}" wx:key="index">
+						<image class="ccc" catchtap='in_xin' id='{{index+1}}' data-in='use_sc' src='../../../img/hstar.png'></image>
+					</block>
+				</view>
+				<text class="number">{{one_2}}.0</text>
+			</view>
+		</view>
+		<view class="evaluateContent">
+			<view class="evaluateContent-h">
+				<image src="../../../img/inseart.png"></image>
+			</view>
+			<view class="evaluateContent-con">
+				<textarea placeholder="快来填写评价吧" placeholder-style="font-size:24rpx" maxlength="200" bindinput="getTextareaCon"></textarea>
+				<image src="../../../img/open.png"></image>
+			</view>
+			<view class="uploadimg">
+				<view class="items1" wx:for="{{photo}}" wx:key="key">
+					<image class="xiangji" src="../../../img/xiangji.png"></image>
+					<view>添加视频/图片</view>
+					<image wx:if="{{videoShow==false}}" class="detelt" data-index="{{index}}" src="../../../img/dele.png" wx:if="{{item}}" catchtap="deleteImg"></image>
+					<video id="myVideo" wx:if="{{videoShow}}" src="{{item}}" custom-cache='{{false}}'></video>
+					<image src="{{item}}" wx:if="{{imgShow}}" class="photoContent"></image>
+				</view>
+				<picker bindchange="bindPickerChange" value="{{yngh}}" range="{{array}}" style="width:30%" wx:if='{{photo.length<3}}'>
+					<view class="items">
+						<image class="xiangji" src="../../../img/xiangji.png"></image>
+						<view>添加视频/图片</view>
+					</view>
+				</picker>
+			</view>
+		</view>
+		<view class="submit">
+			<view bindtap="submitComment">提交</view>
+		</view>
+		<!-- 拍照/录像 -->
+		<camera wx:if="{{cameraShow}}" device-position="back" flash="off" binderror="error" style="width: {{cameraWidth}}px; height: {{cameraHeight}}px;"></camera>
+		<button id='btnPhotoVideo' wx:if="{{cameraShow}}" bindtouchstart="handleTouchStart" bindtouchend="handleTouchEnd" bindlongpress="handleLongPress" bindtap="handleClick">拍照</button>
+	</view>
+</view>

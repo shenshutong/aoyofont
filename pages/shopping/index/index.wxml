@@ -31,22 +31,22 @@
 	<!-- 购物车商品列表 -->
 	<view class="purchaseList">
 		<checkbox-group>
-			<view class="items" wx:for="{{shoppList}}" wx:key="key" wx:for-index="findex">
+			<view class="items" wx:for="{{shoppList}}"  wx:key="key" wx:for-index="findex">
 				<view class="shopName">
 					<checkbox class="checkbox" checked="{{item.groupStatusView}}" bindtap="dianAll" data-index="{{findex}}"></checkbox>
 					<image src="../../../img/dianpu.png"></image>
 					<text>{{item.groupName}}</text>
 				</view>
 				<!-- 门店 商品列表 -->
-				<view class="shoppItem" wx:for="{{item.commoditys}}" wx:key="key">
+				<view class="shoppItem" wx:for="{{item.commoditys}}" wx:for-item="commoditys" wx:key="key">
 					<van-swipe-cell right-width="{{ 90 }}" bind:close="onClose" async-close style="width:100%" data-index="{{item.shopping_cart_id}}">
 						<view class="items" data-id="{{item.commodity_id}}" bindtap="goShoppDetail">
-							<view class="items_top">
+							<view class="items_top"> 
 								<view class="xuan">
 									<checkbox class="checkbox" disabled="{{item.enabled_static==1}}" checked="{{item.commodityStatusView}}" catchtap="selectList" data-index="{{index}}" data-findex='{{findex}}'></checkbox>
 								</view>
 								<view class="photo">
-									<image src="{{imagePrefix+item.imgs[0].commodity_img_url}}"></image>
+									<image src="{{commoditys.commodity_img_url}}" ></image>
 									<view class="soldOut" wx:if="{{item.enabled_static==1}}">
 										<text>已下架</text>
 									</view>
@@ -54,14 +54,14 @@
 								<view class="shoContent">
 									<view class="introduce">
 										<text>特价</text>
-										<text>{{item.commodity_name}}</text>
+										<text>{{commoditys.commodityName}}</text>
 									</view>
 									<view class="postage">
 										<text wx:if="{{item.priceIncrease==0}}">无优惠</text>
 										<text wx:if="{{item.priceIncrease<0}}">已优惠{{item.priceIncrease}}元</text>
 									</view>
 									<view class="numberMoney">
-										<text>￥{{item.commodity_selling_price}}</text>
+										<text>￥{{item.join_shopping_cart_price}}</text>
 										<van-stepper value="{{ item.join_shopping_cart_count }}" max="{{item.commodity_stock_number}}" disabled="{{item.enabled_static==1}}" disable-input="true" data-id="{{item.shopping_cart_id}}" bind:plus="addCount" bind:minus="minusCount" data-index="{{index}}" data-findex='{{findex}}' />
 									</view>
 								</view>

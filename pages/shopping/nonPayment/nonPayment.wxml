@@ -18,11 +18,11 @@
 	<!-- 自定义导航栏 end -->
 	<view class="box" style="margin-top:{{navBarHeight}}px">
 		<view class="success">
-			<view class="content" wx:if="{{cancelStatus==1}}">
+			<view class="content" wx:if="{{item.cancelStatus==1}}">
 				<view>等待您下单</view>
 				<view>还剩{{countdown.minute}}分钟{{countdown.second}}秒自动取消订单</view>
 			</view>
-			<view class="content" wx:if="{{cancelStatus==2}}">
+			<view class="content" wx:if="{{item.cancelStatus==2}}">
 				<!-- 待支付状态包含：等待下单、订单已取消、订单详情
 							待评价、进行中状态包含：申请退货、订单详情
 							已完成状态包含：订单详情	
@@ -30,45 +30,69 @@
 				<view>订单已取消</view>   
 				<view>很遗憾未能为您提供服务，期待您再次光临奥友</view>
 			</view>
-			<view class="content" wx:if="{{cancelStatus==3}}">
+			<view class="content" wx:if="{{item.cancelStatus==3}}">
 				<view>申请退货</view>
 			</view>
-			<view class="content" wx:if="{{cancelStatus==4}}">
+			<view class="content" wx:if="{{item.cancelStatus==4}}">
 				<view>已为您申请退单，退款金额在1~7个工作日中退还到您支付的账号，请耐心等待！</view>
 			</view>
-			<view class="content" wx:if="{{cancelStatus==5}}">
+			<view class="content" wx:if="{{item.cancelStatus==5}}">
 				<view>订单详情</view>
 			</view>
-			<view class="content" wx:if="{{cancelStatus==6}}">
+			<view class="content" wx:if="{{item.cancelStatus==6}}">
 				<view>商品已成功退货，期待您再次购买</view>
 			</view>
-			<view class="content" wx:if="{{cancelStatus==7}}">
+			<view class="content" wx:if="{{item.cancelStatus==7}}">
 				<view>该订单已取消</view>
 			</view>
-			<view class="content" wx:if="{{cancelStatus==8}}">
+			<view class="content" wx:if="{{item.cancelStatus==8}}">
 				<view>该订单已失效</view>
 			</view>
-			<view class="content" wx:if="{{cancelStatus==9}}">
+			<view class="content" wx:if="{{item.cancelStatus==9}}">
 				<view>退货处理中</view>
 			</view>
 		</view>
 		<view class="line"></view>
 		<!-- 商品 -->
 		<view class="shopp">
-			<view class="items" wx:for="{{content}}"  wx:key='key'  style="margin-bottom:30rpx;position: relative;">
+			<view class="items" wx:for="{{content}}" data-id="{{item.orderId}}" wx:key='key' style="margin-bottom:30rpx;position: relative;">
 				<view class="shoppName">
 					<image src="../../../img/dianpu.png"></image><text>{{item.groupName}}</text>
 				</view>
-				<view class="shoppName" wx:if="{{item.suitName!=null}}">
+				<view class="shoppName" wx:if="{{content.suitName!=null}}">
 					<text style="margin-left:30rpx">{{item.suitName}}</text>
 				</view>
+				<!-- <view class="shoppDetail" wx:for="{{content}}" wx:key="key" data-shopID="{{item.commodity_id}}"
+					bindtap="goShoppDetail"> -->
 					<view class="detail_i">
 						<image src="{{item.commodityImgUrl}}"></image>
 					</view>
-			</view>
+					<view class="detail_c">
+						<view>{{item.commodityName}}</view>
+						<view>
+							<text>19款 13.3寸 普通款 共1件</text>
+						</view>
+						<view class="money">
+							<text>￥{{item.commoditySellingPrice}}</text>
+							<text>x{{item.commoditySort}}</text>
+						</view>
+					</view>
 				<!-- </view> -->
-		</view>
-		<view class="line"></view>
+				<!-- 二维码显示 -->
+				<view class="erma" data-code="{{item.orderCode}}" bindtap="getQRCode" wx:if="{{codeQshow}}">
+					<image src="../../../img/erweima.png"></image>
+					<view class="modal-mask3" catchtap="hideModal3" catchtouchmove="preventTouchMove3"
+						wx:if="{{showModal3}}"></view>
+					<view class="modal-dialog3" wx:if="{{showModal3}}">
+						<view class="modal-title3">
+							<image src="{{captchaImage}}"></image>
+						</view>
+					</view>
+				</view>
+				<!-- 前往门店 -->
+				<view class="goMap" data-log="{{item.groupLongitude}}" data-lat="{{item.groupLatitude}}" data-address="{{item.groupAddress}}" data-name="{{item.groupName}}" bindtap="call_map">前往</view>
+			</view>
+			<view class="line"></view>
 		<view class="callK" bindtap="callPhone">
 			<image src="../../../img/phone.png"></image>联系客服
 			<view class="modal-mask" catchtap="hideModal" catchtouchmove="preventTouchMove" wx:if="{{showModal}}">
@@ -84,36 +108,29 @@
 			</view>
 		</view>
 		<view class="line"></view>
-		<view class="dOptions">
+		<view class="dOptions" wx:for="{{content}}" wx:key="key">
 			<view class="dOptions-T">
 				<view class="title">订单信息</view>
 				<view class="dOptions-T_C">
-					<view wx:if="{{content.order[0].orderStatus==1}}">
-						<view class="c_L">特色服务</view>
-						<view class="c_R" data-code="{{content.timeCode}}" bindtap="goServe">去选择/更换预约服务</view>
-					</view>
 					<view>
 						<view class="c_L">订单编号</view>
-						<view class="c_R">{{content.orderPayNumber}}</view>
+						<view class="c_R">{{item.orderCode}}</view>
 					</view>
 					<view>
 						<view class="c_L">下单时间</view>
-						<view class="c_R">{{content.orderInputTime}}</view>
+						<view class="c_R">{{item.orderInputTime}}</view>
 					</view>
 					<view>
 						<view class="c_L">支付方式</view>
-						<view class="c_R">微信小程序支付</view>
-					</view>
-					<view>
-						<view class="c_L">配送方式</view>
-						<view class="c_R">门店自提</view>
+						<view class="c_R" wx:if="{{item.payChannel==1}}">微信支付</view>
+						<view class="c_R" wx:if="{{item.payChannel==2}}">现金支付</view>
 					</view>
 				</view>
 			</view>
 			<view class="dOptions-B">
 				<view>
 					<view class="c_L">账单金额</view>
-					<view class="c_R">￥{{content.orderAmount}}</view>
+					<view class="c_R">￥{{item.orderAmount}}</view>
 				</view>
 				<view>
 					<view class="c_L">优惠</view>
@@ -121,10 +138,12 @@
 				</view>
 				<view>
 					<view class="c_L">实付金额</view>
-					<view class="c_R" style="color:#DB0101">￥{{content.orderPracticalAmount}}</view>
+					<view class="c_R" style="color:#DB0101">￥{{item.orderPracticalAmount}}</view>
 				</view>
 			</view>
 		</view>
+		</view>
+
 		<view class="footer" wx:if='{{orderStatus==1}}'>
 			<view class="cancel" bindtap="cancelOeder">取消订单</view>
 			<view class="wchatPayment" bindtap="wchatPaymentB">微信支付</view>

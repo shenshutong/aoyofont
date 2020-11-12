@@ -1,0 +1,224 @@
+<view>
+	<!-- 自定义导航栏 start -->
+	<view class="nav-bar" style="height:{{navBarHeight}}px;">
+		<view class="back" style="height:{{menuHeight}}px; min-height:{{menuHeight}}px; line-height:{{menuHeight}}px;  bottom:{{menuBotton}}px;">
+			<view class="backBu">
+				<view class="back-content">
+					<view style="width:100%;height:100%" bindtap="backorderList">
+						<van-icon size="20" name="arrow-left" />
+					</view>
+				</view>
+				<text>我的爱车</text>
+				<view style="width:120rpx"></view>
+			</view>
+		</view>
+	</view>
+	<!-- 自定义导航栏 end -->
+	<view class="content" style="margin-top:{{navBarHeight}}px">
+		<view class="carName">
+			<image src="../../../img/backgo.png"></image>
+		</view>
+		<view class="detailCar">
+			<view class="con_car">
+				<view class="left">
+					<view class="img">
+						<image src="{{carImg}}"></image>
+					</view>
+					<view class="text">
+						<view>{{carTitle}}</view>
+						<view>{{carKx}}</view>
+					</view>
+				</view>
+				<view class="right" wx:if="{{authentication==true}}" data-id="{{driving_id}}"  bindtap="goJdriving">
+					<image src="../../../img/wrz.png"></image>
+					已认证
+				</view>
+				<view class="right" wx:if="{{authentication==false}}">
+					<image src="../../../img/weirz.png" style="width:140rpx;height:50rpx" bindtap="goAuthenTicn"></image>
+				</view>
+			</view>
+		</view>
+		<view class="detailCar_bottom">
+			<view class="content">
+				<view class="deta">
+					<view class="detaleft">
+						<image src="../../../img/chepai.png"></image>
+						<view class="carHao">
+							车牌号：{{licensePlate}}
+						</view>
+					</view>
+					<view class="detaright" wx:if="{{defelut}}">
+						已设置为默认车辆
+					</view>
+				</view>
+			</view>
+		</view>
+		<view class="titile">
+			<view class="content">
+				车辆信息
+				<view class="line"></view>
+			</view>
+		</view>
+		<view class="title_one">
+			<view class="content">
+				<view class="firstLine">
+					<view class="one" bindtap="goCarSeries">
+						<view class="car_content">
+							<text>{{fdjMax}}L</text>
+							<image src="../../../img/editCar.png"></image>
+						</view>
+						<view class="car_title">发动机排量</view>
+					</view>
+					<view class="two" bindtap="goCarYear">
+						<view class="car_content">
+							<text>{{carYear}}</text>
+							<image src="../../../img/editCar.png"></image>
+						</view>
+						<view class="car_title">生产年份</view>
+					</view>
+					<view class="three" style="border-right:none">
+						<view class="car_content">
+							<input type="digit" value="{{actualService}}" minlength="0" maxlength="8" bindinput="getActualService" bindblur="getXSvalue"></input>
+							<image src="../../../img/editCar.png"></image>
+						</view>
+						<view class="car_title">行驶里程</view>
+					</view>
+				</view>
+				<view class="secondLine">
+					<view class="one" bindtap="goCarLtype">
+						<view class="car_content">
+							<text style="font-size:20rpx">{{carKx}}</text>
+							<image src="../../../img/editCar.png"></image>
+						</view>
+						<view class="car_title">款型</view>
+					</view>
+
+				</view>
+				<view class="thirdLine" wx:if="{{carOptions[0].custom_driving!=null}}">
+					<view class="three" bindtap="goRzCar">
+						<view class="car_content">
+							<text>{{licensePlate}}</text>
+						</view>
+						<view class="car_title">车牌号</view>
+					</view>
+					<view class="one" bindtap="goRzCar">
+						<view class="car_content">
+							<text>{{date}}</text>
+						</view>
+						<view class="car_title">上路时间</view>
+					</view>
+					<view class="two" style="border-right:none" bindtap="goRzCar">
+						<view class="car_content">
+							<text>{{regisedate}}</text>
+						</view>
+						<view class="car_title">注册时间</view>
+					</view>
+
+				</view>
+				<view class="fourLine" wx:if="{{carOptions[0].custom_driving!=null}}">
+					<view class="one" bindtap="goRzCar">
+						<view class="car_content">
+							<text>{{headingCode}}</text>
+						</view>
+						<view class="car_title">车辆识别代码(VIN码)</view>
+					</view>
+					<view class="two" style="border-right:none" bindtap="goRzCar">
+						<view class="car_content">
+							<text>{{engine}}</text>
+						</view>
+						<view class="car_title">发动机型号</view>
+					</view>
+				</view>
+			</view>
+		</view>
+		<view class="titile" wx:if="{{carOptions[0].car_insurance_message!=null}}">
+			<view class="content">
+				车险信息
+				<view class="line"></view>
+			</view>
+		</view>
+		<view class="title_two" wx:if="{{carOptions[0].car_insurance_message!=null}}">
+			<view class="content">
+				<view class="secondLine">
+					<view class="one" style="width:100%;border-right:none" bindtap="goinsuranceCompany">
+						<view class="car_content">
+							<text>{{bxName}}</text>
+							<image src="../../../img/editCar.png"></image>
+						</view>
+						<view class="car_title">商业保险公司</view>
+					</view>
+				</view>
+				<view class="thirdLine">
+					<view class="one" style="width:32.7%">
+						<view class="car_content">
+							<input type="text" value="{{carName}}" bindinput="getcarName"></input>
+							<image src="../../../img/editCar.png"></image>
+						</view>
+						<view class="car_title">车主姓名</view>
+					</view>
+					<view class="two" style="border-right:none;width:66.6%">
+						<view class="car_content">
+							<input type="text" value="{{identity}}" minlength="0" maxlength="18" bindinput="getidentity"></input>
+							<image src="../../../img/editCar.png"></image>
+						</view>
+						<view class="car_title">身份证号码</view>
+					</view>
+				</view>
+				<view class="firstLine">
+					<view class="one">
+						<view class="car_content" bindtap="pickAddress">
+							<text>{{city}}</text>
+							<image src="../../../img/editCar.png"></image>
+						</view>
+						<view class="car_title">投保城市</view>
+						<!-- 投保城市 -->
+						<pop-up visible="{{visible}}" onClose="closePopUp">
+							<view slot="content">
+								<view class="picker-view">
+									<view class="picker-view__pane">
+										<text catchtap="cityCancel">取消</text>
+										<text>选择所在地区</text>
+										<text catchtap="citySure">确定</text>
+									</view>
+									<picker-view class="pick-view__group" bindchange="cityChange" bindpickstart="chooseStart" bindpickend="chooseEnd" value="{{value}}">
+										<picker-view-column indicator-class="item_active" style="margin-top:-100rpx;width:20%;font-size:30rpx">
+											<view wx:for="{{provinces}}" class="picker-item" wx:key="index" data-id="{{item.code}}">{{item.name}}</view>
+										</picker-view-column>
+										<picker-view-column style="margin-top:-100rpx;width:20%;font-size:30rpx">
+											<view wx:for="{{citys}}" class="picker-item" wx:key="index" data-id="{{item.code}}">{{item.name}}</view>
+										</picker-view-column>
+										<picker-view-column style="margin-top:-100rpx;width:25%;font-size:30rpx">
+											<view wx:for="{{areas}}" class="picker-item" wx:key="index">{{item.name}}</view>
+										</picker-view-column>
+									</picker-view>
+								</view>
+							</view>
+						</pop-up>
+					</view>
+					<view class="two">
+						<view class="car_content">
+							<picker bindchange="bindPickerChange" value="{{yngh}}" range="{{array}}">
+								<text>{{array[yngh]}}</text>
+							</picker>
+							<image src="../../../img/editCar.png"></image>
+						</view>
+						<view class="car_title">一年内是否过户</view>
+					</view>
+					<view class="three" style="border-right: none;">
+						<view class="car_content">
+							<picker mode="date" value="{{InsuranceDue}}" bindchange="bindDateChange2" bindcancel="quxiao1">
+								<text>{{InsuranceDue}}</text>
+							</picker>
+							<image src="../../../img/editCar.png"></image>
+						</view>
+						<view class="car_title">保险到期日</view>
+					</view>
+				</view>
+			</view>
+		</view>
+		<!-- 保存 -->
+		<view class="save" wx:if="{{carOptions[0].car_insurance_message!=null}}">
+			<view bindtap="saveCarXX">保存</view>
+		</view>
+	</view>
+</view>

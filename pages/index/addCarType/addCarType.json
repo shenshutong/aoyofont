@@ -1,6 +1,6 @@
 {
   "usingComponents": {
-    "van-icon": "../../../dist/icon/index",
-    "pop-up": "/commpents/car-pop-up/index"
+    "van-icon": "../../../dist/icon/index"
+   
   }
 }

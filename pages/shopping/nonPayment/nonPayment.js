@@ -51,8 +51,76 @@ Page({
             success: function (res) {
                 var data = res.data;
                 console.log(data);
+                if (data.price) {
+                    data.price = data.price.toFixed(2);
+                }
+                // if (data.sendOrderStatus == 2) {
+                //     that.setData({
+                //         cancelStatus: 5,
+                //         sendOrderStatus: 2
+                //     })
+                // }
+
+                // if (data.sendOrderStatus == 4) {
+                //     that.setData({
+                //         cancelStatus: 5,
+                //         sendOrderStatus: 2
+                //     })
+                // }
+
+                // if (data.sendOrderStatus == -1) {
+                //     that.setData({
+                //         cancelStatus: 10,
+                //         sendOrderStatus: 2,
+                //         codeQshow: false,
+                //         reasonForProcessingOrder: data.order[0].reasonForProcessingOrder
+                //     })
+                // }
+
+                // if (data.sendOrderStatus == -2) {
+                //     that.setData({
+                //         cancelStatus: 9,
+                //         sendOrderStatus: 2
+                //     })
+                // }
+
+                // if (data.sendOrderStatus == 8) {
+                //     that.setData({
+                //         cancelStatus: 5,
+                //         sendOrderStatus: 2
+                //     })
+                // }
+
+                // if (data.sendOrderStatus == 0) {
+                //     that.setData({
+                //         cancelStatus: 8,
+                //         sendOrderStatus: 2
+                //     })
+                // }
+
+                // if (data.sendOrderStatus == -4) {
+                //     that.setData({
+                //         cancelStatus: 7,
+                //         sendOrderStatus: 2
+                //     })
+                // }
+
+                // if (data.sendOrderStatus == -3) {
+                //     that.setData({
+                //         cancelStatus: 6,
+                //         sendOrderStatus: 2,
+                //         codeQshow: false
+                //     })
+                // }
+                // if (data.sendOrderStatus == 7) {
+                //     that.setData({
+                //         cancelStatus: 5,
+                //         sendOrderStatus: 2
+                //     })
+                // }
                 that.setData({
-                    content: data
+                    content: data,
+                    
                 })
                 var timestamp = Date.parse(that.data.content.orderInputTime);
                 var timeNum = 0.5;

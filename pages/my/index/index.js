@@ -18,10 +18,13 @@ Page({
         nikeName: "",
         tell: "",
         photo: "",
+        aoyoGalleryId:"",
+        aoyoAlblumCover:"",
         KFtell: '',
+        disCount: '',
         showModal: false,
         carTotl: 0,
-        attentionCount: 0,
+        attentionCount:'',
         nameAuthention: false,
         custom_car_id: 0,
         xsKdshow: false,
@@ -38,13 +41,13 @@ Page({
     //优惠券
     goyouhui: function () {
         wx.navigateTo({
-           // url: '/pages/my/discounts/discounts'
+            url: '/pages/my/discounts/discounts'
         })
     },
     //关注商品
     goguanzhu: function () {
         wx.navigateTo({
-           // url: '/pages/my/attention/attention'
+            url: '/pages/my/attention/attention'
         })
     },
     //个人信息
@@ -56,21 +59,21 @@ Page({
     //我的车库
     gomeCarKu: function () {
         wx.navigateTo({
-            //url: '/pages/my/carport/carport'
+            url: '/pages/my/carport/carport'
         })
     },
     //收货地址
     goAddressList: function () {
         wx.navigateTo({
-           // url: '/pages/shopping/receiver/receiver',
+            url: '/pages/shopping/receiver/receiver',
         })
     },
     //查询订单数量
     OrderCommodityCount: function () {
-        var OrderCommodityCount = netapi.OrderCommodityCount;
+       // var OrderCommodityCount = netapi.OrderCommodityCount;
         var that = this;
         netWork.request({
-            url: OrderCommodityCount,
+            url: 'http://localhost:8081/user/OrderCount',
             method: "GET",
             header: {
                 "content-type": "application/json",
@@ -95,198 +98,76 @@ Page({
     //进行中
     goPending: function () {
         wx.navigateTo({
-           // url: '/pages/my/orderList/orderList?index=1'
+            url: '/pages/my/orderList/orderList?index=1'
         })
     },
     //待付款
     goMoney: function () {
         wx.navigateTo({
-           // url: '/pages/my/orderList/orderList?index=2'
+            url: '/pages/my/orderList/orderList?index=2'
         })
     },
     //待评价
     goComment: function () {
         wx.navigateTo({
-           // url: '/pages/my/orderList/orderList?index=3'
+            url: '/pages/my/orderList/orderList?index=3'
         })
     },
     //已完成
     goSuccess: function () {
         wx.navigateTo({
-           // url: '/pages/my/orderList/orderList?index=4'
+            url: '/pages/my/orderList/orderList?index=4'
         })
     },
     //个人信息查询
     getinformation: function () {
-        var information = netapi.informationList;
+        var showUserInfo = netapi.showUserInfo;
         var that = this;
         wx.request({
-            url: information,
-            method: "GET",
+            //url: showUserInfo,
+            url:'http://localhost:8081/user/showUserInfo',
+            method: "POST",
             header: {
                 "content-type": "application/json",
                 "Ltoken": wx.getStorageSync('token'),
                 "LclientCode": 3
             },
             success: function (res) {
-                if (res.data.status == true) {
-                    var _data = res.data.data[0];
+                console.log(res.data);
+                if (res.data) {
+                    var _data = res.data;
                     that.setData({
-                        nikeName: _data.nickname,
-                        tell: _data.mobile == null ? '' : _data.mobile,
-                        photo: _data.photo
+                        aoyoNikeName: _data.aoyoNikeName,
+                        aoyoPhone: _data.aoyoPhone,
+                        aoyoAlblumCover: _data.aoyoAlblumCover
                     })
                 }
 
             }
         })
     },
-    bindGetUserInfo(e) {
+    //优惠券数量
+    discountCount:function(){
         var that = this;
-        wx.showModal({
-            content: '奥友车生活需要获取您的信息',
-            success(res) {
-                if (res.confirm) {
-                    wx.login({
-                        timeout: 1500, //超时时间
-                        fail(res) {
-                            wx.showToast({
-                                title: '微信登录调用失败',
-                                icon: 'none',
-                                duration: 2000
-                            })
-                        },
-                        success(res1) {
-                            var wcode = res1.code;
-                            var bindWeChat = netapi.bindWeChat;
-                            var confirmUpdateBind = netapi.confirmUpdateBind;
-                            wx.request({
-                                url: bindWeChat,
-                                method: "POST",
-                                header: {
-                                    "Content-Type": "application/x-www-form-urlencoded",
-                                    "Ltoken": wx.getStorageSync('token'),
-                                    "LclientCode": 3
-                                },
-                                data: {
-                                    js_code: wcode // 需要传到后台的值
-                                },
-                                success: function (res) {
-                                    var seesion_key = res.data.data;
-                                    if (res.data.code == 1) {
-                                        that.setData({
-                                            bangdingwx: "绑定成功"
-                                        })
-                                        wx.setStorageSync('SYSTEM', {
-                                            CUSTOM_WX_UNIONID: res.data.data.wx_unionid
-                                        })
-                                    }
-                                    if (res.data.code == 11050118) {
-                                        wx.showModal({
-                                            content: res.data.desc,
-                                            success(res) {
-                                                if (res.confirm) {
-                                                    wx.request({
-                                                        url: confirmUpdateBind,
-                                                        method: "GET",
-                                                        header: {
-                                                            "Content-Type": "application/x-www-form-urlencoded",
-                                                            "Ltoken": wx.getStorageSync('token'),
-                                                            "LclientCode": 3
-                                                        },
-                                                        success: function (res) {
-                                                            if (res.data.status == true) {
-                                                                that.setData({
-                                                                    bangdingwx: "绑定成功"
-                                                                })
-                                                                wx.setStorageSync('SYSTEM', {
-                                                                    CUSTOM_WX_UNIONID: res.data.data.wx_unionid
-                                                                })
-                                                            }
-                                                        }
-                                                    })
-                                                } else if (res.cancel) {
-                                                    console.log('用户点击取消')
-                                                }
-                                            }
-                                        })
-                                    }
-                                    if (res.data.code == 11050002) {
-                                        wx.getUserInfo({
-                                            withCredentials: true,
-                                            success: function (res) {
-                                                var encryptData = res.encryptedData;
-                                                var iv = res.iv;
-                                                var bindDecodeInfo = netapi.bindDecodeInfo;//授权openid
-                                                wx.request({
-                                                    url: bindDecodeInfo,
-                                                    method: "POST",
-                                                    header: {
-                                                        "Content-Type": "application/x-www-form-urlencoded",
-                                                        "Ltoken": wx.getStorageSync('token'),
-                                                        "LclientCode": 3
-                                                    },
-                                                    data: {
-                                                        encryptDataB64: encryptData, // 需要传到后台的值
-                                                        sessionKeyB64: seesion_key,
-                                                        ivB64: iv
-                                                    },
-                                                    success: function (res) {
-                                                        if (res.data.code == 11050085) {
-                                                            that.setData({
-                                                                showModal: true
-                                                            })
-                                                        } else {
-                                                            wx.reLaunch({ url: "/pages/index/index/index", })
-                                                        }
-
-                                                    }
-                                                })
-                                            },
-                                            fail: function (res) {
-                                                wx.showToast({
-                                                    title: '获取微信授权失败',
-                                                    icon: 'none',
-                                                    duration: 2000
-                                                })
-                                            }
-                                        })
-                                    }
-                                }
-                            })
-
-                            if (!res1.code) {
-                                wx.showToast({
-                                    title: '获取微信凭证失败',
-                                    icon: 'none',
-                                    duration: 2000
-                                })
-                                return;
-                            }
-                        }
+        netWork.request({
+            url: 'http://localhost:8081/user/discountCount',
+            method: "POST",
+            header: {
+                "content-type": "application/json"
+            },
+            success: function (res) {
+                console.log(res.data)
+                if (res.data.code==200) {
+                    var _data = res.data;
+                    that.setData({
+                        disCount:_data.data
                     })
-                    //用户点击允许授权
-                    // if (e.detail.userInfo) {
-                    //     console.log(e)
-                    //     var iv = e.detail.iv;
-                    //     var encryptedData = e.detail.encryptedData;
-                    //     var bindDecodeInfo = netapi.bindDecodeInfo;
-                    //     wx.request({
-                    //         url: bindDecodeInfo,
-                    //         data: {
-
-                    //         }
-                    //     })
-                    // }
-                } else if (res.cancel) {
-                    console.log('用户点击取消')
                 }
             }
         })
-
     },
-    //客服电话
-    indexTell: function () {
+     //客服电话
+     indexTell:function () {
         var indexTypeUrl = netapi.tellUrl;
         netWork.request({
             url: indexTypeUrl,
@@ -319,6 +200,32 @@ Page({
         })
         that.hideModal();
     },
+
+    //关注列表数量
+    getCustomCollection() {
+        //var queryCustomCollection = netapi.queryCustomCollection;
+        var that = this;
+        wx.request({
+            url: 'http://localhost:8081/user/collectionCount',
+            method: "POST",
+            header: {
+                "content-type": "application/json",
+                "Ltoken": wx.getStorageSync('token'),
+                "LclientCode": 3
+            },
+            // data: {
+            //     customId: wx.getStorageSync('SYSTEM_USER').USER_ID
+            // },
+            success: function (res) {
+                console.log(res.data);
+                if (res.data.code==200) {
+                    that.setData({
+                        attentionCount: res.data.data
+                    })
+                }
+            }
+        })
+    },
     //查询车辆数量
     carCount: function () {
         var carCount = netapi.carCount;
@@ -342,29 +249,7 @@ Page({
             }
         })
     },
-    //关注列表数量
-    getCustomCollection() {
-        var queryCustomCollection = netapi.queryCustomCollection;
-        var that = this;
-        wx.request({
-            url: queryCustomCollection,
-            method: "GET",
-            header: {
-                "content-type": "application/json",
-                "Ltoken": wx.getStorageSync('token'),
-                "LclientCode": 3
-            },
-            data: {
-                customId: wx.getStorageSync('SYSTEM_USER').USER_ID
-            },
-            success: function (res) {
-                var _data = res.data.total;
-                that.setData({
-                    attentionCount: _data
-                })
-            }
-        })
-    },
+    
     //实名认证
     goNameAuth() {
         wx.navigateTo({
@@ -372,32 +257,32 @@ Page({
         })
     },
     //查询实名认证信息
-    getNameOption() {
-        var that = this;
-        var getCustomLicenseById = netapi.getCustomLicenseById;
-        wx.request({
-            url: getCustomLicenseById,
-            header: {
-                "content-type": "application/json",
-                "Ltoken": wx.getStorageSync('token'),
-                "LclientCode": 3
-            },
-            success: function (res) {
-                if (res.data.status == true) {
-                    var data = res.data.data;
-                    if (data.length > 0) {
-                        that.setData({
-                            nameAuthention: true
-                        })
-                    } else {
-                        that.setData({
-                            nameAuthention: false
-                        })
-                    }
-                }
-            }
-        })
-    },
+    // getNameOption() {
+    //     var that = this;
+    //     var getCustomLicenseById = netapi.getCustomLicenseById;
+    //     wx.request({
+    //         url: getCustomLicenseById,
+    //         header: {
+    //             "content-type": "application/json",
+    //             "Ltoken": wx.getStorageSync('token'),
+    //             "LclientCode": 3
+    //         },
+    //         success: function (res) {
+    //             if (res.data.status == true) {
+    //                 var data = res.data.data;
+    //                 if (data.length > 0) {
+    //                     that.setData({
+    //                         nameAuthention: true
+    //                     })
+    //                 } else {
+    //                     that.setData({
+    //                         nameAuthention: false
+    //                     })
+    //                 }
+    //             }
+    //         }
+    //     })
+    // },
     //查询我得爱车
     getCustomCarwhetherIs() {
         var getCustomCarwhetherIs = netapi.getCustomCarwhetherIs;
@@ -425,43 +310,12 @@ Page({
         var id = e.currentTarget.dataset.id;
         var customId = wx.getStorageSync('SYSTEM_USER').USER_ID;
         wx.navigateTo({
-           // url: '/pages/my/loveCar/loveCar?id=' + id + "&customid=" + customId
+            url: '/pages/my/loveCar/loveCar?id=' + id + "&customid=" + customId
         })
     },
-    //线下开单
-    goofflineOrders() {
-        wx.navigateTo({
-            //url: '/pages/my/offlineOrders/offlineOrders'
-        })
-    },
-    //扫码开单
-    gocodeSheet() {
-        var that = this;
-        wx.scanCode({
-            success: (res) => {
-                wx.hideLoading();
-                var orderCode = res.result;
-                wx.navigateTo({
-                 //   url: '/pages/my/codeSheet/codeSheet?orderCode=' + orderCode
-                })
-            },
-            fail: function (res) {
-                wx.hideLoading();
-                wx.showToast({
-                    title: "二维码识别失败",
-                    icon: 'none',
-                    duration: 2000
-                });
-            }
-        })
-
-    },
-    //工单列表
-    goServeList() {
-        wx.navigateTo({
-          //  url: '/pages/my/workList/workList'
-        })
-    },
+    
+   
+  
     //退出登录
     editLogin() {
         wx.showModal({
@@ -496,10 +350,11 @@ Page({
     onShow: function () {
         this.getinformation();//个人信息查询
         this.OrderCommodityCount(); //查询订单数量
+        this.discountCount();//优惠券数量
         this.indexTell();//客服电话
         this.carCount();
         this.getCustomCollection();//查询关注商品收藏
-        this.getNameOption();//查询实名认证
+        //this.getNameOption();//查询实名认证
         this.getCustomCarwhetherIs();//查询我得爱车
         if (wx.getStorageSync('SYSTEM_USER').UNIONID == null) {
             this.setData({

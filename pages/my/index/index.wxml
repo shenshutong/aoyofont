@@ -13,11 +13,11 @@
 	<!-- 头像 名字 -->
 	<view class="photoName" style="margin-top:{{navBarHeight}}px">
 		<view class="photo">
-			<image src="{{photo}}"></image>
+			<image src="{{aoyoAlblumCover}}" id="photo"></image>
 		</view>
 		<view class="name" bindtap="goInfor">
-			<view>{{nikeName}}</view>
-			<view>{{tell}}</view>
+			<view>{{aoyoNikeName}}</view>
+			<view>{{aoyoPhone}}</view>
 		</view>
 		<view class="setting">
 			<button wx:if="{{buttonShow==true}}" class="loginBu" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">{{bangdingwx}}</button>
@@ -30,7 +30,7 @@
 			<view>关注商品</view>
 		</view>
 		<view class="ticket" bindtap="goyouhui">
-			<view>0</view>
+			<view>{{disCount}}</view>
 			<view>优惠券</view>
 		</view>
 		<view class="carList" bindtap="gomeCarKu">

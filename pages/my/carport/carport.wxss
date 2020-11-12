@@ -1,0 +1,158 @@
+@import "../../../commpents/navbar.wxss";
+
+.content {
+    width: 100%;
+    height: 800rpx;
+    padding: 20rpx;
+    box-sizing: border-box;
+    margin-bottom: 150rpx;
+}
+
+.items {
+    width: 100%;
+    height: 250rpx;
+    background-color: #ffff;
+    box-shadow: 0px 18rpx 42rpx 0px rgba(91, 91, 91, 0.11);
+    border-radius: 40rpx;
+    padding: 15rpx;
+    box-sizing: border-box;
+    margin-bottom: 30rpx;
+}
+
+.items-top {
+    width: 100%;
+    height: 70%;
+    display: flex;
+}
+
+.items-bottom {
+    width: 100%;
+    height: 30%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-right: 40rpx;
+    box-sizing: border-box;
+}
+
+.t-L {
+    width: 70%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding-left: 30rpx;
+    box-sizing: border-box;
+    padding-top: 40rpx;
+    position: relative;
+}
+
+.t-L .def {
+    width: 100%;
+    height: 40rpx;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.t-L image {
+    width: 70rpx;
+    height: 70rpx;
+    margin-right: 30rpx;
+}
+
+.type view:nth-child(1) {
+    font-size: 30rpx;
+    font-weight: 700;
+    margin-bottom: 15rpx;
+}
+
+.type view:nth-child(2) {
+    font-size: 24rpx;
+    color: #274A84;
+}
+
+.t-R {
+    width: 30%;
+    height: 100%;
+    position: relative;
+}
+
+.t-R .defl {
+    width: 130rpx;
+    height: 100rpx;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+.t-R text {
+    font-size: 24rpx;
+    color: #333;
+    display: block;
+    padding: 10rpx 20rpx;
+    border: 1px solid rgba(229, 229, 229, 1);
+    position: absolute;
+    top: 40rpx;
+    border-radius: 30rpx;
+}
+
+.items-bottom view:nth-child(2) image {
+    width: 25rpx;
+    height: 25rpx;
+    margin-right: 15rpx;
+}
+
+.items-bottom view:nth-child(1) image {
+    width: 30rpx;
+    height: 30rpx;
+    margin-right: 30rpx;
+}
+
+.items-bottom view:nth-child(1) {
+    color: #BB2D2F;
+    font-size: 22rpx;
+    padding-left: 130rpx;
+}
+
+.items-bottom view:nth-child(2) {
+    font-size: 22rpx;
+    display: flex;
+    align-items: center;
+    color: #999;
+}
+
+.items-bottom view:nth-child(1) {
+    display: flex;
+    align-items: center;
+}
+
+.items-bottom text {
+    font-size: 20rpx;
+    display: inline-block;
+    border: 1px solid #ccc;
+    padding: 8rpx 12rpx;
+    border-radius: 15rpx;
+}
+
+.footer {
+    width: 100%;
+    height: 100rpx;
+    background: rgba(255, 255, 255, 1);
+    box-shadow: 0px 9px 21px 0px rgba(91, 91, 91, 0.11);
+    border-radius: 40rpx;
+    margin-bottom: 50rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.footer text:nth-child(1) {
+    font-size: 50rpx;
+    color: rgba(187, 45, 47, 1);
+    margin-right: 20rpx;
+}
+
+.footer text:nth-child(2) {
+    font-size: 30rpx;
+    color: rgba(187, 45, 47, 1);
+}

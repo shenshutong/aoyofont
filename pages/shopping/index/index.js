@@ -43,12 +43,12 @@ Page({
                                 carId: id,
                                 deleteFlag: -1
                             }
-                            netWork.request({
+                            wx.request({
                                 url: addAndDelUrl,
                                 data: data,
-                                method: "GET",
+                                method: "post",
                                 header: {
-                                    "content-type": "application/json",
+                                    'content-type': 'application/x-www-form-urlencoded', // 默认值
                                     "Ltoken": wx.getStorageSync('token'),
                                     "LclientCode": 3
                                 },
@@ -118,11 +118,11 @@ Page({
         let total = 0;
         let sum = 0;
         carts.forEach((item) => {
-            item.commoditys.forEach((item) => {
-                if (item.commodityStatusView) {
-                    total += item.join_shopping_cart_count * item.commodity_selling_price;
+            item.commoditys.forEach((item1) => {
+             
+                    total += item.join_shopping_cart_count * item.join_shopping_cart_price;
                     sum += item.join_shopping_cart_count;
-                }
+                
             })
         })
         this.setData({                                // 最后赋值到data中渲染到页面
@@ -312,18 +312,22 @@ Page({
     getShoppCardList: function () {
         var that = this;
         var shoppList = netapi.shoppCardList;
-        netWork.request({
+        var id1=2;
+        wx.request({
             url: shoppList,
-            method: "GET",
+            method: "post",
+            data:{id:id1},
             header: {
-                "content-type": "application/json",
+                'content-type': 'application/x-www-form-urlencoded', // 默认值
                 "Ltoken": wx.getStorageSync('token'),
                 "LclientCode": 3
             },
             success: function (res) {
-                var _data = res.data.data;
+                var _data = res.data;
+                console.log(_data);
                 that.setData({
                     shoppList: _data,
+                
                 })
             }
         })
@@ -368,12 +372,14 @@ Page({
                         var data_id = {
                             cartIdList: str
                         }
-                        netWork.request({
+                       var jsonstr = JSON.stringify(data_id);
+                        console.log("要删除的商品ID:"+jsonstr);
+                        wx.request({
                             url: AllDeteleList,
                             data: data_id,
-                            method: "GET",
+                            method: "post",
                             header: {
-                                "content-type": "application/json",
+                                'content-type': 'application/x-www-form-urlencoded', // 默认值
                                 "Ltoken": wx.getStorageSync('token'),
                                 "LclientCode": 3
                             },
@@ -422,7 +428,8 @@ Page({
             isshow: false,
             shoppSum: 0,
             totalAmount: 0,
-            address: wx.getStorageSync('cityName')
+           // address: wx.getStorageSync('cityName')
+           address: "北京市"
         })
     },
     //点击商品进入详情

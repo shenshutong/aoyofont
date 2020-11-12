@@ -2,51 +2,39 @@
     "pages": [
         "pages/index/index/index",
         "pages/shop/index/index",
-
-        "pages/my/login/login",
-        "pages/my/index/index",
         "pages/index/bootPage/bootPage",
-       
         "pages/classify/index/index",
         "pages/index/regulations/regulations",
-       
-        
         "pages/shopping/index/index",
-       
-        "pages/my/information/information",
-        "pages/my/orderList/orderList",
         "pages/shopping/nonPayment/nonPayment",
-       
-       
         "pages/index/shoppDetail/index",
-       
-       
-      
         "pages/index/addCarType/addCarType",
         "pages/index/city/city",
-        
         "pages/index/moreComment/index",
-        
         "pages/index/displacement/displacement",
-     
         "pages/index/proYear/proYear",
         "pages/index/carType/carType",
-        
         "pages/index/search/index",
-       
-       "pages/my/agreement/agreement",
-       
-        
         "pages/index/queryViolation/queryViolation",
         "pages/index/platingCrystal/platingCrystal",
         "pages/index/upkeep/upkeep",
         "pages/index/tyreChange/tyreChange",
         "pages/index/padpasting/padpasting",
-     
-      
         "commpents/share/share",
         "pages/index/shoppList/shoppList",
-        "pages/index/receiveCoupon/receiveCoupon"
+        "pages/index/receiveCoupon/receiveCoupon",
+        "pages/my/login/login",
+        "pages/my/index/index",  
+        "pages/my/phoneLogin/phoneLogin",
+        "pages/my/orderList/orderList",
+        "pages/my/discounts/discounts", 
+        "pages/my/attention/attention", 
+        "pages/my/carport/carport",
+        "pagesopping/index/index",   
+        "pagesoppingnPaymentnPayment",
+        "pagesopping/receiver/receiver",
+        "pagesopping/newAddress/newAddress",
+        "pages/my/information/information"
     ],
     "window": {
         "backgroundTextStyle": "light",

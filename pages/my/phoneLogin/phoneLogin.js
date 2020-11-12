@@ -75,7 +75,7 @@ Page({
                     disable: true,
                 })
                 wx.request({
-                    url: 'http://localhost:8081/token/phonelogin',
+                    url: 'http://localhost:8081/token/getCode',
                     data: {
                         phone: phone_num,
                         vcode: that.data.phone_ver_code1
@@ -128,124 +128,7 @@ Page({
     onShow: function () {
 
     },
-    //微信登录
-    login_wx() {
-        var that = this;
-        that.setData({
-            flg: false
-        })
-        wx.login({
-            timeout: 1500, //超时时间
-            fail(res) {
-                wx.showToast({
-                    title: '微信登录调用失败',
-                    icon: 'none',
-                    duration: 2000
-                })
-            },
-            success(res1) {
-                var wcode = res1.code;
-                var wxLoginDL = netapi.wxLogin;
-                wx.request({
-                    url: wxLoginDL,
-                    header: {
-                        "Content-Type": "application/x-www-form-urlencoded"
-                    },
-                    method: "POST",
-                    data: {
-                        js_code: wcode // 需要传到后台的值
-                    },
-                    success: function (res) {
-                        var token = res.data.data.token;
-                        var session_key = res.data.data.session_key;
-                        var code = res.data.code;
-                        wx.setStorageSync('session_key', session_key);
-                        if (code == 1) {
-                            wx.setStorageSync('token', token);
-                        }
-                        if (code != 11050002) {
-                            wx.setStorageSync('SYSTEM_USER', {
-                                CUSTOM_ALIAS: res.data.data.custom.nickname, //用户昵称
-                                CUSTOM_IMAGE: res.data.data.custom.photo, //用户头像
-                                USER_ID: res.data.data.custom.custom_id, //用户id
-                                UNIONID: res.data.data.custom.wx_unionid
-                            })
-                            wx.setStorageSync('SYSTEM_GROUPUSER', res.data.data.user)
-                            if (res.data.data.user) {
-                                wx.setStorageSync('SYSTEM', {
-                                    CUSTOM_WX_UNIONID: res.data.data.user.USER_WX_UNIONID,
-                                })
-                            }
-                            wx.reLaunch({ url: "/pages/index/index/index", })
-                        }
-                        if (code == 11050002) {
-                            wx.setStorageSync('token', token);
-                            wx.getUserInfo({
-                                withCredentials: true,
-                                success: function (res) {
-                                    var encryptData = res.encryptedData;
-                                    var iv = res.iv;
-                                    var DecodeInfo = netapi.DecodeInfo;//授权openid
-                                    wx.request({
-                                        url: DecodeInfo,
-                                        method: "POST",
-                                        header: {
-                                            "Content-Type": "application/x-www-form-urlencoded",
-                                            "Ltoken": token,
-                                            "LclientCode": 3
-                                        },
-                                        data: {
-                                            encryptDataB64: encryptData, // 需要传到后台的值
-                                            sessionKeyB64: session_key,
-                                            ivB64: iv
-                                        },
-                                        success: function (res) {
-                                            if (res.data.code == 11050085) {
-                                                wx.navigateTo({
-                                                    url: '/pages/my/bindingPhone/bindingPhone',
-                                                })
-                                            } else {
-                                                wx.setStorageSync('SYSTEM_USER', {
-                                                    CUSTOM_ALIAS: res.data.data.custom.nickname, //用户昵称
-                                                    CUSTOM_IMAGE: res.data.data.custom.photo, //用户头像
-                                                    USER_ID: res.data.data.custom.custom_id, //用户id
-                                                    UNIONID: res.data.data.custom.wx_unionid
-                                                })
-                                                wx.setStorageSync('SYSTEM_GROUPUSER', res.data.data.user)
-                                                if (res.data.data.user) {
-                                                    wx.setStorageSync('SYSTEM', {
-                                                        CUSTOM_WX_UNIONID: res.data.data.user.USER_WX_UNIONID,
-                                                    })
-                                                }
-                                                wx.reLaunch({ url: "/pages/index/index/index", })
-                                            }
-
-                                        }
-                                    })
-                                },
-                                fail: function (res) {
-                                    wx.showToast({
-                                        title: '获取微信授权失败',
-                                        icon: 'none',
-                                        duration: 2000
-                                    })
-                                }
-                            })
-                        }
-                    }
-                })
-
-                if (!res1.code) {
-                    wx.showToast({
-                        title: '获取微信凭证失败',
-                        icon: 'none',
-                        duration: 2000
-                    })
-                    return;
-                }
-            }
-        })
-    },
+   
     //手机号登录前验证
     login: function () {
         var _this = this;
@@ -284,7 +167,7 @@ Page({
                     icon: 'none',
                     duration: 2000
                 })
-            } else if (_this.data.phone_ver_code.toString().length < 6) {
+            } else if (_this.data.phone_ver_code.toString().length < 4) {
                 wx.showToast({
                     title: '验证码格式不正确',
                     icon: 'none',
@@ -295,107 +178,126 @@ Page({
             }
         }
     },
-    //手机号登录
-    login_Mobile() {
-        var that = this;
-        var flgStatus = that.data.flg;
-        if (flgStatus == false) {
-            var wxLoginRegisterCustom = netapi.wxLoginRegisterCustom;
-            wx.request({
-                url: wxLoginRegisterCustom,
-                method: "POST",
-                header: {
-                    "Content-Type": "application/x-www-form-urlencoded",
-                    "Ltoken": wx.getStorageSync('token'),
-                    "LclientCode": 3
-                },
-                data: {
-                    mobile: that.data.phoneNumber,//手机号
-                    code: that.data.phone_ver_code,//验证码
-                    
-                },
-                success: function (res) {
-                    if (res.data.status == true) {
-                        wx.setStorageSync('token', res.data.data.token);
-                        wx.setStorageSync('SYSTEM_USER', {
-                            CUSTOM_ALIAS: res.data.data.custom.nickname, //用户昵称
-                            CUSTOM_IMAGE: res.data.data.custom.photo, //用户头像
-                            CUSTOM_MOBILE: res.data.data.custom.mobile, //手机号
-                            USER_ID: res.data.data.custom.custom_id, //用户id
-                            UNIONID: res.data.data.custom.wx_unionid
-                        })
-                        wx.setStorageSync('SYSTEM_GROUPUSER', res.data.data.user);
-                        if (res.data.data.user) {
-                            wx.setStorageSync('SYSTEM', {
-                                CUSTOM_WX_UNIONID: res.data.data.user.USER_WX_UNIONID,
+            login_Mobile() {
+                var that = this;
+                //var loginByMobile = netapi.loginByMobile;
+                wx.request({
+                    url: 'http://localhost:8081/token/phoneLogin',
+                    header: {
+                        "Content-Type": "application/x-www-form-urlencoded"
+                    },
+                    method: "POST",
+                    data: {
+                        mobile: that.data.phoneNumber,//手机号
+                        code: that.data.phone_ver_code,//验证码
+                    },
+                    success: function (res) {
+                        console.log(res.data)
+                        if (res.data.code == 200) {
+                            wx.reLaunch({ url: "/pages/index/index/index", })
+                        } else {
+                            wx.showToast({
+                                title: res.data.desc,
+                                icon: "none",
+                                duration: 1500
                             })
                         }
-                        wx.reLaunch({ url: "/pages/index/index/index", })
-                    } else {
-                        wx.showToast({
-                            icon: 'none',
-                            title: res.data.desc
-                        })
                     }
-                }
-            })
-        } else {
-            var loginByMobile = netapi.loginByMobile;
-            wx.request({
-                url: loginByMobile,
-                header: {
-                    "Content-Type": "application/x-www-form-urlencoded"
-                },
-                method: "POST",
-                data: {
-                    mobile: that.data.phoneNumber,//手机号
-                    code: that.data.phone_ver_code,//验证码
-                    vcode: that.data.phone_ver_code1
-                },
-                success: function (res) {
-                    if (res.data.status == true) {
-                        wx.reLaunch({ url: "/pages/index/index/index", })
-                        wx.setStorageSync('token', res.data.data.token);
-                        wx.setStorageSync('SYSTEM_USER', {
-                            CUSTOM_ALIAS: res.data.data.custom.nickname, //用户昵称
-                            CUSTOM_IMAGE: res.data.data.custom.photo, //用户头像
-                            CUSTOM_MOBILE: res.data.data.custom.mobile, //手机号
-                            USER_ID: res.data.data.custom.custom_id, //用户id
-                            UNIONID: res.data.data.custom.wx_unionid
-                        })
-                        wx.setStorageSync('SYSTEM_GROUPUSER', res.data.data.user);
-                        if (res.data.data.user) {
-                            wx.setStorageSync('SYSTEM', {
-                                CUSTOM_WX_UNIONID: res.data.data.user.USER_WX_UNIONID,
-                            })
-                        }
-                    } else {
-                        wx.showToast({
-                            title: res.data.desc,
-                            icon: "none",
-                            duration: 1500
-                        })
-                    }
-                }
-            })
-        }
+                })     
+            },
 
-    },
+
+    //手机号登录
+    // login_Mobile() {
+    //     var that = this;
+    //     var flgStatus = that.data.flg;
+    //     if (flgStatus == false) {
+    //        // var wxLoginRegisterCustom = netapi.wxLoginRegisterCustom;
+    //         wx.request({
+    //             url: 'http://localhost:8081/token/phoneLogin',
+    //             method: "POST",
+    //             header: {
+    //                 "Content-Type": "application/x-www-form-urlencoded",
+    //                 "Ltoken": wx.getStorageSync('token'),
+    //                 "LclientCode": 3
+    //             },
+    //             data: {
+    //                 mobile: that.data.phoneNumber,//手机号
+    //                 code: that.data.phone_ver_code,//验证码
+                    
+    //             },
+    //             success: function (res) {
+    //                 if (res.data.status == true) {
+    //                     wx.setStorageSync('token', res.data.data.token);
+    //                     wx.setStorageSync('SYSTEM_USER', {
+    //                         CUSTOM_ALIAS: res.data.data.custom.nickname, //用户昵称
+    //                         CUSTOM_IMAGE: res.data.data.custom.photo, //用户头像
+    //                         CUSTOM_MOBILE: res.data.data.custom.mobile, //手机号
+    //                         USER_ID: res.data.data.custom.custom_id, //用户id
+    //                         UNIONID: res.data.data.custom.wx_unionid
+    //                     })
+    //                     wx.setStorageSync('SYSTEM_GROUPUSER', res.data.data.user);
+    //                     if (res.data.data.user) {
+    //                         wx.setStorageSync('SYSTEM', {
+    //                             CUSTOM_WX_UNIONID: res.data.data.user.USER_WX_UNIONID,
+    //                         })
+    //                     }
+    //                     wx.reLaunch({ url: "/pages/index/index/index", })
+    //                 } else {
+    //                     wx.showToast({
+    //                         icon: 'none',
+    //                         title: res.data.desc
+    //                     })
+    //                 }
+    //             }
+    //         })
+    //     } else {
+    //         var loginByMobile = netapi.loginByMobile;
+    //         wx.request({
+    //             url: loginByMobile,
+    //             header: {
+    //                 "Content-Type": "application/x-www-form-urlencoded"
+    //             },
+    //             method: "POST",
+    //             data: {
+    //                 mobile: that.data.phoneNumber,//手机号
+    //                 code: that.data.phone_ver_code,//验证码
+    //             },
+    //             success: function (res) {
+    //                 if (res.data.status == true) {
+    //                     wx.reLaunch({ url: "/pages/index/index/index", })
+    //                     wx.setStorageSync('token', res.data.data.token);
+    //                     wx.setStorageSync('SYSTEM_USER', {
+    //                         CUSTOM_ALIAS: res.data.data.custom.nickname, //用户昵称
+    //                         CUSTOM_IMAGE: res.data.data.custom.photo, //用户头像
+    //                         CUSTOM_MOBILE: res.data.data.custom.mobile, //手机号
+    //                         USER_ID: res.data.data.custom.custom_id, //用户id
+    //                         UNIONID: res.data.data.custom.wx_unionid
+    //                     })
+    //                     wx.setStorageSync('SYSTEM_GROUPUSER', res.data.data.user);
+    //                     if (res.data.data.user) {
+    //                         wx.setStorageSync('SYSTEM', {
+    //                             CUSTOM_WX_UNIONID: res.data.data.user.USER_WX_UNIONID,
+    //                         })
+    //                     }
+    //                 } else {
+    //                     wx.showToast({
+    //                         title: res.data.desc,
+    //                         icon: "none",
+    //                         duration: 1500
+    //                     })
+    //                 }
+    //             }
+    //         })
+    //     }
+
+    // },
     getImgCodeT() {
         this.setData({
             imgCode: ""
         })
         var phone_num = this.data.phoneNumber;
         this.getImgCode(phone_num)
-    },
-    //获取图片验证码
-    getImgCode(phone_num) {
-        var that = this;
-        var num = Math.random();
-        var sendIMGyzm = netapi.sendIMGyzm;//发送图片验证码
-        var imgcode = sendIMGyzm + '?mobile=' + phone_num + "&num=" + num;
-        that.setData({
-            imgCode: imgcode
-        })
     }
+    
 })
