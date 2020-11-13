@@ -58,7 +58,7 @@
 							<view class="right"> 
 								<text  wx:if="{{item.aoyoCoupon.userId == 2}}" data-id="{{item.couponNewId}}" data-typeid="{{item.couponNewId}}"
 									bindtap="receive">已领取</text>
-									<text  wx:if="{{item.aoyoCoupon.userId == null}}" data-id="{{item.couponNewId}}" data-typeid="{{item.couponNewId}}"
+									<text  wx:if="{{item.aoyoCoupon.userId != 2}}" data-id="{{item.couponNewId}}" data-typeid="{{item.couponNewId}}"
 									bindtap="receive">领取</text>
 							</view>
 							<!-- <view  wx:elif="{{item.aoyoCouponUser.aoyoUserId = null}}" class="right">

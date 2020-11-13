@@ -53,7 +53,7 @@ Page({
                 "LclientCode": 3
             },
             data: {
-                "couponNewId":id
+                "couponNewId":3
             },
             success: function (res) {
                 if (res.data.flag == false) {
